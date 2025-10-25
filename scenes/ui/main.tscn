@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://njvv5q3pfje0"]
+
+[ext_resource type="Script" uid="uid://chgbvrvsqgyrf" path="res://scenes/ui/main.gd" id="1_2p1s2"]
+[ext_resource type="FontFile" uid="uid://drs8psaldvepg" path="res://assets/ui/fonts/Monogram/monogram.ttf" id="2_02nsg"]
+[ext_resource type="Texture2D" uid="uid://cxbvk360kt82c" path="res://assets/ui/background.png" id="2_7n028"]
+[ext_resource type="Texture2D" uid="uid://dim323vxcbj1d" path="res://assets/ui/logo.png" id="3_jvuow"]
+[ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="3_vspwy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aain1"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.129412, 0.156863, 0.219608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvuow"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.129412, 0.156863, 0.219608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8156863, 0.23137255, 0.2509804, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n028"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.129412, 0.156863, 0.219608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8156863, 0.23137255, 0.2509804, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2p1s2")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7n028")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+texture = ExtResource("3_jvuow")
+
+[node name="Menu" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="StartButton" type="Button" parent="Container/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
+theme_override_colors/font_pressed_color = Color(0.96862745, 0.24313726, 0.24313726, 1)
+theme_override_fonts/font = ExtResource("2_02nsg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aain1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jvuow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7n028")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7n028")
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="Container/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartButton")
+theme_override_colors/font_pressed_color = Color(0.96862745, 0.24313726, 0.24313726, 1)
+theme_override_fonts/font = ExtResource("2_02nsg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aain1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jvuow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7n028")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7n028")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Container/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../OptionsButton")
+theme_override_colors/font_pressed_color = Color(0.96862745, 0.24313726, 0.24313726, 1)
+theme_override_fonts/font = ExtResource("2_02nsg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aain1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jvuow")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7n028")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7n028")
+text = "Quit"
+
+[node name="Credits" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="EfraimMarcatto" type="RichTextLabel" parent="Container/Credits"]
+layout_mode = 2
+size_flags_horizontal = 7
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vspwy")
+bbcode_enabled = true
+text = "[url=\"https://efraimmarcatto.itch.io\"]EfraimMarcatto[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeltonBeck" type="RichTextLabel" parent="Container/Credits"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vspwy")
+bbcode_enabled = true
+text = "[url=\"https://weltonbeck.itch.io\"]WeltonBeck[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WulfStudio" type="RichTextLabel" parent="Container/Credits"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vspwy")
+bbcode_enabled = true
+text = "[url=\"https://beowulf.itch.io\"]beowulf[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Container/Menu/QuitButton" to="." method="_quit"]
