@@ -10,4 +10,4 @@ func _quit() -> void:
 
 
 func _start_game() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/game/game.tscn")

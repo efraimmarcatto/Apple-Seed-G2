@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://drv3ejwdvxfey"
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://singletons/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=320
@@ -24,8 +28,13 @@ window/size/viewport_height=240
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+player=""
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=true

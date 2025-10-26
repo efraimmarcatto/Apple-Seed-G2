@@ -189,4 +189,5 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="Container/Menu/StartButton" to="." method="_start_game"]
 [connection signal="pressed" from="Container/Menu/QuitButton" to="." method="_quit"]
