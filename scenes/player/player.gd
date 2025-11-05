@@ -7,7 +7,7 @@ const SPEED = 150
 var last_direction: Vector2 = Vector2.DOWN
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if Input.is_action_just_pressed("ui_accept"):

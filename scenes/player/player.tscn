@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
-size = Vector2(10, 8)
+size = Vector2(11, 10)
 
 [sub_resource type="Animation" id="Animation_dovo2"]
 length = 0.001
@@ -203,9 +203,8 @@ hframes = 6
 vframes = 10
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0.5, -5)
 shape = SubResource("RectangleShape2D_dovo2")
-disabled = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
