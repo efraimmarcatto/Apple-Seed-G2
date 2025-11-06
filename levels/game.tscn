@@ -1,50 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=6 format=3 uid="uid://dp1dukuogmd0g"]
 
+[ext_resource type="Texture2D" uid="uid://d1ancfhur0yjn" path="res://assets/characters/mockup.png" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
-[ext_resource type="PackedScene" uid="uid://miejrebmu8wo" path="res://scenes/enemies/slime.tscn" id="2_748nt"]
-[ext_resource type="PackedScene" uid="uid://bude7jcvaw78s" path="res://addons/fast_prototype/components/trigger/trigger.tscn" id="3_748nt"]
-[ext_resource type="Script" uid="uid://xs5hbijc2s05" path="res://addons/fast_prototype/resources/node_signal.gd" id="4_30w35"]
-[ext_resource type="Script" uid="uid://w7itwl5o8ygk" path="res://addons/fast_prototype/resources/node_method.gd" id="4_vhr6a"]
+[ext_resource type="PackedScene" uid="uid://w4a0p4t0v6b5" path="res://scenes/collectables/apple/apple.tscn" id="3_748nt"]
+[ext_resource type="Texture2D" uid="uid://dxmmfhrdu6q42" path="res://assets/characters/spr_barraca.png" id="4_vhr6a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_od3m6"]
-radius = 44.102154
-
-[sub_resource type="Resource" id="Resource_cnc74"]
-script = ExtResource("4_30w35")
-target_signal_node = NodePath("..")
-target_signal = "body_entered"
-metadata/_custom_type_script = "uid://xs5hbijc2s05"
-
-[sub_resource type="Resource" id="Resource_30w35"]
-script = ExtResource("4_vhr6a")
-target_method_node = NodePath("../../Slime")
-target_method = "queue_free"
-metadata/_custom_type_script = "uid://w7itwl5o8ygk"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhr6a"]
+size = Vector2(54, 30)
 
 [node name="Game" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(159, 121)
+texture = ExtResource("1_748nt")
+
+[node name="Ysort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
-
-[node name="Player" parent="." instance=ExtResource("1_od3m6")]
-position = Vector2(150, 112)
+[node name="Player" parent="Ysort" instance=ExtResource("1_od3m6")]
+position = Vector2(164, 145)
 collision_layer = 2
 
-[node name="Slime" parent="." instance=ExtResource("2_748nt")]
-position = Vector2(293, 35)
-collision_layer = 8
+[node name="Caban" type="StaticBody2D" parent="Ysort"]
+position = Vector2(184, 77)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(4, 232)
-collision_layer = 0
-collision_mask = 2
+[node name="Sprite2D" type="Sprite2D" parent="Ysort/Caban"]
+position = Vector2(1, 2)
+texture = ExtResource("4_vhr6a")
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_od3m6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ysort/Caban"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_vhr6a")
 
-[node name="Trigger" parent="Area2D" instance=ExtResource("3_748nt")]
-position = Vector2(104, -84)
-signal_trigger = SubResource("Resource_cnc74")
-targets = Array[ExtResource("4_vhr6a")]([SubResource("Resource_30w35")])
+[node name="Apple" parent="Ysort" instance=ExtResource("3_748nt")]
+position = Vector2(109, 142)

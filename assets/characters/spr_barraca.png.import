@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2uybfw83lgu7"
-path="res://.godot/imported/player_novo.png-6e0987d8b58c7b304dc0108be7df6fba.ctex"
+uid="uid://dxmmfhrdu6q42"
+path="res://.godot/imported/spr_barraca.png-20cfc945b5d86c7ce865c35afe951cb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/player_novo.png"
-dest_files=["res://.godot/imported/player_novo.png-6e0987d8b58c7b304dc0108be7df6fba.ctex"]
+source_file="res://assets/characters/spr_barraca.png"
+dest_files=["res://.godot/imported/spr_barraca.png-20cfc945b5d86c7ce865c35afe951cb3.ctex"]
 
 [params]
 
