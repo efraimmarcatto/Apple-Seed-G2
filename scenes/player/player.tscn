@@ -1,14 +1,18 @@
-[gd_scene load_steps=67 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=69 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://d01qurqsy3qq6" path="res://assets/characters/player_carregando_item.png" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://dbwmheevfhbcc" path="res://scenes/player/carry_controller.gd" id="3_h17s1"]
 [ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://boagbj00sufgi" path="res://scenes/player/states/player_idle_state.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://cbiw15ht11ia8" path="res://scenes/player/states/player_walk_state.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://ip10cmq7c8g3" path="res://scenes/player/states/player_carry_idle_state.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://bj5hhb2g3ipdg" path="res://scenes/player/states/player_carry_walk_state.gd" id="9_5gtgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
+size = Vector2(10, 4.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gtgg"]
 radius = 4.0
@@ -38,6 +42,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 4.5)]
 }
 
 [sub_resource type="Animation" id="Animation_je7p5"]
@@ -69,6 +109,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
 
 [sub_resource type="Animation" id="Animation_ugbui"]
 resource_name = "carry_idle_left"
@@ -98,6 +150,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
 }
 
 [sub_resource type="Animation" id="Animation_gx1jg"]
@@ -129,6 +193,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [9]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
 
 [sub_resource type="Animation" id="Animation_fm80t"]
 resource_name = "carry_idle_up"
@@ -158,6 +234,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
 }
 
 [sub_resource type="Animation" id="Animation_fcs02"]
@@ -189,6 +277,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
 
 [sub_resource type="Animation" id="Animation_kvlxm"]
 resource_name = "carry_walk_left"
@@ -218,6 +318,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
 }
 
 [sub_resource type="Animation" id="Animation_uf5tr"]
@@ -249,6 +361,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [8, 9, 10, 11]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
 
 [sub_resource type="Animation" id="Animation_myrg7"]
 resource_name = "carry_walk_up"
@@ -279,6 +403,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [12, 13, 14, 15]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryMarker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
 
 [sub_resource type="Animation" id="Animation_dovo2"]
 resource_name = "idle_down"
@@ -307,6 +443,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 4.5)]
 }
 
 [sub_resource type="Animation" id="Animation_lvxji"]
@@ -337,6 +497,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("1_8afob")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, 5.25)]
+}
 
 [sub_resource type="Animation" id="Animation_p47bc"]
 resource_name = "idle_right"
@@ -366,6 +550,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [10]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, 5.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -1)]
+}
 
 [sub_resource type="Animation" id="Animation_gmlin"]
 resource_name = "idle_up"
@@ -394,6 +602,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_8afob")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 4.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
 }
 
 [sub_resource type="Animation" id="Animation_0owmy"]
@@ -425,6 +657,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 4.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.75)]
+}
 
 [sub_resource type="Animation" id="Animation_5gtgg"]
 resource_name = "walk_left"
@@ -454,6 +710,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, 5.25)]
 }
 
 [sub_resource type="Animation" id="Animation_h17s1"]
@@ -485,6 +765,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [8, 9, 10, 11]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, 5.25)]
+}
 
 [sub_resource type="Animation" id="Animation_qek5x"]
 resource_name = "walk_up"
@@ -514,6 +818,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CarryController/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 4.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CarryController/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0owmy"]
@@ -703,12 +1031,23 @@ states/walk/position = Vector2(373.77777, 167.33334)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lvxji"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "idle", "carry_idle", SubResource("AnimationNodeStateMachineTransition_yj68g"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_ioxgp"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_cnsyf"), "carry_idle", "idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "walk", "carry_walk", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "carry_walk", "walk", SubResource("AnimationNodeStateMachineTransition_h17s1")]
 graph_offset = Vector2(51, -60)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["player"]]
 script = ExtResource("1_dovo2")
 character_movement_controller = NodePath("CharacterMovementController")
+carry_controller = NodePath("CarryController")
 
 [node name="CharacterMovementController" parent="." instance=ExtResource("2_lvxji")]
 speed = 70.0
+
+[node name="CarryController" type="Area2D" parent="." node_paths=PackedStringArray("carry_marker_2d")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_h17s1")
+carry_marker_2d = NodePath("../CarryMarker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CarryController"]
+shape = SubResource("RectangleShape2D_h17s1")
+debug_color = Color(0.9552466, 0.124845944, 0.4577958, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -739,6 +1078,9 @@ parameters/idle/BlendSpace2D/blend_position = Vector2(0, 1)
 parameters/idle/TimeScale/scale = 1.0
 parameters/walk/BlendSpace2D/blend_position = Vector2(0.004379511, 1.23125)
 parameters/walk/TimeScale/scale = 1.0
+
+[node name="CarryMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, -14)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_p47bc")]
 initial_state = NodePath("Idle")

@@ -75,4 +75,4 @@ func transition_to(state_name : String) -> void:
 	# Atualiza a referência ao estado atual
 	current_state = new_state
 	current_state_name = current_state.get_state_name().to_lower()
-	print("Current State: ", current_state_name)  # Comentado para debug opcional
+	#print("Current State: ", current_state_name)  # Comentado para debug opcional

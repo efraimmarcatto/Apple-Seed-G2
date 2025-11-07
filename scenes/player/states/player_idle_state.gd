@@ -21,12 +21,12 @@ func _on_state_physics_process(delta : float) -> void:
 
 # Função que define as condições para transições entre estados
 func _on_state_next_transitions() -> void:
-	if character_movement_controller:
-		if player.is_carrying() and character_movement_controller.is_able_to_walk():
+	if character_movement_controller and player and player.carry_controller:
+		if player.carry_controller.is_carrying() and character_movement_controller.is_able_to_walk():
 			transition_to("carry_walk")
-		elif not player.is_carrying() and character_movement_controller.is_able_to_walk():
+		elif not player.carry_controller.is_carrying() and character_movement_controller.is_able_to_walk():
 			transition_to("walk")
-		elif player.is_carrying() and not character_movement_controller.is_able_to_walk():
+		elif player.carry_controller.is_carrying() and not character_movement_controller.is_able_to_walk():
 			transition_to("carry_idle")
 
 # Função chamada ao entrar neste estado

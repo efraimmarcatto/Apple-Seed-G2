@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://w4a0p4t0v6b5"]
+[gd_scene load_steps=5 format=3 uid="uid://w4a0p4t0v6b5"]
 
 [ext_resource type="Texture2D" uid="uid://cs38x2pb4eg36" path="res://assets/characters/spr_apple.png" id="1_51rhw"]
 [ext_resource type="Script" uid="uid://r7vo6c6083il" path="res://scenes/collectables/collectable.gd" id="1_yeb5w"]
@@ -6,15 +6,26 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lgm7"]
 size = Vector2(10, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeb5w"]
+size = Vector2(9, 7)
+
 [node name="Apple" type="Area2D"]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_yeb5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -4.5)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_4lgm7")
+debug_color = Color(0.95383066, 3.080368e-06, 0.5540542, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, -5)
+position = Vector2(-0.5, -1)
 texture = ExtResource("1_51rhw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_yeb5w")
