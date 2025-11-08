@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb3a5kwolxhrr"
-path="res://.godot/imported/slime.png-de9d74cc81ac94d75d54e0dcde12082d.ctex"
+uid="uid://cco766ycpedyd"
+path="res://.godot/imported/select_arrow.png-05a452d6ef184791c71f20aa5809d7b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/slime.png"
-dest_files=["res://.godot/imported/slime.png-de9d74cc81ac94d75d54e0dcde12082d.ctex"]
+source_file="res://assets/ui/select_arrow.png"
+dest_files=["res://.godot/imported/select_arrow.png-05a452d6ef184791c71f20aa5809d7b4.ctex"]
 
 [params]
 

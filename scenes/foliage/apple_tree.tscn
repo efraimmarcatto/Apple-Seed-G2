@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://5yf52nmqwjpv"]
+
+[ext_resource type="Texture2D" uid="uid://dblc1lov6q6a3" path="res://assets/tiles & props/spr_props_floresta_spritesheet.png" id="1_wjvsa"]
+[ext_resource type="PackedScene" uid="uid://cab6biokcvou3" path="res://addons/fast_prototype/components/effects/transparency_when_on_top_component.tscn" id="2_c0fxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48h0y"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgelf"]
+radius = 13.038404
+
+[node name="AppleTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_wjvsa")
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, -5)
+texture = ExtResource("1_wjvsa")
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_48h0y")
+
+[node name="TransparencyWhenOnTopComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_c0fxo")]
+collision_mask = 2
+target = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransparencyWhenOnTopComponent"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_rgelf")
+debug_color = Color(0.68004996, 0.5041936, 0, 0.41960785)

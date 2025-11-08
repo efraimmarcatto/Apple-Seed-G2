@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmmfhrdu6q42"
-path="res://.godot/imported/spr_barraca.png-20cfc945b5d86c7ce865c35afe951cb3.ctex"
+uid="uid://cab3ja7sd56o2"
+path="res://.godot/imported/spr_stone.png-8f4607cf7b6eb6182838ad763ced4d44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/spr_barraca.png"
-dest_files=["res://.godot/imported/spr_barraca.png-20cfc945b5d86c7ce865c35afe951cb3.ctex"]
+source_file="res://assets/items/spr_stone.png"
+dest_files=["res://.godot/imported/spr_stone.png-8f4607cf7b6eb6182838ad763ced4d44.ctex"]
 
 [params]
 
