@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://uspx1glff2k5"]
+
+[ext_resource type="Script" uid="uid://dblwo8kjhcto2" path="res://scenes/player/photograph/photograph.gd" id="1_pex0k"]
+[ext_resource type="PackedScene" uid="uid://bgwea6e3cf36c" path="res://scenes/ui/timing_bar/timing_bar.tscn" id="2_7x3kp"]
+[ext_resource type="Texture2D" uid="uid://c2x1d317nu4jh" path="res://icon.svg" id="2_gc026"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x3kp"]
+size = Vector2(50, 30)
+
+[node name="Photograph" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_pex0k")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(-25, -15)
+collision_mask = 15
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+position = Vector2(25, 15)
+shape = SubResource("RectangleShape2D_7x3kp")
+
+[node name="Sprite" type="TextureRect" parent="Area"]
+offset_top = -1.0
+offset_right = 128.0
+offset_bottom = 127.0
+scale = Vector2(0.4, 0.25)
+texture = ExtResource("2_gc026")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7x3kp")
+
+[node name="TimingBar" parent="." instance=ExtResource("2_7x3kp")]
+visible = false
+offset_left = -36.0
+offset_top = 18.0
+offset_right = 35.0
+offset_bottom = 34.0

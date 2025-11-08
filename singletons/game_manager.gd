@@ -3,6 +3,10 @@ extends Node
 var settings = {}
 var settings_file = "user://settings.cfg"
 var resolutions = [Vector2i(320,180),Vector2i(320,240)]
+var photos: Array = []
+var album: Dictionary = {}
+var photo_slot: int = 1
+var animals: Dictionary = {"tucano":10, "capivara":20, "borboleta":30, "coelho":10}
 
 func load_settings():
 	if !FileAccess.file_exists(settings_file):
@@ -27,6 +31,9 @@ func save_settings():
 func _ready() -> void:
 	load_settings()
 
+
+func get_time():
+	return Time.get_unix_time_from_system()
 
 
 func _process(_delta: float) -> void:
