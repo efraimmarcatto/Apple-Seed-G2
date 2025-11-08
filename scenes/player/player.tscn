@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=70 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cbiw15ht11ia8" path="res://scenes/player/states/player_walk_state.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://ip10cmq7c8g3" path="res://scenes/player/states/player_carry_idle_state.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://bj5hhb2g3ipdg" path="res://scenes/player/states/player_carry_walk_state.gd" id="9_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://bg5cn8k53n3je" path="res://assets/characters/spr_player_sombra.png" id="11_je7p5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
 size = Vector2(10, 4.5)
@@ -326,10 +327,10 @@ tracks/2/path = NodePath("../CarryMarker2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -14)]
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.00029999999, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -14), Vector2(0, -14), Vector2(0, -14), Vector2(0, -14), Vector2(0, -15), Vector2(0, -14), Vector2(0, -15)]
 }
 
 [sub_resource type="Animation" id="Animation_uf5tr"]
@@ -368,10 +369,10 @@ tracks/2/path = NodePath("../CarryMarker2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -14)]
+"times": PackedFloat32Array(0, 0.019178245, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -14), Vector2(0, -15), Vector2(0, -14), Vector2(0, -15), Vector2(0, -14)]
 }
 
 [sub_resource type="Animation" id="Animation_myrg7"]
@@ -1032,6 +1033,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(51, -60)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["player"]]
+collision_mask = 25
 script = ExtResource("1_dovo2")
 character_movement_controller = NodePath("CharacterMovementController")
 carry_controller = NodePath("CarryController")
@@ -1039,11 +1041,13 @@ carry_controller = NodePath("CarryController")
 [node name="CharacterMovementController" parent="." instance=ExtResource("2_lvxji")]
 speed = 70.0
 
-[node name="CarryController" type="Area2D" parent="." node_paths=PackedStringArray("carry_marker_2d")]
+[node name="CarryController" type="Area2D" parent="." node_paths=PackedStringArray("carry_marker_2d", "player", "character_movement_controller")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_h17s1")
 carry_marker_2d = NodePath("../CarryMarker2D")
+player = NodePath("..")
+character_movement_controller = NodePath("../CharacterMovementController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarryController"]
 shape = SubResource("RectangleShape2D_h17s1")
@@ -1108,3 +1112,8 @@ script = ExtResource("9_5gtgg")
 player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_tree = NodePath("../../AnimationTree")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -1)
+texture = ExtResource("11_je7p5")
