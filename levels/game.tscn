@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=12 format=4 uid="uid://dp1dukuogmd0g"]
 
 [ext_resource type="TileSet" uid="uid://dxgnul2aquoni" path="res://assets/tileset/tileset.tres" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
-[ext_resource type="PackedScene" uid="uid://6e23d733j1xv" path="res://scenes/trees/pine_one.tscn" id="2_30w35"]
+[ext_resource type="PackedScene" uid="uid://6e23d733j1xv" path="res://scenes/foliage/pine_one.tscn" id="2_30w35"]
 [ext_resource type="PackedScene" uid="uid://w4a0p4t0v6b5" path="res://scenes/collectables/apple.tscn" id="3_748nt"]
 [ext_resource type="PackedScene" uid="uid://bayv5asrbird6" path="res://scenes/others/caban.tscn" id="4_vhr6a"]
-[ext_resource type="PackedScene" uid="uid://cim14blpcylh7" path="res://scenes/trees/tree.tscn" id="5_kc1m6"]
-[ext_resource type="PackedScene" uid="uid://5yf52nmqwjpv" path="res://scenes/trees/apple_tree.tscn" id="6_y7kp8"]
-[ext_resource type="PackedScene" uid="uid://xruhybo1ktfk" path="res://scenes/trees/bush.tscn" id="7_ughyh"]
-[ext_resource type="PackedScene" uid="uid://hpanwmjvfavv" path="res://scenes/trees/pine_three.tscn" id="8_5ycdb"]
+[ext_resource type="PackedScene" uid="uid://cim14blpcylh7" path="res://scenes/foliage/tree.tscn" id="5_kc1m6"]
+[ext_resource type="PackedScene" uid="uid://5yf52nmqwjpv" path="res://scenes/foliage/apple_tree.tscn" id="6_y7kp8"]
+[ext_resource type="PackedScene" uid="uid://xruhybo1ktfk" path="res://scenes/foliage/bush.tscn" id="7_ughyh"]
+[ext_resource type="PackedScene" uid="uid://hpanwmjvfavv" path="res://scenes/foliage/pine_three.tscn" id="8_5ycdb"]
 [ext_resource type="PackedScene" uid="uid://c5t3c608itjy0" path="res://scenes/collectables/stone.tscn" id="10_y7kp8"]
+[ext_resource type="PackedScene" uid="uid://cfb7waonr51bp" path="res://scenes/foliage/stone_big.tscn" id="11_ughyh"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -64,7 +65,7 @@ position = Vector2(104, 46)
 position = Vector2(232, 146)
 
 [node name="PineOne2" parent="Trees" instance=ExtResource("2_30w35")]
-position = Vector2(184, 123)
+position = Vector2(172, 120)
 
 [node name="PineThree2" parent="Trees" instance=ExtResource("8_5ycdb")]
 position = Vector2(264, 132)
@@ -102,8 +103,8 @@ position = Vector2(72, 48)
 [node name="Stone" parent="." instance=ExtResource("10_y7kp8")]
 position = Vector2(112, 74)
 
-[node name="Stone2" parent="." instance=ExtResource("10_y7kp8")]
-position = Vector2(192, 142)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 96)
+
+[node name="StoneBig" parent="." instance=ExtResource("11_ughyh")]
+position = Vector2(200, 136)
