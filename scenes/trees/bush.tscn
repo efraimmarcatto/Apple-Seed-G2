@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://xruhybo1ktfk"]
+
+[ext_resource type="Texture2D" uid="uid://dblc1lov6q6a3" path="res://assets/tiles & props/spr_props_floresta_spritesheet.png" id="1_5u6if"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrmt5"]
+radius = 3.0
+height = 14.0
+
+[node name="Bush" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1_5u6if")
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rrmt5")

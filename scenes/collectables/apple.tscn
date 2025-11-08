@@ -15,7 +15,6 @@ collision_layer = 16
 collision_mask = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_yeb5w")
 
@@ -31,7 +30,6 @@ parent = NodePath("..")
 collision_shape_2d = NodePath("../CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
-visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_4lgm7")
 debug_color = Color(0.95383066, 3.080368e-06, 0.5540542, 0.41960785)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bayv5asrbird6"]
+
+[ext_resource type="Texture2D" uid="uid://clmhfhxnla85g" path="res://assets/tiles & props/spr_barraca.png" id="1_kb5bl"]
+[ext_resource type="PackedScene" uid="uid://cab6biokcvou3" path="res://addons/fast_prototype/components/effects/transparency_when_on_top_component.tscn" id="1_y1dem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1dem"]
+size = Vector2(53, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8hih"]
+size = Vector2(53, 24)
+
+[node name="Caban" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kb5bl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_y1dem")
+
+[node name="TransparencyWhenOnTopComponent" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_y1dem")]
+collision_mask = 2
+target = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransparencyWhenOnTopComponent"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_b8hih")
+debug_color = Color(0.71592736, 0.48287833, 0, 0.41960785)
