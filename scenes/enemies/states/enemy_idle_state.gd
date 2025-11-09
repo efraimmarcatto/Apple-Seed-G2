@@ -5,7 +5,8 @@ extends State
 @export var animation_player: AnimationPlayer
 
 @export_category("Animations")
-@export var animation_name:String = "idle"
+@export var animation_name_up:String = "idle_up"
+@export var animation_name_down:String = "idle_down"
 
 # nome do state
 func get_state_name() -> String:
@@ -30,8 +31,13 @@ func _on_state_next_transitions() -> void:
 
 # Função chamada ao entrar neste estado
 func _on_state_enter(_last_state_name:String) -> void:
-	if animation_player and animation_player.has_animation(animation_name):
-		animation_player.play(animation_name)
+	if character_movement_controller and animation_player:
+		if character_movement_controller.last_movement_direction.y > 0:
+			if animation_player.has_animation(animation_name_down):
+				animation_player.play(animation_name_down)
+		elif character_movement_controller.last_movement_direction.y < 0:
+			if animation_player.has_animation(animation_name_up):
+				animation_player.play(animation_name_up)
 	
 # Função chamada ao sair deste estado
 func _on_state_exit() -> void:

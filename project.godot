@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/fast_prototype/plugin.cfg")
 
 player=""
 Enemy=""
+Food=""
 
 [input]
 
