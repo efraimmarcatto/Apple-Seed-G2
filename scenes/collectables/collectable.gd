@@ -6,7 +6,7 @@ class_name Collectable
 
 @export_category("throw")
 @export var throw_speed: float = 200.0
-@export var throw_time: float = 0.25
+@export var throw_time: float = 0.2
 
 enum STATES {DEFAULT,CARRIED,THROWN}
 
@@ -36,7 +36,6 @@ func carry(new_parent:Node2D, new_position:Vector2) -> void:
 		collision_shape_2d.disabled = true
 	if parent:
 		set_carry_position(new_position)
-		#parent.z_index = 1
 		parent.reparent(new_parent,true)
 
 func set_carry_position(new_position:Vector2) -> void:

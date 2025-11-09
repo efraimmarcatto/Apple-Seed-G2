@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=13 format=4 uid="uid://dp1dukuogmd0g"]
 
 [ext_resource type="TileSet" uid="uid://dxgnul2aquoni" path="res://assets/tileset/tileset.tres" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5yf52nmqwjpv" path="res://scenes/foliage/apple_tree.tscn" id="6_y7kp8"]
 [ext_resource type="PackedScene" uid="uid://xruhybo1ktfk" path="res://scenes/foliage/bush.tscn" id="7_ughyh"]
 [ext_resource type="PackedScene" uid="uid://hpanwmjvfavv" path="res://scenes/foliage/pine_three.tscn" id="8_5ycdb"]
+[ext_resource type="PackedScene" uid="uid://bjloxy33la46n" path="res://scenes/enemies/rabbit.tscn" id="10_5ycdb"]
 [ext_resource type="PackedScene" uid="uid://c5t3c608itjy0" path="res://scenes/collectables/stone.tscn" id="10_y7kp8"]
 [ext_resource type="PackedScene" uid="uid://cfb7waonr51bp" path="res://scenes/foliage/stone_big.tscn" id="11_ughyh"]
 
@@ -28,11 +29,7 @@ tile_set = ExtResource("1_748nt")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_od3m6")]
-position = Vector2(164, 145)
-collision_layer = 2
-
-[node name="Apple" parent="." instance=ExtResource("3_748nt")]
-position = Vector2(233, 88)
+position = Vector2(208, 104)
 
 [node name="Apple2" parent="." instance=ExtResource("3_748nt")]
 position = Vector2(256, 88)
@@ -63,9 +60,6 @@ position = Vector2(104, 46)
 
 [node name="PineOne" parent="Trees" instance=ExtResource("2_30w35")]
 position = Vector2(232, 146)
-
-[node name="PineOne2" parent="Trees" instance=ExtResource("2_30w35")]
-position = Vector2(172, 120)
 
 [node name="PineThree2" parent="Trees" instance=ExtResource("8_5ycdb")]
 position = Vector2(264, 132)
@@ -101,10 +95,13 @@ position = Vector2(56, 48)
 position = Vector2(72, 48)
 
 [node name="Stone" parent="." instance=ExtResource("10_y7kp8")]
-position = Vector2(112, 74)
+position = Vector2(80, 81)
+
+[node name="Rabbit" parent="." instance=ExtResource("10_5ycdb")]
+position = Vector2(134, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 96)
 
 [node name="StoneBig" parent="." instance=ExtResource("11_ughyh")]
-position = Vector2(200, 136)
+position = Vector2(187, 146)
