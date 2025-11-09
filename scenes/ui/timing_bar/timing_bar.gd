@@ -1,4 +1,4 @@
-extends HSlider
+extends Control
 
 signal skill_check_completed(accuracy_percent)
 
@@ -6,7 +6,11 @@ signal skill_check_completed(accuracy_percent)
 @export var loop_duration: float = 2.0 
 
 
-@onready var sweet_spot_marker: TextureRect = $TextureRect
+
+@onready var bar_texture: TextureRect = $BarTexture
+@onready var sweet_spot: TextureRect = $SweetSpot
+@onready var timing_slider: HSlider = $TimingSlider
+
 
 var tween: Tween
 var is_active: bool = false
@@ -14,35 +18,27 @@ var max_possible_distance: float = 1.0
 
 
 func _ready():
-	
-	min_value = 0
-	max_value = 50
-	value = 0
-	editable = false 
-
-	
+	timing_slider.min_value = 0
+	timing_slider.max_value = 50
+	timing_slider.value = 0
+	timing_slider.editable = false 
 	position_sweet_spot_marker()
-
-	
-	
-	var dist_to_min = sweet_spot_value - min_value
-	var dist_to_max = max_value - sweet_spot_value
+	var dist_to_min = sweet_spot_value - timing_slider.min_value
+	var dist_to_max = timing_slider.max_value - sweet_spot_value
 	max_possible_distance = max(dist_to_min, dist_to_max)
-	
-	
 	if max_possible_distance == 0:
 		max_possible_distance = 1.0
-
+	start_skill_check()
 
 
 func position_sweet_spot_marker():
-	if not sweet_spot_marker:
+	if not sweet_spot:
 		print("Erro: Nó TextureRect (marcador) não encontrado como filho.")
 		return
 
-	var percent: float = sweet_spot_value / max_value
+	var percent: float = sweet_spot_value / timing_slider.max_value
 	var slider_width: float = size.x
-	sweet_spot_marker.position.x = (percent * slider_width) - (sweet_spot_marker.size.x / 2.0)
+	sweet_spot.position.x = (percent * slider_width) - (sweet_spot.size.x / 2.0)
 
 
 func start_skill_check():
@@ -50,7 +46,7 @@ func start_skill_check():
 		return 
 
 	is_active = true
-	value = 0 
+	timing_slider.value = 0 
 	
 	if tween:
 		tween.kill() 
@@ -60,8 +56,8 @@ func start_skill_check():
 	tween.set_trans(Tween.TRANS_LINEAR) 
 
 	var half_duration = loop_duration / 2.0
-	tween.tween_property(self, "value", max_value, half_duration)
-	tween.tween_property(self, "value", min_value, half_duration)
+	tween.tween_property(timing_slider, "value", timing_slider.max_value, half_duration)
+	tween.tween_property(timing_slider, "value", timing_slider.min_value, half_duration)
 
 
 func stop_skill_check():
@@ -71,7 +67,7 @@ func stop_skill_check():
 	is_active = false
 	tween.stop() 
 	
-	var final_value: float = value
+	var final_value: float = timing_slider.value
 	var distance_from_sweet_spot = abs(final_value - sweet_spot_value)
 	var accuracy_ratio = 1.0 - (distance_from_sweet_spot / max_possible_distance)
 	
@@ -89,3 +85,13 @@ func _input(_event):
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_active:
 			stop_skill_check()
+
+func cancel_check():
+	if not is_active:
+		return
+
+	is_active = false
+	if tween:
+		tween.stop()
+	
+	hide()

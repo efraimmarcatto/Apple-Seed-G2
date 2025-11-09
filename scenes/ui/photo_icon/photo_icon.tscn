@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf36maca21r3t"]
+
+[ext_resource type="Texture2D" uid="uid://dcwdxishdlyqs" path="res://assets/ui/icone_camera.png" id="1_sr48y"]
+[ext_resource type="Script" uid="uid://bubd1m5dxtw2v" path="res://scenes/ui/photo_icon/photo_icon.gd" id="2_mw03n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw03n"]
+atlas = ExtResource("1_sr48y")
+region = Rect2(0, 0, 32, 32)
+
+[node name="PhotoIcon" type="TextureRect"]
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_mw03n")
+script = ExtResource("2_mw03n")

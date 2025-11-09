@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyjf0jbmvbovf"]
+
+[ext_resource type="Script" uid="uid://ks3odfhwc3i2" path="res://scenes/ui/computer/computer.gd" id="1_bnux2"]
+[ext_resource type="Texture2D" uid="uid://cxbvk360kt82c" path="res://assets/ui/background.png" id="2_3m5nm"]
+[ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="3_83ic0"]
+[ext_resource type="Texture2D" uid="uid://dcwdxishdlyqs" path="res://assets/ui/icone_camera.png" id="4_p6qfb"]
+[ext_resource type="Texture2D" uid="uid://ocwdstxuhm5l" path="res://assets/ui/spr_computer_scene_background.png" id="5_83ic0"]
+[ext_resource type="Texture2D" uid="uid://c38pstacx07mh" path="res://assets/ui/spr_computer_scene_photo_frame.png" id="6_p6qfb"]
+[ext_resource type="Texture2D" uid="uid://jo4v26bpvjbv" path="res://assets/ui/spr_camera_frame.png" id="7_3m5nm"]
+[ext_resource type="Texture2D" uid="uid://xiqqdrsh72we" path="res://assets/ui/close_button.png" id="7_cj8t4"]
+[ext_resource type="Texture2D" uid="uid://dswhftllebe08" path="res://assets/ui/send_button.png" id="8_3m5nm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cj8t4"]
+font = ExtResource("3_83ic0")
+font_size = 64
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn7wy"]
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m5nm"]
+atlas = ExtResource("4_p6qfb")
+region = Rect2(4, 4, 24, 24)
+
+[node name="Computer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bnux2")
+
+[node name="Wallpaper" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 218.0
+texture = ExtResource("2_3m5nm")
+
+[node name="Desktop" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 3
+
+[node name="Layout" type="VBoxContainer" parent="Desktop"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="Desktop/Layout"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "10:00"
+label_settings = SubResource("LabelSettings_cj8t4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Desktop/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Menu" type="Panel" parent="Desktop/Layout/MarginContainer"]
+custom_minimum_size = Vector2(62, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_nn7wy")
+
+[node name="Bar" type="HBoxContainer" parent="Desktop/Layout/MarginContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Photo" type="TextureButton" parent="Desktop/Layout/MarginContainer/Menu/Bar"]
+layout_mode = 2
+focus_next = NodePath("../Mail")
+focus_previous = NodePath("../Mail")
+texture_normal = SubResource("AtlasTexture_3m5nm")
+
+[node name="Mail" type="TextureButton" parent="Desktop/Layout/MarginContainer/Menu/Bar"]
+layout_mode = 2
+focus_next = NodePath("../Photo")
+focus_previous = NodePath("../Photo")
+texture_normal = SubResource("AtlasTexture_3m5nm")
+
+[node name="MailApp" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MailApp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_83ic0")
+
+[node name="PhotoApp" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="PhotoApp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_83ic0")
+
+[node name="Photo" type="TextureButton" parent="PhotoApp"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_p6qfb")
+
+[node name="Window" type="MarginContainer" parent="PhotoApp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 7
+
+[node name="Photos" type="VBoxContainer" parent="PhotoApp/Window"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 14
+
+[node name="PhotosRow" type="HBoxContainer" parent="PhotoApp/Window/Photos"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PhotoButton01" type="TextureButton" parent="PhotoApp/Window/Photos/PhotosRow"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_3m5nm")
+
+[node name="PhotoButton02" type="TextureButton" parent="PhotoApp/Window/Photos/PhotosRow"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_3m5nm")
+
+[node name="PhotoButton03" type="TextureButton" parent="PhotoApp/Window/Photos/PhotosRow"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_3m5nm")
+
+[node name="PhotoButton04" type="TextureButton" parent="PhotoApp/Window/Photos/PhotosRow"]
+custom_minimum_size = Vector2(54, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_3m5nm")
+
+[node name="MarginContainer" type="MarginContainer" parent="PhotoApp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.178
+offset_bottom = -0.040000916
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="CloseButton" type="TextureButton" parent="PhotoApp/MarginContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SendButton")
+focus_neighbor_top = NodePath("../../Window/Photos/PhotosRow/PhotoButton04")
+focus_neighbor_right = NodePath("../../Window/Photos/PhotosRow/PhotoButton04")
+focus_neighbor_bottom = NodePath("../../Window/Photos/PhotosRow/PhotoButton01")
+focus_next = NodePath("../SendButton")
+focus_previous = NodePath("../SendButton")
+texture_normal = ExtResource("7_cj8t4")
+
+[node name="SendButton" type="TextureButton" parent="PhotoApp/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../CloseButton")
+focus_neighbor_bottom = NodePath("../../Window/Photos/PhotosRow/PhotoButton04")
+focus_next = NodePath("../../Window/Photos/PhotosRow/PhotoButton01")
+focus_previous = NodePath("../CloseButton")
+texture_normal = ExtResource("8_3m5nm")
+
+[connection signal="pressed" from="Desktop/Layout/MarginContainer/Menu/Bar/Photo" to="." method="_on_photo_pressed"]
+[connection signal="pressed" from="PhotoApp/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
