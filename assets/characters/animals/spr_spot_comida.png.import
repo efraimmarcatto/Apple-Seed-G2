@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1ancfhur0yjn"
-path="res://.godot/imported/mockup.png-1989bbd1b7f8cf32722b414a8762d801.ctex"
+uid="uid://b2c04unem7kcc"
+path="res://.godot/imported/spr_spot_comida.png-50f82fb5f0af3af316367a5dfe7565fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/mockup.png"
-dest_files=["res://.godot/imported/mockup.png-1989bbd1b7f8cf32722b414a8762d801.ctex"]
+source_file="res://assets/characters/animals/spr_spot_comida.png"
+dest_files=["res://.godot/imported/spr_spot_comida.png-50f82fb5f0af3af316367a5dfe7565fd.ctex"]
 
 [params]
 

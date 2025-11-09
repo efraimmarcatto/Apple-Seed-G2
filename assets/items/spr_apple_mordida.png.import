@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df2nt561k3036"
-path="res://.godot/imported/player_old.png-bdbf35f8db86176180e08ac82b6c6c72.ctex"
+uid="uid://cfr8bls7jj8ey"
+path="res://.godot/imported/spr_apple_mordida.png-b0a8952d1199e4ece47eb1d54f4fedaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/player_old.png"
-dest_files=["res://.godot/imported/player_old.png-bdbf35f8db86176180e08ac82b6c6c72.ctex"]
+source_file="res://assets/items/spr_apple_mordida.png"
+dest_files=["res://.godot/imported/spr_apple_mordida.png-b0a8952d1199e4ece47eb1d54f4fedaa.ctex"]
 
 [params]
 

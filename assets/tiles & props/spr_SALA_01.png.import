@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bna8c6nl2u6hx"
-path="res://.godot/imported/spr_border_tiles.png-3ce3d73d89b1728c6873995be9b5f73b.ctex"
+uid="uid://c8yv4f7k4ta5d"
+path="res://.godot/imported/spr_SALA_01.png-ceff8d231c0b0bdaad433fa834307370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/spr_border_tiles.png"
-dest_files=["res://.godot/imported/spr_border_tiles.png-3ce3d73d89b1728c6873995be9b5f73b.ctex"]
+source_file="res://assets/tiles & props/spr_SALA_01.png"
+dest_files=["res://.godot/imported/spr_SALA_01.png-ceff8d231c0b0bdaad433fa834307370.ctex"]
 
 [params]
 

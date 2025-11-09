@@ -8,7 +8,7 @@ class_name CharacterMovementController
 @export var friction: float = 800.0 ## Redução da velocidade quando não há input de movimento (em pixels por segundo ao quadrado).
 @export var turn_speed: float = 1400.0 ## Aceleração ao mudar de direção (valor maior permite resposta mais rápida ao inverter movimento).
 
-var movement_direction = Vector2.DOWN
+var movement_direction = Vector2.ZERO
 var last_movement_direction = Vector2.DOWN
 
 func setup(character:CharacterBody2D) -> void:

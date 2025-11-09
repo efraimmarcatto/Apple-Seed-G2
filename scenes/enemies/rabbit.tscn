@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjloxy33la46n"]
+
+[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
+[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
+[ext_resource type="Texture2D" uid="uid://byutp188w7aoq" path="res://assets/characters/animals/spr_rabbit_spritesheet.png" id="1_cmsl5"]
+[ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="2_2b3ut"]
+[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="3_46k04"]
+[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="4_7hee8"]
+[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="5_7jhs5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmsl5"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jhs5"]
+size = Vector2(6, 7)
+
+[sub_resource type="Animation" id="Animation_7hee8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_46k04"]
+resource_name = "idle"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7jhs5"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_o3vpy"]
+resource_name = "walk_up"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt2xu"]
+_data = {
+&"RESET": SubResource("Animation_7hee8"),
+&"idle": SubResource("Animation_46k04"),
+&"walk_down": SubResource("Animation_7jhs5"),
+&"walk_up": SubResource("Animation_o3vpy")
+}
+
+[node name="Rabbit" type="CharacterBody2D"]
+collision_layer = 8
+
+[node name="WalkBehavior" type="Node" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
+script = ExtResource("1_7jhs5")
+target = NodePath("..")
+character_movement_controller = NodePath("../CharacterMovementController")
+stop_on_collision_area = NodePath("../DetectCollisionArea2D")
+totalSteps = Array[Dictionary]([{
+"direction": Vector2(0, 1),
+"time": 2.0
+}, {
+"direction": Vector2(0, -1),
+"time": 2.0
+}])
+
+[node name="CharacterMovementController" parent="." instance=ExtResource("1_7hee8")]
+speed = 30.0
+
+[node name="EatCollectableController" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cmsl5")
+
+[node name="DetectCollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectCollisionArea2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7jhs5")
+debug_color = Color(0.62527704, 0.5324054, 5.7756904e-07, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_cmsl5")
+hframes = 4
+vframes = 2
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_2b3ut")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vt2xu")
+}
+autoplay = "idle"
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_46k04")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
+script = ExtResource("4_7hee8")
+character = NodePath("../..")
+character_movement_controller = NodePath("../../CharacterMovementController")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
+script = ExtResource("5_7jhs5")
+character = NodePath("../..")
+character_movement_controller = NodePath("../../CharacterMovementController")
+animation_player = NodePath("../../AnimationPlayer")

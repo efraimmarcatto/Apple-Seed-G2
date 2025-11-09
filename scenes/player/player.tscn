@@ -1033,6 +1033,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(51, -60)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["player"]]
+collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_dovo2")
 character_movement_controller = NodePath("CharacterMovementController")
