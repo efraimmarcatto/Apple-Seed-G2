@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=73 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cps6y7r5oyfsd" path="res://scenes/player/states/player_take_photo_state.gd" id="11_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://bg5cn8k53n3je" path="res://assets/characters/spr_player_sombra.png" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://cfyqer767u7x3" path="res://assets/ui/arrow.png" id="12_fm80t"]
+[ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
 size = Vector2(10, 4.5)
@@ -1348,3 +1349,7 @@ visible = false
 z_index = 10
 position = Vector2(0, -56)
 texture = ExtResource("12_fm80t")
+
+[node name="Photograph" parent="." instance=ExtResource("14_ugbui")]
+process_mode = 3
+position = Vector2(-1, -46)

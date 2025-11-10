@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=14 format=4 uid="uid://dp1dukuogmd0g"]
 
 [ext_resource type="TileSet" uid="uid://dxgnul2aquoni" path="res://assets/tileset/tileset.tres" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bjloxy33la46n" path="res://scenes/enemies/rabbit.tscn" id="10_5ycdb"]
 [ext_resource type="PackedScene" uid="uid://c5t3c608itjy0" path="res://scenes/collectables/stone.tscn" id="10_y7kp8"]
 [ext_resource type="PackedScene" uid="uid://cfb7waonr51bp" path="res://scenes/foliage/stone_big.tscn" id="11_ughyh"]
+[ext_resource type="PackedScene" uid="uid://bf36maca21r3t" path="res://scenes/ui/photo_icon/photo_icon.tscn" id="13_yyd14"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -105,3 +106,13 @@ position = Vector2(160, 96)
 
 [node name="StoneBig" parent="." instance=ExtResource("11_ughyh")]
 position = Vector2(187, 146)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PhotoIcon" parent="HUD" instance=ExtResource("13_yyd14")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+grow_horizontal = 0
