@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byutp188w7aoq"
-path="res://.godot/imported/spr_rabbit_spritesheet.png-700c1f294fd24671af43e31aada2df09.ctex"
+uid="uid://dkstde4n1ko5g"
+path="res://.godot/imported/smail_app_screen.png-152781f2765abf5238fd4c0f3d723f1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/animals/spr_rabbit_spritesheet.png"
-dest_files=["res://.godot/imported/spr_rabbit_spritesheet.png-700c1f294fd24671af43e31aada2df09.ctex"]
+source_file="res://assets/ui/smail_app_screen.png"
+dest_files=["res://.godot/imported/smail_app_screen.png-152781f2765abf5238fd4c0f3d723f1f.ctex"]
 
 [params]
 

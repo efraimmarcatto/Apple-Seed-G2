@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bj5hhb2g3ipdg" path="res://scenes/player/states/player_carry_walk_state.gd" id="9_5gtgg"]
 [ext_resource type="Script" uid="uid://cps6y7r5oyfsd" path="res://scenes/player/states/player_take_photo_state.gd" id="11_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://bg5cn8k53n3je" path="res://assets/characters/spr_player_sombra.png" id="11_je7p5"]
-[ext_resource type="Texture2D" uid="uid://cfyqer767u7x3" path="res://assets/ui/arrow.png" id="12_fm80t"]
+[ext_resource type="Texture2D" uid="uid://bv5k6hqoqv60a" path="res://assets/ui/spr_linha_jogar_maca.png" id="13_ugbui"]
 [ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
@@ -159,7 +159,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 30)]
+"values": [Vector2(0, 22)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -171,7 +171,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.1415927]
+"values": [-1.5707963267948966]
 }
 
 [sub_resource type="Animation" id="Animation_ugbui"]
@@ -225,7 +225,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5707964]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -237,7 +237,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-48, -14)]
+"values": [Vector2(-32, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_gx1jg"]
@@ -291,7 +291,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(48, -14)]
+"values": [Vector2(32, -8)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -303,7 +303,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.5707964]
+"values": [-3.141592653589793]
 }
 
 [sub_resource type="Animation" id="Animation_fm80t"]
@@ -357,7 +357,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -60)]
+"values": [Vector2(0, -45)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -369,7 +369,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.5707963267948966]
 }
 
 [sub_resource type="Animation" id="Animation_fcs02"]
@@ -423,7 +423,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.1415927]
+"values": [-1.5707963267948966]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -435,7 +435,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 30)]
+"values": [Vector2(0, 22)]
 }
 
 [sub_resource type="Animation" id="Animation_kvlxm"]
@@ -489,7 +489,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-48, -14)]
+"values": [Vector2(-32, -8)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -501,7 +501,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5707964]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_uf5tr"]
@@ -555,7 +555,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.5707964]
+"values": [-3.141592653589793]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -567,7 +567,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(48, -14)]
+"values": [Vector2(32, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_myrg7"]
@@ -621,7 +621,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -60)]
+"values": [Vector2(0, -45)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -633,7 +633,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.5707963267948966]
 }
 
 [sub_resource type="Animation" id="Animation_dovo2"]
@@ -1251,7 +1251,7 @@ states/walk/position = Vector2(373.77777, 167.33334)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lvxji"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "idle", "carry_idle", SubResource("AnimationNodeStateMachineTransition_yj68g"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_ioxgp"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_cnsyf"), "carry_idle", "idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "walk", "carry_walk", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "carry_walk", "walk", SubResource("AnimationNodeStateMachineTransition_h17s1")]
 graph_offset = Vector2(51, -60)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["Player"]]
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_dovo2")
@@ -1334,10 +1334,11 @@ player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_tree = NodePath("../../AnimationTree")
 
-[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller")]
+[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "photograph")]
 script = ExtResource("11_gx1jg")
 player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
+photograph = NodePath("../../Photograph")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 z_index = -1
@@ -1348,8 +1349,11 @@ texture = ExtResource("11_je7p5")
 visible = false
 z_index = 10
 position = Vector2(0, -56)
-texture = ExtResource("12_fm80t")
+texture = ExtResource("13_ugbui")
 
 [node name="Photograph" parent="." instance=ExtResource("14_ugbui")]
 process_mode = 3
+visible = false
 position = Vector2(-1, -46)
+speed = null
+accuracy_score = null

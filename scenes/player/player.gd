@@ -12,13 +12,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	manage_inputs()
-	if Input.is_action_just_pressed("take_picture"):
-		$Photograph.start_framing(character_movement_controller.last_movement_direction, global_position)
-	if Input.is_action_just_released("take_picture"):
-		$Photograph.take_picture()
 	
 func manage_inputs() -> void:
 	# controla os inputs
 	if character_movement_controller:
-		var input_axis = Input.get_vector("key_left", "key_right", "key_up", "key_down")
+		var input_y = Input.get_axis( "key_up", "key_down")
+		var input_x = Input.get_axis("key_left", "key_right")
+		var input_axis = Vector2(input_x, input_y)
 		character_movement_controller.set_movement_direction(input_axis)

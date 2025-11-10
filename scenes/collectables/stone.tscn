@@ -10,7 +10,7 @@ size = Vector2(11, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lgm7"]
 size = Vector2(13, 10)
 
-[node name="Stone" type="CharacterBody2D"]
+[node name="Stone" type="CharacterBody2D" groups=["Stone"]]
 collision_layer = 16
 collision_mask = 25
 

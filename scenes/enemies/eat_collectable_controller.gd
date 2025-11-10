@@ -5,17 +5,21 @@ extends Area2D
 @export var walk_behavior: WalkBehavior
 
 @export_category("follow")
-@export var stop_distance: float = 15         # Distância mínima para parar
+@export var delay_emoji: float = 1
+@export var apple_emoji: Sprite2D
+@export var stop_distance: float = 15 # Distância mínima para parar
 
+var enabled: bool = true
 var food: Apple
 
-
-enum STATES {DEFAULT,FOLLOW,EAT}
+enum STATES {DEFAULT,EMOJI,FOLLOW,EAT}
 var state: STATES = STATES.DEFAULT
 
 func _ready() -> void:
 	# Conecta o sinal de colisão (se existir no target)
 	body_entered.connect(_on_body_entered)
+	if apple_emoji:
+		apple_emoji.visible = false
 
 func able_to_eat() -> bool:
 	return false
@@ -42,16 +46,33 @@ func follow_food() -> void:
 func bite_food() -> void:
 	if  food and state == STATES.FOLLOW:
 		state = STATES.EAT
-		food.be_bitten(run)
+		food.be_bitten()
 
 func run() -> void:
 	if target:
 		await get_tree().create_timer(0.5).timeout
 		target.call_deferred("queue_free")
 
+func show_emoji() -> void:
+	state = STATES.EMOJI
+	if apple_emoji:
+		apple_emoji.frame = 0
+		apple_emoji.visible = true
+	await get_tree().create_timer(delay_emoji).timeout
+	state = STATES.FOLLOW
+	if apple_emoji:
+		apple_emoji.visible = false
+	
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Food") and body is Apple:
+	if enabled and body.is_in_group("Food") and body is Apple and state == STATES.DEFAULT:
 		food = body
-		state = STATES.FOLLOW
+		food.was_eaten.connect(run)
+		show_emoji()
 		if walk_behavior:
 			walk_behavior.disable()
+
+func enable() -> void:
+	enabled = true
+
+func disable() -> void:
+	enabled = false
