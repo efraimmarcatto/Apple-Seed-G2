@@ -5,7 +5,7 @@ extends Control
 @onready var mail_app: Panel = $MailApp
 @onready var photo_button: TextureButton = $Desktop/Layout/MarginContainer/Menu/Bar/PhotoButton
 @onready var mail_button: TextureButton = $Desktop/Layout/MarginContainer/Menu/Bar/MailButton
-@onready var mail_scroll_container: ScrollContainer = $MailApp/Window/MailScrollContainer
+@onready var mail_scroll_container: ScrollContainer = $MailApp/Window/Layout/MarginContainer2/MailScrollContainer
 @onready var send_button: TextureButton = $PhotoApp/TopBar/SendButton
 @onready var app_list: Dictionary= {
 	"photoapp":[photo_app, photo_button, send_button ], 
