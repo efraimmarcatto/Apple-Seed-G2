@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Photograph
 
 @onready var area: Area2D = $Area
 @export var speed: int = 100
@@ -14,6 +15,7 @@ var skill_check = false
 var move: bool = false
 var slot: int
 
+var enabled: bool = false
 
 func _ready() -> void:
 	collision.disabled = true
@@ -36,7 +38,6 @@ func _physics_process(_delta: float) -> void:
 	mask.material.set_shader_parameter("hole_rect", rect_vec4)
 
 func start_framing(_direction: Vector2, _start_position: Vector2 = position ):
-	
 	if len(GameManager.photos) >= 4:
 		return
 	match _direction:
@@ -56,6 +57,7 @@ func start_framing(_direction: Vector2, _start_position: Vector2 = position ):
 	direction = _direction
 	move = true
 	mask.visible = true
+	enabled = true
 
 
 func take_picture():
@@ -91,6 +93,7 @@ func save_photo(focus_accuracy: float):
 		GameManager.photo_slot = wrapi(slot + 1, 1, 5)
 	get_tree().paused = false
 	hide()
+	enabled = false
 
 
 func screen_shot(index:int):
@@ -125,6 +128,7 @@ func cancel_photo():
 	timing_bar.cancel_check() 
 	skill_check = false
 	result = {} # Limpa os dados da foto
+	enabled = false
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

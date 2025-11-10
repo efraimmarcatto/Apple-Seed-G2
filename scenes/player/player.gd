@@ -12,10 +12,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	manage_inputs()
-	if Input.is_action_just_pressed("take_picture"):
-		$Photograph.start_framing(character_movement_controller.last_movement_direction, global_position)
-	if Input.is_action_just_released("take_picture"):
-		$Photograph.take_picture()
 	
 func manage_inputs() -> void:
 	# controla os inputs
