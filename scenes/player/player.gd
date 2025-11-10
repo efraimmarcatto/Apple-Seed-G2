@@ -16,5 +16,7 @@ func _process(_delta: float) -> void:
 func manage_inputs() -> void:
 	# controla os inputs
 	if character_movement_controller:
-		var input_axis = Input.get_vector("key_left", "key_right", "key_up", "key_down")
+		var input_y = Input.get_axis( "key_up", "key_down")
+		var input_x = Input.get_axis("key_left", "key_right")
+		var input_axis = Vector2(input_x, input_y)
 		character_movement_controller.set_movement_direction(input_axis)

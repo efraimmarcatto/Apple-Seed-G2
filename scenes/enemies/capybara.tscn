@@ -1,15 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjloxy33la46n"]
+[gd_scene load_steps=25 format=3 uid="uid://dowttairyqx0d"]
 
-[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
-[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
-[ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="2_2b3ut"]
-[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="3_46k04"]
-[ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="3_o3vpy"]
-[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="4_7hee8"]
-[ext_resource type="Texture2D" uid="uid://cflkeetwdqpgu" path="res://assets/characters/animals/spr_rabbit_spritesheet_completo.png" id="4_o3vpy"]
-[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="5_7jhs5"]
-[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="9_vt2xu"]
-[ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_46i66"]
+[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_6ceci"]
+[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="2_be0a7"]
+[ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="3_cjjvj"]
+[ext_resource type="Texture2D" uid="uid://tovwv0nmu751" path="res://assets/characters/animals/spr_animal_capivara_completo.png" id="4_6ceci"]
+[ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="5_imwso"]
+[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="6_jh5m8"]
+[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="7_2l4vo"]
+[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="8_84uky"]
+[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="9_26eby"]
+[ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_v2cso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
 size = Vector2(33, 33.5)
@@ -515,20 +515,20 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2xu"]
 size = Vector2(73, 55)
 
-[node name="Rabbit" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
+[node name="Capybara" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
 collision_layer = 8
-script = ExtResource("1_7jhs5")
+script = ExtResource("1_6ceci")
 target = NodePath(".")
 character_movement_controller = NodePath("CharacterMovementController")
 stop_on_collision_area = NodePath("DetectCollisionArea2D")
 
-[node name="CharacterMovementController" parent="." instance=ExtResource("1_7hee8")]
+[node name="CharacterMovementController" parent="." instance=ExtResource("2_be0a7")]
 speed = 30.0
 
 [node name="EatCollectableController" type="Area2D" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "walk_behavior", "apple_emoji")]
 collision_layer = 0
 collision_mask = 16
-script = ExtResource("3_o3vpy")
+script = ExtResource("3_cjjvj")
 target = NodePath("..")
 character_movement_controller = NodePath("../CharacterMovementController")
 walk_behavior = NodePath("..")
@@ -554,19 +554,19 @@ debug_color = Color(0.62527704, 0.5324054, 5.7756904e-07, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
-texture = ExtResource("4_o3vpy")
+texture = ExtResource("4_6ceci")
 flip_h = true
 hframes = 4
 vframes = 3
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 z_index = -1
-texture = ExtResource("2_2b3ut")
+texture = ExtResource("5_imwso")
 
 [node name="EmojiSprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(10, -22)
-texture = ExtResource("9_vt2xu")
+texture = ExtResource("6_jh5m8")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -575,17 +575,17 @@ libraries = {
 }
 autoplay = "idle_down"
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_46k04")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("7_2l4vo")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
-script = ExtResource("4_7hee8")
+script = ExtResource("8_84uky")
 character = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
-script = ExtResource("5_7jhs5")
+script = ExtResource("9_26eby")
 character = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_player = NodePath("../../AnimationPlayer")
@@ -593,7 +593,7 @@ animation_player = NodePath("../../AnimationPlayer")
 [node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "eat_collectable_controller", "apple_emoji")]
 collision_layer = 0
 collision_mask = 18
-script = ExtResource("10_46i66")
+script = ExtResource("10_v2cso")
 target = NodePath("..")
 walk_behavior = NodePath("..")
 eat_collectable_controller = NodePath("../EatCollectableController")

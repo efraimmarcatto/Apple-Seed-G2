@@ -7,7 +7,7 @@ var photos: Array = []
 var album: Dictionary = {}
 var photo_slot: int = 1
 var animals: Dictionary = {"tucano":10, "capivara":20, "borboleta":30, "coelho":10}
-signal photo_count_updated(value)
+signal photo_count_updated(value)  # noqa: UNUSED_SIGNAL (ignorado de propósito)
 
 func load_settings():
 	if !FileAccess.file_exists(settings_file):
@@ -36,6 +36,9 @@ func _ready() -> void:
 func get_time():
 	return Time.get_unix_time_from_system()
 
+
+func emit_photo_count_updated() -> void:
+	photo_count_updated.emit()
 
 func _process(_delta: float) -> void:
 	pass

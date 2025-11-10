@@ -1251,7 +1251,7 @@ states/walk/position = Vector2(373.77777, 167.33334)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lvxji"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "idle", "carry_idle", SubResource("AnimationNodeStateMachineTransition_yj68g"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_ioxgp"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_cnsyf"), "carry_idle", "idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "walk", "carry_walk", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "carry_walk", "walk", SubResource("AnimationNodeStateMachineTransition_h17s1")]
 graph_offset = Vector2(51, -60)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["Player"]]
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_dovo2")
@@ -1346,6 +1346,7 @@ position = Vector2(0, -1)
 texture = ExtResource("11_je7p5")
 
 [node name="ArrowThrow" type="Sprite2D" parent="."]
+visible = false
 z_index = 10
 position = Vector2(0, -56)
 texture = ExtResource("13_ugbui")

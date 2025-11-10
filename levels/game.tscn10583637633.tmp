@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=20 format=4 uid="uid://dp1dukuogmd0g"]
 
 [ext_resource type="TileSet" uid="uid://dxgnul2aquoni" path="res://assets/tileset/tileset.tres" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bf36maca21r3t" path="res://scenes/ui/photo_icon/photo_icon.tscn" id="13_yyd14"]
 [ext_resource type="PackedScene" uid="uid://ljw2eetb8ujs" path="res://addons/fast_prototype/components/camera/base_camera_2d_trigger.tscn" id="14_jkag2"]
 [ext_resource type="Script" uid="uid://xs5hbijc2s05" path="res://addons/fast_prototype/resources/node_signal.gd" id="15_ol2u7"]
-[ext_resource type="PackedScene" uid="uid://dowttairyqx0d" path="res://scenes/enemies/capybara.tscn" id="17_ol2u7"]
 
 [sub_resource type="Resource" id="Resource_aumgp"]
 script = ExtResource("15_ol2u7")
@@ -51,18 +50,7 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("1_od3m6")]
 position = Vector2(233, 89)
 
-[node name="Rabbit" parent="." instance=ExtResource("10_5ycdb")]
-position = Vector2(150, 135)
-totalSteps = Array[Dictionary]([{
-"direction": Vector2(0, 1),
-"time": 2.0
-}, {
-"direction": Vector2(0, -1),
-"time": 2.0
-}])
-
 [node name="MapCenter" type="Node2D" parent="."]
-y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="CameraCenter" parent="MapCenter" instance=ExtResource("13_6f163")]
@@ -100,7 +88,7 @@ position = Vector2(232, 164)
 position = Vector2(265, 145)
 
 [node name="PineThree5" parent="MapCenter/Trees" instance=ExtResource("8_5ycdb")]
-position = Vector2(99, 87)
+position = Vector2(99, 79)
 
 [node name="PineThree3" parent="MapCenter/Trees" instance=ExtResource("8_5ycdb")]
 position = Vector2(73, 145)
@@ -133,7 +121,10 @@ position = Vector2(48, 26)
 position = Vector2(64, 26)
 
 [node name="Stone" parent="MapCenter" instance=ExtResource("10_y7kp8")]
-position = Vector2(217, 112)
+position = Vector2(86, 97)
+
+[node name="Rabbit" parent="MapCenter" instance=ExtResource("10_5ycdb")]
+position = Vector2(152, 136)
 
 [node name="StoneBig" parent="MapCenter" instance=ExtResource("11_ughyh")]
 position = Vector2(195, 165)
@@ -142,7 +133,6 @@ position = Vector2(195, 165)
 position = Vector2(195, 59)
 
 [node name="MapLeft" type="Node2D" parent="."]
-y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="CameraConfig" type="Node2D" parent="MapLeft"]
@@ -178,19 +168,3 @@ anchor_right = 1.0
 offset_left = -32.0
 offset_right = 0.0
 grow_horizontal = 0
-
-[node name="Capybara" parent="." instance=ExtResource("17_ol2u7")]
-position = Vector2(78, 75)
-totalSteps = Array[Dictionary]([{
-"direction": Vector2(0, 1),
-"time": 1.5
-}, {
-"direction": Vector2(1, 0),
-"time": 1.5
-}, {
-"direction": Vector2(0, -1),
-"time": 1.5
-}, {
-"direction": Vector2(-1, 0),
-"time": 1.5
-}])
