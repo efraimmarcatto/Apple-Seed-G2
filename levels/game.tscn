@@ -180,7 +180,7 @@ offset_right = 0.0
 grow_horizontal = 0
 
 [node name="Capybara" parent="." instance=ExtResource("17_ol2u7")]
-position = Vector2(78, 75)
+position = Vector2(79, 75)
 totalSteps = Array[Dictionary]([{
 "direction": Vector2(0, 1),
 "time": 1.5
