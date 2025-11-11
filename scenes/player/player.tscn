@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=74 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bg5cn8k53n3je" path="res://assets/characters/spr_player_sombra.png" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bv5k6hqoqv60a" path="res://assets/ui/spr_linha_jogar_maca.png" id="13_ugbui"]
 [ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
+[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="15_fcs02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
 size = Vector2(10, 4.5)
@@ -1334,11 +1335,12 @@ player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_tree = NodePath("../../AnimationTree")
 
-[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "photograph")]
+[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "photograph", "emoji_sprite")]
 script = ExtResource("11_gx1jg")
 player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 photograph = NodePath("../../Photograph")
+emoji_sprite = NodePath("../../EmojiSprite")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 z_index = -1
@@ -1357,3 +1359,10 @@ visible = false
 position = Vector2(-1, -46)
 speed = null
 accuracy_score = null
+
+[node name="EmojiSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, -22)
+texture = ExtResource("15_fcs02")
+hframes = 5
+frame = 3

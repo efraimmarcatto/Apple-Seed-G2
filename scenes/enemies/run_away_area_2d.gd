@@ -5,6 +5,8 @@ extends Area2D
 @export var eat_collectable_controller: Area2D
 @export var apple_emoji: Sprite2D
 
+@export var smoke_effect:PackedScene
+
 var enabled: bool = true
 
 func _ready() -> void:
@@ -20,9 +22,15 @@ func run() -> void:
 		apple_emoji.frame = 1
 		apple_emoji.visible = true
 		
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	if apple_emoji:
 		apple_emoji.visible = false
+	
+	if smoke_effect and target:
+		var instance_smoke_effect = smoke_effect.instantiate()
+		instance_smoke_effect.global_position = target.global_position
+		target.get_parent().add_child(instance_smoke_effect)
+	
 	target.call_deferred("queue_free")
 
 func _on_body_entered(body: Node) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjloxy33la46n"]
+[gd_scene load_steps=26 format=3 uid="uid://bjloxy33la46n"]
 
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
 [ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="3_46k04"]
 [ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="3_o3vpy"]
 [ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="4_7hee8"]
+[ext_resource type="PackedScene" uid="uid://ct1owvfqgy82c" path="res://scenes/enemies/smoke.tscn" id="4_h5wks"]
 [ext_resource type="Texture2D" uid="uid://cflkeetwdqpgu" path="res://assets/characters/animals/spr_rabbit_spritesheet_completo.png" id="4_o3vpy"]
 [ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="5_7jhs5"]
 [ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="9_vt2xu"]
@@ -640,6 +641,7 @@ script = ExtResource("3_o3vpy")
 target = NodePath("..")
 character_movement_controller = NodePath("../CharacterMovementController")
 walk_behavior = NodePath("..")
+smoke_effect = ExtResource("4_h5wks")
 apple_emoji = NodePath("../EmojiSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
@@ -706,6 +708,7 @@ target = NodePath("..")
 walk_behavior = NodePath("..")
 eat_collectable_controller = NodePath("../EatCollectableController")
 apple_emoji = NodePath("../EmojiSprite")
+smoke_effect = ExtResource("4_h5wks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayArea2D"]
 position = Vector2(0, -55)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dowttairyqx0d"]
+[gd_scene load_steps=26 format=3 uid="uid://dowttairyqx0d"]
 
 [ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_6ceci"]
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="2_be0a7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="8_84uky"]
 [ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="9_26eby"]
 [ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_v2cso"]
+[ext_resource type="PackedScene" uid="uid://ct1owvfqgy82c" path="res://scenes/enemies/smoke.tscn" id="11_be0a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
 size = Vector2(33, 33.5)
@@ -640,6 +641,7 @@ script = ExtResource("3_cjjvj")
 target = NodePath("..")
 character_movement_controller = NodePath("../CharacterMovementController")
 walk_behavior = NodePath("..")
+smoke_effect = ExtResource("11_be0a7")
 apple_emoji = NodePath("../EmojiSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
@@ -706,6 +708,7 @@ target = NodePath("..")
 walk_behavior = NodePath("..")
 eat_collectable_controller = NodePath("../EatCollectableController")
 apple_emoji = NodePath("../EmojiSprite")
+smoke_effect = ExtResource("11_be0a7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayArea2D"]
 position = Vector2(0, -55)

@@ -3,6 +3,7 @@ extends Area2D
 @export var target: CharacterBody2D
 @export var character_movement_controller: CharacterMovementController
 @export var walk_behavior: WalkBehavior
+@export var smoke_effect:PackedScene
 
 @export_category("follow")
 @export var delay_emoji: float = 1
@@ -52,6 +53,12 @@ func run() -> void:
 	if target:
 		await get_tree().create_timer(0.5).timeout
 		target.call_deferred("queue_free")
+	
+	if smoke_effect and target:
+		var instance_smoke_effect = smoke_effect.instantiate()
+		instance_smoke_effect.global_position = target.global_position
+		target.get_parent().add_child(instance_smoke_effect)
+	
 
 func show_emoji() -> void:
 	state = STATES.EMOJI

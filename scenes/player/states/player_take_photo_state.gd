@@ -3,21 +3,29 @@ extends State
 @export var player: Player
 @export var character_movement_controller: CharacterMovementController
 @export var photograph: Photograph
+@export var emoji_sprite: Sprite2D
+
+enum STATES {DEFAULT,START, PHOTO,COLDOWN}
+var state: STATES = STATES.DEFAULT
 
 # nome do state
 func get_state_name() -> String:
 	return "take_photo"
-	
+
+func _ready() -> void:
+	if emoji_sprite:
+		emoji_sprite.visible = false
+
 # Função chamada quando o state estiver pronto
 func _on_state_ready() -> void:
 	pass
 
 func _on_state_process(_delta : float) -> void:
 	if photograph:
-		if Input.is_action_just_released("take_picture"):
+		if state == STATES.PHOTO and Input.is_action_just_pressed("take_picture"):
 			photograph.take_picture()
 			
-		if not photograph.enabled:
+		if state == STATES.PHOTO and not photograph.enabled:
 			on_state_exit()
 
 # Função chamada a cada frame de física (para lógicas dependentes da física)
@@ -29,13 +37,21 @@ func _on_state_physics_process(delta : float) -> void:
 	
 # Função chamada ao entrar neste estado
 func _on_state_enter(_last_state_name:String) -> void:
+	state = STATES.START
+	if emoji_sprite:
+		emoji_sprite.visible = true
+		emoji_sprite.frame = 3
+		
 	if photograph:
+		await get_tree().create_timer(0.2).timeout
 		photograph.start_framing(character_movement_controller.last_movement_direction, global_position)
+		state = STATES.PHOTO
 	
 	
 # Função chamada ao sair deste estado
 func _on_state_exit() -> void:
-	pass
+	if emoji_sprite:
+		emoji_sprite.visible = false
 
 # Função que define as condições para transições entre estados
 func _on_state_check_transitions(_current_state_name:String, _current_state:Node) -> void:
@@ -44,7 +60,11 @@ func _on_state_check_transitions(_current_state_name:String, _current_state:Node
 			transition_to(get_state_name())
 
 func able_to_take_photo() -> bool:
-	return Input.is_action_just_pressed("take_picture") and  player.carry_controller and not player.carry_controller.is_carrying()
+	return state == STATES.DEFAULT and Input.is_action_just_pressed("take_picture") and  player.carry_controller and not player.carry_controller.is_carrying()
 
 func on_state_exit() -> void:
-	transition_to("idle")
+	if state == STATES.PHOTO:
+		state = STATES.COLDOWN
+		transition_to("idle")
+		await get_tree().create_timer(0.2).timeout
+		state = STATES.DEFAULT

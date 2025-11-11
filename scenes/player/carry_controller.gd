@@ -17,10 +17,10 @@ func _ready() -> void:
 		carry_arrow.visible = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed('key_action'):
-		pick_collectable()
-	if Input.is_action_just_released('key_action'):
+	if carrying_collectable and Input.is_action_just_pressed('key_action'):
 		throw_collectable()
+	elif Input.is_action_just_pressed('key_action'):
+		pick_collectable()
 		
 	if carrying_collectable and is_instance_valid(carrying_collectable) and carrying_collectable.has_method("set_carry_position"):
 		carrying_collectable.set_carry_position(carry_marker_2d.global_position)
@@ -40,6 +40,9 @@ func pick_collectable() -> void:
 				carry_arrow.visible = true
 		
 func throw_collectable() -> void:
+	if player.is_on_wall() or player.is_on_ceiling() or player.is_on_floor():
+		return
+	
 	if carrying_collectable and is_instance_valid(carrying_collectable):
 		if character_movement_controller:
 			carrying_collectable.throw(character_movement_controller.last_movement_direction)
@@ -53,10 +56,6 @@ func throw_collectable() -> void:
 		player.set_collision_mask_value(5, false)
 		await get_tree().create_timer(0.1).timeout
 		player.set_collision_mask_value(5, true)
-		
-	#if carry_arrow:
-		#await get_tree().create_timer(0.2).timeout
-		#carry_arrow.visible = false
 	
 
 func _on_area_entered(area:Area2D) -> void:
