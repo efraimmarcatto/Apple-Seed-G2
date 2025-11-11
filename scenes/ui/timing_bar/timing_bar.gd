@@ -6,7 +6,6 @@ signal skill_check_completed(accuracy_percent)
 @export var loop_duration: float = 2.0 
 
 
-
 @onready var bar_texture: TextureRect = $BarTexture
 @onready var sweet_spot: TextureRect = $SweetSpot
 @onready var timing_slider: HSlider = $TimingSlider
@@ -82,7 +81,7 @@ func stop_skill_check():
 
 
 func _input(_event):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("take_picture"):
 		if is_active:
 			stop_skill_check()
 

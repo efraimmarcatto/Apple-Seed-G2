@@ -35,8 +35,9 @@ func pick_collectable() -> void:
 		carrying_collectable.carry(player, carry_marker_2d.global_position)
 		
 		if carry_arrow:
-			await get_tree().create_timer(0.1).timeout
-			carry_arrow.visible = true
+			await get_tree().create_timer(0.15).timeout
+			if carrying_collectable and is_instance_valid(carrying_collectable):
+				carry_arrow.visible = true
 		
 func throw_collectable() -> void:
 	if carrying_collectable and is_instance_valid(carrying_collectable):
@@ -52,6 +53,10 @@ func throw_collectable() -> void:
 		player.set_collision_mask_value(5, false)
 		await get_tree().create_timer(0.1).timeout
 		player.set_collision_mask_value(5, true)
+		
+	#if carry_arrow:
+		#await get_tree().create_timer(0.2).timeout
+		#carry_arrow.visible = false
 	
 
 func _on_area_entered(area:Area2D) -> void:

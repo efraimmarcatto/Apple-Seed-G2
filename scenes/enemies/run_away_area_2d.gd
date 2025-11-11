@@ -27,6 +27,11 @@ func run() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if enabled and (body.is_in_group("Stone") or body.is_in_group("Player")):
+		if body.is_in_group("Stone"):
+			var collectable:Collectable = ComponentHelper.get_first_of_type_by_classname(body, Collectable)
+			if not collectable or collectable.state != collectable.STATES.THROWN:
+				return
+				
 		if eat_collectable_controller and eat_collectable_controller.state == eat_collectable_controller.STATES.DEFAULT:
 			run()
 
