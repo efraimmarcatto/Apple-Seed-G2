@@ -41,7 +41,8 @@ func pick_collectable() -> void:
 		
 func throw_collectable() -> void:
 	if player.is_on_wall() or player.is_on_ceiling() or player.is_on_floor():
-		return
+		if not _can_throw_based_on_collisions(character_movement_controller.last_movement_direction):
+			return
 	
 	if carrying_collectable and is_instance_valid(carrying_collectable):
 		if character_movement_controller:
@@ -57,6 +58,53 @@ func throw_collectable() -> void:
 		await get_tree().create_timer(0.1).timeout
 		player.set_collision_mask_value(5, true)
 	
+
+func _can_throw_based_on_collisions(throw_dir: Vector2) -> bool:
+	if throw_dir == Vector2.ZERO or not player:
+		return false
+
+	throw_dir = throw_dir.normalized()
+
+	# 1) Se não há colisões registradas pelo slide -> livre para lançar
+	if player.get_slide_collision_count() == 0:
+		return true
+
+	var has_water_in_throw_dir := false
+
+	# 2) Verifica cada colisão registrada
+	for i in range(player.get_slide_collision_count()):
+		var collision := player.get_slide_collision(i)
+		if not collision:
+			continue
+		var collider := collision.get_collider()
+		if not collider:
+			continue
+
+		var collision_normal := collision.get_normal().normalized()
+		var toward_obstacle := -collision_normal
+		var alignment := throw_dir.dot(toward_obstacle)
+
+		# Se a colisão está bem alinhada com a direção do arremesso
+		if alignment > 0.6:
+			# Se for água, marca e continua (permitido se for só água)
+			if collider.is_in_group("Water"):
+				has_water_in_throw_dir = true
+				continue
+			# Se não for água, bloqueia direto
+			return false
+
+	# 3) Confirmação extra com test_move (deslocamento pequeno)
+	if not has_water_in_throw_dir:
+		var test_distance := 1.0
+		var motion := throw_dir * test_distance
+
+		# Se ao mover um pouco houver colisão, só permite se detectamos água na direção
+		if player.test_move(player.transform, motion):
+			return false
+
+	# Se não test_move (livre), permite
+	return true
+
 
 func _on_area_entered(area:Area2D) -> void:
 	if area.is_in_group(Globals.GROUP_COLLECTABLE) and area.has_method("is_carryble") and area.is_carryble():

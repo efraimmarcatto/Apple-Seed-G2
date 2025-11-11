@@ -344,10 +344,9 @@ position = Vector2(206, 246)
 position = Vector2(0, -213)
 script = ExtResource("20_tkgql")
 show_on_player_enter = NodePath("IconExclamation")
-change_to_level = "res://levels/cabam_level.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maps/MapBottom/PlayerInteractArea"]
-position = Vector2(205, 483)
+position = Vector2(203.75, 487)
 shape = SubResource("RectangleShape2D_si8kf")
 debug_color = Color(0.7525624, 0.4576646, 0.048764244, 0.41960785)
 

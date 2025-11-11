@@ -4,6 +4,8 @@ extends Area2D
 @export var show_on_player_enter:Node2D ## mostra quando o plauyer entrar
 
 @export var button_action_name: String = "key_action"
+@export var change_to_level: String
+
 
 signal player_entered
 signal player_exited
@@ -23,6 +25,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if player_inside and button_action_name and Input.is_action_just_pressed(button_action_name):
 		button_just_pressed.emit()
+		if change_to_level:
+			SceneGameManager.change_scene(change_to_level)
 		
 func _on_player_entered(body: Node) -> void:
 	if enabled and body.is_in_group("Player"):

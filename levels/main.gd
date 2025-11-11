@@ -12,8 +12,9 @@ func _quit() -> void:
 
 
 func _start_game() -> void:
-	get_tree().change_scene_to_file("res://levels/game.tscn")
+	print("foi")
+	SceneGameManager.change_scene("res://levels/game.tscn")
 
 
 func _on_options_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/options/options.tscn")
+	SceneGameManager.change_scene("res://scenes/ui/options/options.tscn")

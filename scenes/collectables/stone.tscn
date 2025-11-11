@@ -24,7 +24,7 @@ shape = SubResource("RectangleShape2D_yeb5w")
 
 [node name="Collectable" type="Area2D" parent="." node_paths=PackedStringArray("parent", "collision_shape_2d")]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 32
 script = ExtResource("2_wcjmf")
 parent = NodePath("..")
 collision_shape_2d = NodePath("../CollisionShape2D")

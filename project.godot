@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://singletons/game_manager.gd"
+SceneGameManager="*res://singletons/scene_game_manager.tscn"
 
 [display]
 
@@ -39,6 +40,7 @@ Enemy=""
 Food=""
 Player=""
 Stone=""
+Water=""
 
 [input]
 
@@ -140,6 +142,7 @@ take_picture={
 2d_physics/layer_3="hazard"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="collectable"
+2d_physics/layer_6="water"
 
 [rendering]
 

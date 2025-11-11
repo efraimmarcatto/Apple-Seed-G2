@@ -14,6 +14,9 @@ class_name CameraManager
 # ⚙️ VARIÁVEIS ESTÁTICAS
 # --------------------------
 
+static var _enable: bool = true
+# Manager esta ativo (com current = true)
+
 static var _current_camera: BaseCamera2D = null
 # Referência da câmera atualmente ativa (com current = true)
 
@@ -33,6 +36,12 @@ static var _transition_queue: Array = []
 #  FUNÇÕES PRINCIPAIS
 # ================================================================
 
+
+static func enable() -> void:
+	_enable = true
+	
+static func disabled() -> void:
+	_enable = false
 
 ## Registra a câmera (geralmente chamada no _ready() da câmera)
 static func register_camera(camera: BaseCamera2D, make_current: bool = false) -> void:
@@ -80,7 +89,7 @@ static func get_previous_camera() -> BaseCamera2D:
 
 ## Faz uma transição suave para outra câmera
 static func change_camera(new_camera: BaseCamera2D, duration: float = 1.0) -> void:
-	if new_camera == null:
+	if new_camera == null or not is_instance_valid(new_camera) or not _enable:
 		return
 
 	# Impede duplicar a mesma câmera destino que já está na fila ou na transição atual
