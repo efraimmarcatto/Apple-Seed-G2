@@ -21,6 +21,8 @@ class_name WalkBehavior
 # === CONFIGURAÇÕES DE DIREÇÕES ===
 @export_category("Directions")
 @export var loop: bool = true ## Se true, o movimento reinicia ao final da sequência
+@export var restore_initial_position: bool = true ## restaura a posição inicial
+var initial_position:Vector2
 
 # ========================================================
 # === SINAIS ===
@@ -71,6 +73,9 @@ func _ready() -> void:
 	# Conecta o sinal de colisão (se existir no target)
 	if stop_on_collision_area and stop_on_collision_area.has_signal("body_entered"):
 		stop_on_collision_area.body_entered.connect(_on_body_entered)
+	
+	if target:
+		initial_position = target.global_position
 
 # ========================================================
 # === LOOP PRINCIPAL DE MOVIMENTO ===
@@ -115,6 +120,8 @@ func _process(delta: float) -> void:
 		if current_index >= directions.size():
 			if loop:
 				# Reinicia o ciclo e emite sinal de ciclo completo
+				if restore_initial_position and target:
+					target.global_position = initial_position
 				current_index = 0
 				emit_signal("finished_cycle")
 			else:

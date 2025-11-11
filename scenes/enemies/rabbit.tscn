@@ -622,7 +622,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2xu"]
-size = Vector2(20, 118.5)
+size = Vector2(5, 118.5)
 
 [node name="Rabbit" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
 collision_layer = 8

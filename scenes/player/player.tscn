@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=82 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -7,11 +7,13 @@
 [ext_resource type="Script" uid="uid://dbwmheevfhbcc" path="res://scenes/player/carry_controller.gd" id="3_h17s1"]
 [ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://boagbj00sufgi" path="res://scenes/player/states/player_idle_state.gd" id="6_75vfm"]
+[ext_resource type="Texture2D" uid="uid://divywnnd6dar4" path="res://assets/characters/player_comendo.png" id="6_kvlxm"]
 [ext_resource type="Script" uid="uid://cbiw15ht11ia8" path="res://scenes/player/states/player_walk_state.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://ip10cmq7c8g3" path="res://scenes/player/states/player_carry_idle_state.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://bj5hhb2g3ipdg" path="res://scenes/player/states/player_carry_walk_state.gd" id="9_5gtgg"]
 [ext_resource type="Script" uid="uid://cps6y7r5oyfsd" path="res://scenes/player/states/player_take_photo_state.gd" id="11_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://bg5cn8k53n3je" path="res://assets/characters/spr_player_sombra.png" id="11_je7p5"]
+[ext_resource type="Script" uid="uid://chw6nqc75bdma" path="res://scenes/player/states/player_eat_state.gd" id="12_myrg7"]
 [ext_resource type="Texture2D" uid="uid://bv5k6hqoqv60a" path="res://assets/ui/spr_linha_jogar_maca.png" id="13_ugbui"]
 [ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
 [ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="15_fcs02"]
@@ -637,6 +639,36 @@ tracks/4/keys = {
 "values": [1.5707963267948966]
 }
 
+[sub_resource type="Animation" id="Animation_lgqa7"]
+resource_name = "eat"
+length = 2.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6000001, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_kvlxm")]
+}
+
 [sub_resource type="Animation" id="Animation_dovo2"]
 resource_name = "idle_down"
 length = 0.2
@@ -1076,6 +1108,7 @@ _data = {
 &"carry_walk_left": SubResource("Animation_kvlxm"),
 &"carry_walk_right": SubResource("Animation_uf5tr"),
 &"carry_walk_up": SubResource("Animation_myrg7"),
+&"eat": SubResource("Animation_lgqa7"),
 &"idle_down": SubResource("Animation_dovo2"),
 &"idle_left": SubResource("Animation_lvxji"),
 &"idle_right": SubResource("Animation_p47bc"),
@@ -1152,6 +1185,9 @@ nodes/BlendSpace2D/position = Vector2(133.33333, 106.666664)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8ydkj")
 nodes/TimeScale/position = Vector2(346.66666, 106.666664)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"BlendSpace2D"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgqa7"]
+animation = &"eat"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmlin"]
 animation = &"idle_left"
@@ -1240,17 +1276,27 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h17s1"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myrg7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kvlxm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uf5tr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lgqa7"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qek5x"]
 states/carry_idle/node = SubResource("AnimationNodeBlendTree_kvlxm")
 states/carry_idle/position = Vector2(552.6667, 68.22222)
 states/carry_walk/node = SubResource("AnimationNodeBlendTree_3j4b4")
 states/carry_walk/position = Vector2(551.7778, 167.48149)
+states/eat/node = SubResource("AnimationNodeAnimation_lgqa7")
+states/eat/position = Vector2(736.00006, 67.96298)
 states/idle/node = SubResource("AnimationNodeBlendTree_gmlin")
 states/idle/position = Vector2(374.66666, 67.33333)
 states/walk/node = SubResource("AnimationNodeBlendTree_lvxji")
 states/walk/position = Vector2(373.77777, 167.33334)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lvxji"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "idle", "carry_idle", SubResource("AnimationNodeStateMachineTransition_yj68g"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_ioxgp"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_cnsyf"), "carry_idle", "idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "walk", "carry_walk", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "carry_walk", "walk", SubResource("AnimationNodeStateMachineTransition_h17s1")]
-graph_offset = Vector2(51, -60)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_gmlin"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lvxji"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_p47bc"), "idle", "carry_idle", SubResource("AnimationNodeStateMachineTransition_yj68g"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_ioxgp"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_cnsyf"), "carry_idle", "idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "walk", "carry_walk", SubResource("AnimationNodeStateMachineTransition_5gtgg"), "carry_walk", "walk", SubResource("AnimationNodeStateMachineTransition_h17s1"), "carry_idle", "eat", SubResource("AnimationNodeStateMachineTransition_myrg7"), "eat", "carry_idle", SubResource("AnimationNodeStateMachineTransition_kvlxm"), "carry_walk", "eat", SubResource("AnimationNodeStateMachineTransition_uf5tr"), "eat", "carry_walk", SubResource("AnimationNodeStateMachineTransition_lgqa7")]
+graph_offset = Vector2(124, -33)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("character_movement_controller", "carry_controller") groups=["Player"]]
 collision_layer = 2
@@ -1335,11 +1381,19 @@ player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_tree = NodePath("../../AnimationTree")
 
-[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "photograph", "emoji_sprite")]
+[node name="TakePhoto" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "photograph", "animation_tree", "emoji_sprite")]
 script = ExtResource("11_gx1jg")
 player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 photograph = NodePath("../../Photograph")
+animation_tree = NodePath("../../AnimationTree")
+emoji_sprite = NodePath("../../EmojiSprite")
+
+[node name="Eat" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "animation_tree", "emoji_sprite")]
+script = ExtResource("12_myrg7")
+player = NodePath("../..")
+character_movement_controller = NodePath("../../CharacterMovementController")
+animation_tree = NodePath("../../AnimationTree")
 emoji_sprite = NodePath("../../EmojiSprite")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]

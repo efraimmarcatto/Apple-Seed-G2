@@ -28,6 +28,9 @@ func _process(_delta: float) -> void:
 func is_carrying() -> bool:
 	return (carrying_collectable and is_instance_valid(carrying_collectable) and carrying_collectable.has_method("is_carried") and carrying_collectable.is_carried()) or Input.is_action_pressed("key_action")
 
+func is_carrying_food() -> bool:
+	return is_carrying() and carrying_collectable.parent and carrying_collectable.parent.is_in_group("Food")
+
 func pick_collectable() -> void:
 	if near_collectable and is_instance_valid(near_collectable) and near_collectable.has_method("is_carryble") and near_collectable.is_carryble():
 		carrying_collectable = near_collectable
@@ -58,6 +61,13 @@ func throw_collectable() -> void:
 		await get_tree().create_timer(0.1).timeout
 		player.set_collision_mask_value(5, true)
 	
+func eat_collectable() -> void:
+	if carrying_collectable and is_carrying_food():
+		if carry_arrow:
+			carry_arrow.visible = false
+		carrying_collectable.parent.be_bitten()
+		carrying_collectable = null
+
 
 func _can_throw_based_on_collisions(throw_dir: Vector2) -> bool:
 	if throw_dir == Vector2.ZERO or not player:

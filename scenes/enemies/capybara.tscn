@@ -622,7 +622,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2xu"]
-size = Vector2(20, 118.5)
+size = Vector2(6, 118.5)
 
 [node name="Capybara" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
 collision_layer = 8
@@ -630,6 +630,7 @@ script = ExtResource("1_6ceci")
 target = NodePath(".")
 character_movement_controller = NodePath("CharacterMovementController")
 stop_on_collision_area = NodePath("DetectCollisionArea2D")
+restore_initial_position = null
 
 [node name="CharacterMovementController" parent="." instance=ExtResource("2_be0a7")]
 speed = 30.0
