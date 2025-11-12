@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf36maca21r3t"]
+[gd_scene load_steps=6 format=3 uid="uid://bf36maca21r3t"]
 
 [ext_resource type="Texture2D" uid="uid://dcwdxishdlyqs" path="res://assets/ui/icone_camera.png" id="1_sr48y"]
 [ext_resource type="Script" uid="uid://bubd1m5dxtw2v" path="res://scenes/ui/photo_icon/photo_icon.gd" id="2_mw03n"]
+[ext_resource type="FontFile" uid="uid://b7fkt6ixsvbgw" path="res://assets/ui/fonts/04B_03__/04B_03__.TTF" id="3_k4ji5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw03n"]
 atlas = ExtResource("1_sr48y")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ryas5"]
+font = ExtResource("3_k4ji5")
+font_size = 8
 
 [node name="PhotoIcon" type="TextureRect"]
 offset_right = 32.0
@@ -13,3 +18,12 @@ offset_bottom = 32.0
 size_flags_horizontal = 0
 texture = SubResource("AtlasTexture_mw03n")
 script = ExtResource("2_mw03n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 7.0
+offset_bottom = 11.0
+text = "1"
+label_settings = SubResource("LabelSettings_ryas5")

@@ -12,6 +12,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqhyy"]
 
 [node name="TimingBar" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchor_right = 0.347
 anchor_bottom = 0.117000006

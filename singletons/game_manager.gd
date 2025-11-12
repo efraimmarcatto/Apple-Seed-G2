@@ -4,6 +4,7 @@ var settings = {}
 var settings_file = "user://settings.cfg"
 var resolutions = [Vector2i(320,180),Vector2i(320,240)]
 var photos: Array = []
+var photos_limit = 8
 var album: Dictionary = {}
 var photo_slot: int = 1
 var animals: Dictionary = {"tucano":10, "capivara":20, "borboleta":30, "coelho":10}
@@ -42,3 +43,6 @@ func emit_photo_count_updated() -> void:
 
 func _process(_delta: float) -> void:
 	pass
+
+func change_scene(scene: String):
+	get_tree().change_scene_to_file(scene)

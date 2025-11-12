@@ -8,6 +8,9 @@ class_name Photograph
 @onready var collision: CollisionShape2D = $Collision
 @onready var sprite: Sprite2D = $Area/Sprite
 @onready var mask: ColorRect = $MaskLayer/Mask
+@onready var photo_click: AudioStreamPlayer2D = $PhotoClick
+@onready var flash: ColorRect = $MaskLayer/Flash
+
 var capture_rect: Rect2 
 var result: Dictionary = {}
 var direction: Vector2 = Vector2.RIGHT
@@ -19,7 +22,7 @@ var enabled: bool = false
 
 func _ready() -> void:
 	collision.disabled = true
-	timing_bar.skill_check_completed.connect(save_photo)
+	
 	hide()
 
 
@@ -38,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 	mask.material.set_shader_parameter("hole_rect", rect_vec4)
 
 func start_framing(_direction: Vector2, _start_position: Vector2 = position ):
-	if len(GameManager.photos) >= 4:
+	if len(GameManager.photos) >= GameManager.photos_limit:
 		return
 	match _direction:
 		Vector2.DOWN:
@@ -87,14 +90,15 @@ func save_photo(focus_accuracy: float):
 	timing_bar.hide()
 	if "total" in result:
 		result["total"] *=  focus_accuracy / 100
-	if len(GameManager.photos) < 4:
+	if len(GameManager.photos) < GameManager.photos_limit:
 		GameManager.photos.append(result)
 		GameManager.photo_count_updated.emit(slot)
-		GameManager.photo_slot = wrapi(slot + 1, 1, 5)
+		GameManager.photo_slot = wrapi(slot + 1, 1, GameManager.photos_limit + 1)
 	get_tree().paused = false
 	hide()
+	photo_click.play()
+	camera_flash()
 	enabled = false
-
 
 func screen_shot(index:int):
 	await get_tree().process_frame
@@ -108,7 +112,9 @@ func screen_shot(index:int):
 
 	if not cropped_image or cropped_image.is_empty():
 		return
-	var file_path = "user://photo_%02d.png" % [index]
+	var file_path = "user://photos/photo_%02d.png" % [index]
+	if cropped_image.get_size().y > cropped_image.get_size().x:
+		cropped_image.rotate_90(CLOCKWISE)
 	var err = cropped_image.save_png(file_path)
 
 	if err != OK:
@@ -118,7 +124,6 @@ func screen_shot(index:int):
 	sprite.show()
 
 func cancel_photo():
-	print("Ação da foto cancelada.")
 
 	move = false
 	linear_velocity = Vector2.ZERO
@@ -134,3 +139,14 @@ func cancel_photo():
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if move:
 		cancel_photo()
+
+
+func camera_flash(duration: float = .8):
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(flash, "modulate:a", 1.0, duration / 2.0)
+	tween.tween_property(flash, "modulate:a", 0.0, duration / 2.0)
+	
+	await tween.finished

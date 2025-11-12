@@ -27,8 +27,10 @@ func _ready():
 	max_possible_distance = max(dist_to_min, dist_to_max)
 	if max_possible_distance == 0:
 		max_possible_distance = 1.0
-	start_skill_check()
 
+func _process(_delta: float) -> void:
+	if is_active and Input.is_action_just_pressed("take_picture"):
+			stop_skill_check()
 
 func position_sweet_spot_marker():
 	if not sweet_spot:
@@ -79,11 +81,6 @@ func stop_skill_check():
 
 	skill_check_completed.emit(accuracy_percent)
 
-
-func _input(_event):
-	if Input.is_action_just_pressed("take_picture"):
-		if is_active:
-			stop_skill_check()
 
 func cancel_check():
 	if not is_active:

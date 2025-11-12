@@ -1408,11 +1408,8 @@ position = Vector2(0, -56)
 texture = ExtResource("13_ugbui")
 
 [node name="Photograph" parent="." instance=ExtResource("14_ugbui")]
-process_mode = 3
 visible = false
 position = Vector2(-1, -46)
-speed = null
-accuracy_score = null
 
 [node name="EmojiSprite" type="Sprite2D" parent="."]
 visible = false
