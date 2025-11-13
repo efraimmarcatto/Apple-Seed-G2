@@ -18,7 +18,7 @@ var skill_check = false
 var move: bool = false
 var slot: int
 
-var enabled: bool = false
+signal photo_finish
 
 func _ready() -> void:
 	collision.disabled = true
@@ -59,7 +59,6 @@ func start_framing(_direction: Vector2, _start_position: Vector2 = position ):
 	direction = _direction
 	move = true
 	mask.visible = true
-	enabled = true
 
 
 func take_picture():
@@ -96,7 +95,7 @@ func save_photo(focus_accuracy: float):
 	hide()
 	photo_click.play()
 	camera_flash()
-	enabled = false
+	photo_finish.emit()
 	get_tree().paused = false
 	
 func screen_shot(index:int):
@@ -123,7 +122,6 @@ func screen_shot(index:int):
 	sprite.show()
 
 func cancel_photo():
-
 	move = false
 	linear_velocity = Vector2.ZERO
 	hide()
@@ -132,7 +130,7 @@ func cancel_photo():
 	timing_bar.cancel_check() 
 	skill_check = false
 	result = {} # Limpa os dados da foto
-	enabled = false
+	photo_finish.emit()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

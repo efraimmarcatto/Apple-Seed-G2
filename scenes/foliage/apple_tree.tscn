@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://5yf52nmqwjpv"]
+[gd_scene load_steps=6 format=3 uid="uid://5yf52nmqwjpv"]
 
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="1_qj8d5"]
 [ext_resource type="Texture2D" uid="uid://dblc1lov6q6a3" path="res://assets/tiles & props/spr_props_floresta_spritesheet.png" id="1_wjvsa"]
 [ext_resource type="PackedScene" uid="uid://cab6biokcvou3" path="res://addons/fast_prototype/components/effects/transparency_when_on_top_component.tscn" id="2_c0fxo"]
 
@@ -10,6 +11,9 @@ radius = 7.071068
 radius = 13.038404
 
 [node name="AppleTree" type="StaticBody2D"]
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_qj8d5")]
+sprite = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bayv5asrbird6"]
+[gd_scene load_steps=6 format=3 uid="uid://bayv5asrbird6"]
 
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="1_b8hih"]
 [ext_resource type="Texture2D" uid="uid://clmhfhxnla85g" path="res://assets/tiles & props/spr_barraca.png" id="1_kb5bl"]
 [ext_resource type="PackedScene" uid="uid://cab6biokcvou3" path="res://addons/fast_prototype/components/effects/transparency_when_on_top_component.tscn" id="1_y1dem"]
 
@@ -10,6 +11,9 @@ size = Vector2(53, 32)
 size = Vector2(53, 24)
 
 [node name="Caban" type="StaticBody2D"]
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_b8hih")]
+sprite = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kb5bl")

@@ -1,4 +1,5 @@
 extends Area2D
+class_name EatCollectableControler
 
 @export var target: CharacterBody2D
 @export var character_movement_controller: CharacterMovementController
@@ -16,7 +17,7 @@ extends Area2D
 var enabled: bool = true
 var food: Apple
 
-enum STATES {DEFAULT,EMOJI,FOLLOW,EAT}
+enum STATES {DEFAULT,EMOJI,FOLLOW,EAT,RUN}
 var state: STATES = STATES.DEFAULT
 
 func _ready() -> void:
@@ -66,6 +67,7 @@ func run() -> void:
 		
 
 func show_emoji() -> void:
+	state = STATES.RUN
 	if audio_see_food:
 		audio_see_food.play()
 	
