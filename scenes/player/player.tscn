@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=86 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://bv5k6hqoqv60a" path="res://assets/ui/spr_linha_jogar_maca.png" id="13_ugbui"]
 [ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
 [ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="15_fcs02"]
+[ext_resource type="AudioStream" uid="uid://drjkffyhdm686" path="res://assets/audio/SFX/SE_confirmar.wav" id="18_uf5tr"]
+[ext_resource type="AudioStream" uid="uid://bxm75abyp111p" path="res://assets/audio/SFX/SE_jogar_maca_pedra.wav" id="19_lgqa7"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="20_8ydkj"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="21_3j4b4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
 size = Vector2(10, 4.5)
@@ -1308,7 +1312,7 @@ carry_controller = NodePath("CarryController")
 [node name="CharacterMovementController" parent="." instance=ExtResource("2_lvxji")]
 speed = 70.0
 
-[node name="CarryController" type="Area2D" parent="." node_paths=PackedStringArray("carry_marker_2d", "player", "character_movement_controller", "carry_arrow")]
+[node name="CarryController" type="Area2D" parent="." node_paths=PackedStringArray("carry_marker_2d", "player", "character_movement_controller", "carry_arrow", "audio_pick", "audio_throw")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_h17s1")
@@ -1316,6 +1320,8 @@ carry_marker_2d = NodePath("../CarryMarker2D")
 player = NodePath("..")
 character_movement_controller = NodePath("../CharacterMovementController")
 carry_arrow = NodePath("../ArrowThrow")
+audio_pick = NodePath("../AudioPickCollectable")
+audio_throw = NodePath("../AudioThrowCollectable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarryController"]
 shape = SubResource("RectangleShape2D_h17s1")
@@ -1389,12 +1395,14 @@ photograph = NodePath("../../Photograph")
 animation_tree = NodePath("../../AnimationTree")
 emoji_sprite = NodePath("../../EmojiSprite")
 
-[node name="Eat" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "animation_tree", "emoji_sprite")]
+[node name="Eat" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "character_movement_controller", "animation_tree", "emoji_sprite", "audio_eat", "audio_angry")]
 script = ExtResource("12_myrg7")
 player = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_tree = NodePath("../../AnimationTree")
 emoji_sprite = NodePath("../../EmojiSprite")
+audio_eat = NodePath("../../AudioEat")
+audio_angry = NodePath("../../AudioAngry")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 z_index = -1
@@ -1416,4 +1424,19 @@ visible = false
 position = Vector2(10, -22)
 texture = ExtResource("15_fcs02")
 hframes = 5
-frame = 3
+
+[node name="AudioPickCollectable" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_uf5tr")
+bus = &"effect"
+
+[node name="AudioThrowCollectable" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_lgqa7")
+bus = &"effect"
+
+[node name="AudioEat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_8ydkj")
+bus = &"effect"
+
+[node name="AudioAngry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_3j4b4")
+bus = &"effect"

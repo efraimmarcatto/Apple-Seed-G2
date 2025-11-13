@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="2_fdkkg"]
 [ext_resource type="PackedScene" uid="uid://1g5gau1tc54c" path="res://addons/fast_prototype/components/camera/base_camera_2d.tscn" id="2_fvhpl"]
 [ext_resource type="PackedScene" uid="uid://cngvswahsiho2" path="res://scenes/others/player_interact_area.tscn" id="4_10m8o"]
-[ext_resource type="Script" uid="uid://26mojtvnia6o" path="res://scenes/others/player_interact_area.gd" id="5_ehyw5"]
+[ext_resource type="AudioStream" uid="uid://c2sl1y7ph64le" path="res://assets/audio/BGM/BGM_Titulo_mp3.mp3" id="6_btywn"]
 [ext_resource type="PackedScene" uid="uid://cckvunw0qvsee" path="res://scenes/others/icon_exclamation.tscn" id="7_15rut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvhpl"]
@@ -66,7 +66,6 @@ position = Vector2(161, 137)
 
 [node name="PlayerInteractArea" parent="." node_paths=PackedStringArray("show_on_player_enter") instance=ExtResource("4_10m8o")]
 position = Vector2(0, -218)
-script = ExtResource("5_ehyw5")
 show_on_player_enter = NodePath("IconExclamation")
 change_to_level = "res://levels/game.tscn"
 
@@ -80,7 +79,6 @@ position = Vector2(161, 347)
 
 [node name="PlayerInteractArea2" parent="." node_paths=PackedStringArray("show_on_player_enter") instance=ExtResource("4_10m8o")]
 position = Vector2(0, -306)
-script = ExtResource("5_ehyw5")
 show_on_player_enter = NodePath("IconExclamation")
 change_to_level = "res://scenes/ui/computer/computer.tscn"
 
@@ -91,3 +89,8 @@ debug_color = Color(0.7525624, 0.4576646, 0.048764244, 0.41960785)
 
 [node name="IconExclamation" parent="PlayerInteractArea2" instance=ExtResource("7_15rut")]
 position = Vector2(160, 348)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_btywn")
+autoplay = true
+bus = &"music"

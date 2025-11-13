@@ -12,7 +12,6 @@ func _quit() -> void:
 
 
 func _start_game() -> void:
-	print("foi")
 	SceneGameManager.change_scene("res://levels/game.tscn")
 
 

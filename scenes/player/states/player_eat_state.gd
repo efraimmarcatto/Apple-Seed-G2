@@ -4,6 +4,8 @@ extends State
 @export var character_movement_controller: CharacterMovementController
 @export var animation_tree: AnimationTree
 @export var emoji_sprite: Sprite2D
+@export var audio_eat: AudioStreamPlayer
+@export var audio_angry: AudioStreamPlayer
 
 # nome do state
 func get_state_name() -> String:
@@ -29,22 +31,32 @@ func _on_state_physics_process(delta : float) -> void:
 	
 # Função chamada ao entrar neste estado
 func _on_state_enter(_last_state_name:String) -> void:
-	if emoji_sprite:
-		emoji_sprite.visible = true
-		emoji_sprite.frame = 2
-		
+	var transition_name = "idle"
 	if player and player.carry_controller:
-		player.carry_controller.eat_collectable()
-		
-	if animation_tree:
-		if character_movement_controller:
+		var emoji_frame = 2
+		var animation_name = "eat"
+		player.carry_controller.hide_arrow()
+		if player.carry_controller.is_carrying_food():
+			player.carry_controller.eat_collectable()
+			if audio_eat:
+				audio_eat.play()
+		else:
+			emoji_frame = 1
+			animation_name = "carry_idle"
+			transition_name = "carry_idle"
+			if audio_angry:
+				audio_angry.play()
+			
+		if emoji_sprite:
+			emoji_sprite.visible = true
+			emoji_sprite.frame = emoji_frame
+			
+		if animation_tree and character_movement_controller:
 			animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_movement_controller.last_movement_direction.normalized())
-		animation_tree["parameters/playback"].travel("eat")
+			animation_tree["parameters/playback"].travel(animation_name)
 		
 	await get_tree().create_timer(1.5).timeout
-	transition_to("idle")
-	
-	
+	transition_to(transition_name)
 	
 # Função chamada ao sair deste estado
 func _on_state_exit() -> void:
@@ -58,4 +70,4 @@ func _on_state_check_transitions(_current_state_name:String, _current_state:Node
 			transition_to(get_state_name())
 
 func able_to_eat() -> bool:
-	return Input.is_action_just_pressed("take_picture") and  player.carry_controller and player.carry_controller.is_carrying_food()
+	return Input.is_action_just_pressed("take_picture") and  player.carry_controller and player.carry_controller.is_carrying()

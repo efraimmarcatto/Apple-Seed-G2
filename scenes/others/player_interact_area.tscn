@@ -1,5 +1,14 @@
-[gd_scene format=3 uid="uid://cngvswahsiho2"]
+[gd_scene load_steps=3 format=3 uid="uid://cngvswahsiho2"]
 
-[node name="PlayerInteractArea" type="Area2D"]
+[ext_resource type="Script" uid="uid://26mojtvnia6o" path="res://scenes/others/player_interact_area.gd" id="1_484kg"]
+[ext_resource type="AudioStream" uid="uid://drjkffyhdm686" path="res://assets/audio/SFX/SE_confirmar.wav" id="2_qc4wb"]
+
+[node name="PlayerInteractArea" type="Area2D" node_paths=PackedStringArray("audio")]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("1_484kg")
+audio = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qc4wb")
+bus = &"effect"

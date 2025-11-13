@@ -4,9 +4,11 @@ class_name Collectable
 @export var parent: CharacterBody2D
 @export var collision_shape_2d: CollisionShape2D
 
+
 @export_category("throw")
 @export var throw_speed: float = 200.0
 @export var throw_time: float = 0.2
+@export var water_effect:PackedScene
 
 enum STATES {DEFAULT,CARRIED,THROWN}
 
@@ -28,7 +30,12 @@ func _physics_process(_delta: float) -> void:
 	if state == STATES.THROWN and parent:
 		parent.velocity = throw_direction * throw_speed
 		parent.move_and_slide()
-	elif is_on_water and  state == STATES.DEFAULT:
+	elif is_on_water and state == STATES.DEFAULT:
+		if water_effect and parent:
+			var instance_water_effect = water_effect.instantiate()
+			instance_water_effect.global_position = parent.global_position
+			parent.get_parent().add_child(instance_water_effect)
+		
 		destroy()
 		
 

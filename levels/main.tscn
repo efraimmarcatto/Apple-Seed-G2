@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://njvv5q3pfje0"]
+[gd_scene load_steps=10 format=3 uid="uid://njvv5q3pfje0"]
 
 [ext_resource type="Script" uid="uid://chgbvrvsqgyrf" path="res://levels/main.gd" id="1_2p1s2"]
 [ext_resource type="FontFile" uid="uid://drs8psaldvepg" path="res://assets/ui/fonts/Monogram/monogram.ttf" id="2_02nsg"]
 [ext_resource type="Texture2D" uid="uid://cxbvk360kt82c" path="res://assets/ui/background.png" id="2_7n028"]
 [ext_resource type="Texture2D" uid="uid://dim323vxcbj1d" path="res://assets/ui/logo.png" id="3_jvuow"]
 [ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="3_vspwy"]
+[ext_resource type="AudioStream" uid="uid://c2sl1y7ph64le" path="res://assets/audio/BGM/BGM_Titulo_mp3.mp3" id="6_5k4jt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aain1"]
 content_margin_left = 1.0
@@ -193,6 +194,11 @@ text = "[url=\"https://beowulf.itch.io\"]beowulf[/url]"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5k4jt")
+autoplay = true
+bus = &"music"
 
 [connection signal="pressed" from="Container/Menu/StartButton" to="." method="_start_game"]
 [connection signal="pressed" from="Container/Menu/OptionsButton" to="." method="_on_options_button_pressed"]

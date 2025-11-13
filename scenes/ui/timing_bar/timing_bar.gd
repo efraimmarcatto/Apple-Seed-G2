@@ -28,10 +28,10 @@ func _ready():
 	if max_possible_distance == 0:
 		max_possible_distance = 1.0
 
-func _process(_delta: float) -> void:
-	if is_active and Input.is_action_just_pressed("take_picture"):
-			stop_skill_check()
-
+func _physics_process(_delta: float) -> void:
+	if is_active and Input.is_action_just_pressed("ui_accept"):
+		stop_skill_check()
+	
 func position_sweet_spot_marker():
 	if not sweet_spot:
 		print("Erro: Nó TextureRect (marcador) não encontrado como filho.")
@@ -78,7 +78,7 @@ func stop_skill_check():
 	
 	print("Jogador parou em: %.1f" % final_value)
 	print("Qualidade da Foto: %.1f%%" % accuracy_percent)
-
+	hide()
 	skill_check_completed.emit(accuracy_percent)
 
 
