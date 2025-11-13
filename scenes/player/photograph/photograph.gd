@@ -22,7 +22,6 @@ var enabled: bool = false
 
 func _ready() -> void:
 	collision.disabled = true
-	
 	hide()
 
 
@@ -94,12 +93,12 @@ func save_photo(focus_accuracy: float):
 		GameManager.photos.append(result)
 		GameManager.photo_count_updated.emit(slot)
 		GameManager.photo_slot = wrapi(slot + 1, 1, GameManager.photos_limit + 1)
-	get_tree().paused = false
 	hide()
 	photo_click.play()
 	camera_flash()
 	enabled = false
-
+	get_tree().paused = false
+	
 func screen_shot(index:int):
 	await get_tree().process_frame
 	sprite.hide()

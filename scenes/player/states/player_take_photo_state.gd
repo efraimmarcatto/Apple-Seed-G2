@@ -6,7 +6,7 @@ extends State
 @export var animation_tree: AnimationTree
 @export var emoji_sprite: Sprite2D
 
-enum STATES {DEFAULT,START, PHOTO,COLDOWN}
+enum STATES {DEFAULT, START, PHOTO, SKILL_CHECK, COLDOWN}
 var state: STATES = STATES.DEFAULT
 
 # nome do state
@@ -24,9 +24,10 @@ func _on_state_ready() -> void:
 func _on_state_process(_delta : float) -> void:
 	if photograph:
 		if state == STATES.PHOTO and Input.is_action_just_pressed("take_picture"):
+			state = STATES.SKILL_CHECK
 			photograph.take_picture()
-			
-		if state == STATES.PHOTO and not photograph.enabled:
+
+		if state == STATES.SKILL_CHECK and !photograph.enabled:
 			on_state_exit()
 
 # Função chamada a cada frame de física (para lógicas dependentes da física)
@@ -69,7 +70,7 @@ func able_to_take_photo() -> bool:
 	return state == STATES.DEFAULT and Input.is_action_just_pressed("take_picture") and  player.carry_controller and not player.carry_controller.is_carrying()
 
 func on_state_exit() -> void:
-	if state == STATES.PHOTO:
+	if state == STATES.SKILL_CHECK:
 		state = STATES.COLDOWN
 		transition_to("idle")
 		await get_tree().create_timer(0.2).timeout
