@@ -4,11 +4,14 @@ extends Area2D
 @export var character_movement_controller: CharacterMovementController
 @export var walk_behavior: WalkBehavior
 @export var smoke_effect:PackedScene
+@export var audio_see_food: AudioStreamPlayer
+@export var audio_eat_food: AudioStreamPlayer
 
 @export_category("follow")
 @export var delay_emoji: float = 1
 @export var apple_emoji: Sprite2D
 @export var stop_distance: float = 15 # Distância mínima para parar
+
 
 var enabled: bool = true
 var food: Apple
@@ -48,19 +51,24 @@ func bite_food() -> void:
 	if  food and state == STATES.FOLLOW:
 		state = STATES.EAT
 		food.be_bitten()
+	if audio_eat_food:
+		audio_eat_food.play()
 
 func run() -> void:
-	if target:
-		await get_tree().create_timer(0.5).timeout
-		target.call_deferred("queue_free")
-	
+	await get_tree().create_timer(0.5).timeout
+		
 	if smoke_effect and target:
 		var instance_smoke_effect = smoke_effect.instantiate()
 		instance_smoke_effect.global_position = target.global_position
 		target.get_parent().add_child(instance_smoke_effect)
-	
+	if target:
+		target.call_deferred("queue_free")
+		
 
 func show_emoji() -> void:
+	if audio_see_food:
+		audio_see_food.play()
+	
 	state = STATES.EMOJI
 	if apple_emoji:
 		apple_emoji.frame = 0

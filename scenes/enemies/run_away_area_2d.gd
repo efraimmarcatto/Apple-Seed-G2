@@ -6,6 +6,7 @@ extends Area2D
 @export var apple_emoji: Sprite2D
 
 @export var smoke_effect:PackedScene
+@export var audio_angry: AudioStreamPlayer
 
 var enabled: bool = true
 
@@ -21,6 +22,8 @@ func run() -> void:
 	if apple_emoji:
 		apple_emoji.frame = 1
 		apple_emoji.visible = true
+	if audio_angry:
+		audio_angry.play()
 		
 	await get_tree().create_timer(0.5).timeout
 	if apple_emoji:

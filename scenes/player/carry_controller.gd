@@ -5,7 +5,8 @@ class_name CarryController
 @export var player: Player
 @export var character_movement_controller: CharacterMovementController
 @export var carry_arrow:Sprite2D
-
+@export var audio_pick: AudioStreamPlayer
+@export var audio_throw: AudioStreamPlayer
 
 var carrying_collectable: Collectable = null ## item carregado
 var near_collectable: Collectable = null ## coletavel em frente
@@ -37,10 +38,14 @@ func pick_collectable() -> void:
 		near_collectable = null
 		carrying_collectable.carry(player, carry_marker_2d.global_position)
 		
+		if audio_pick:
+			audio_pick.play()
+			
 		if carry_arrow:
 			await get_tree().create_timer(0.15).timeout
 			if carrying_collectable and is_instance_valid(carrying_collectable):
 				carry_arrow.visible = true
+		
 		
 func throw_collectable() -> void:
 	if player.is_on_wall() or player.is_on_ceiling() or player.is_on_floor():
@@ -54,6 +59,9 @@ func throw_collectable() -> void:
 	
 	if carry_arrow:
 		carry_arrow.visible = false
+		
+	if audio_throw:
+		audio_throw.play()
 	
 	# remove a colisão do player com o item temporariamente
 	if player:
@@ -63,11 +71,13 @@ func throw_collectable() -> void:
 	
 func eat_collectable() -> void:
 	if carrying_collectable and is_carrying_food():
-		if carry_arrow:
-			carry_arrow.visible = false
+		hide_arrow()
 		carrying_collectable.parent.be_bitten()
 		carrying_collectable = null
 
+func hide_arrow() -> void:
+	if carry_arrow:
+		carry_arrow.visible = false
 
 func _can_throw_based_on_collisions(throw_dir: Vector2) -> bool:
 	if throw_dir == Vector2.ZERO or not player:

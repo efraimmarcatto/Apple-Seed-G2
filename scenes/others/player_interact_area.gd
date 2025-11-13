@@ -5,7 +5,7 @@ extends Area2D
 
 @export var button_action_name: String = "key_action"
 @export var change_to_level: String
-
+@export var audio: AudioStreamPlayer
 
 signal player_entered
 signal player_exited
@@ -32,6 +32,8 @@ func _on_player_entered(body: Node) -> void:
 	if enabled and body.is_in_group("Player"):
 		player_entered.emit()
 		if show_on_player_enter:
+			if audio:
+				audio.play()
 			player_inside = true
 			show_on_player_enter.visible = true
 		

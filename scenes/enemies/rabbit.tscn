@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjloxy33la46n"]
+[gd_scene load_steps=29 format=3 uid="uid://bjloxy33la46n"]
 
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
 [ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="5_7jhs5"]
 [ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="9_vt2xu"]
 [ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_46i66"]
+[ext_resource type="AudioStream" uid="uid://b575ooyxd5b8" path="res://assets/audio/SFX/SE_barulho_coelho.wav" id="12_ka7i1"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="12_ul5a4"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="12_xgq8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
 size = Vector2(33, 33.5)
@@ -634,7 +637,7 @@ stop_on_collision_area = NodePath("DetectCollisionArea2D")
 [node name="CharacterMovementController" parent="." instance=ExtResource("1_7hee8")]
 speed = 30.0
 
-[node name="EatCollectableController" type="Area2D" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "walk_behavior", "apple_emoji")]
+[node name="EatCollectableController" type="Area2D" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "walk_behavior", "audio_see_food", "audio_eat_food", "apple_emoji")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_o3vpy")
@@ -642,6 +645,8 @@ target = NodePath("..")
 character_movement_controller = NodePath("../CharacterMovementController")
 walk_behavior = NodePath("..")
 smoke_effect = ExtResource("4_h5wks")
+audio_see_food = NodePath("../AudioSeeFood")
+audio_eat_food = NodePath("../AudioEatFood")
 apple_emoji = NodePath("../EmojiSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
@@ -700,7 +705,7 @@ character = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "eat_collectable_controller", "apple_emoji")]
+[node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "eat_collectable_controller", "apple_emoji", "audio_angry")]
 collision_layer = 0
 collision_mask = 18
 script = ExtResource("10_46i66")
@@ -709,9 +714,22 @@ walk_behavior = NodePath("..")
 eat_collectable_controller = NodePath("../EatCollectableController")
 apple_emoji = NodePath("../EmojiSprite")
 smoke_effect = ExtResource("4_h5wks")
+audio_angry = NodePath("../AudioAngry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayArea2D"]
 position = Vector2(0, -55)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_vt2xu")
 debug_color = Color(0.21953282, 0.6157668, 0.49241757, 0.41960785)
+
+[node name="AudioSeeFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ka7i1")
+bus = &"effect"
+
+[node name="AudioEatFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ul5a4")
+bus = &"effect"
+
+[node name="AudioAngry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_xgq8v")
+bus = &"effect"
