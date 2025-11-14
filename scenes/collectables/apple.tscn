@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://w4a0p4t0v6b5"]
+[gd_scene load_steps=13 format=3 uid="uid://w4a0p4t0v6b5"]
 
 [ext_resource type="Script" uid="uid://b0uohj21yjde7" path="res://scenes/collectables/apple.gd" id="1_4bqpx"]
 [ext_resource type="Script" uid="uid://r7vo6c6083il" path="res://scenes/collectables/collectable.gd" id="1_yeb5w"]
 [ext_resource type="Texture2D" uid="uid://cfr8bls7jj8ey" path="res://assets/items/spr_apple_mordida.png" id="2_4bqpx"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_557oj"]
 [ext_resource type="Texture2D" uid="uid://ea8vfo8t0dka" path="res://assets/characters/animals/spr_tucano_sombra.png" id="3_nyf78"]
 [ext_resource type="PackedScene" uid="uid://0up4xbx0n38s" path="res://scenes/collectables/water_wave_effect.tscn" id="4_bbndx"]
 
@@ -72,6 +73,9 @@ _data = {
 collision_layer = 16
 collision_mask = 25
 script = ExtResource("1_4bqpx")
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_557oj")]
+sprite = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)

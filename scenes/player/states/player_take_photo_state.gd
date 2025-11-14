@@ -16,6 +16,9 @@ func get_state_name() -> String:
 func _ready() -> void:
 	if emoji_sprite:
 		emoji_sprite.visible = false
+		
+	if photograph:
+		photograph.photo_finish.connect(on_state_exit)
 
 # Função chamada quando o state estiver pronto
 func _on_state_ready() -> void:
@@ -26,9 +29,6 @@ func _on_state_process(_delta : float) -> void:
 		if state == STATES.PHOTO and Input.is_action_just_pressed("take_picture"):
 			state = STATES.SKILL_CHECK
 			photograph.take_picture()
-
-		if (state == STATES.SKILL_CHECK and !photograph.enabled) or state == STATES.EXIT:
-			on_state_exit()
 
 # Função chamada a cada frame de física (para lógicas dependentes da física)
 func _on_state_physics_process(delta : float) -> void:
@@ -60,6 +60,7 @@ func _on_state_enter(_last_state_name:String) -> void:
 	else:
 		await get_tree().create_timer(1).timeout
 		state = STATES.EXIT
+		on_state_exit()
 		
 # Função chamada ao sair deste estado
 func _on_state_exit() -> void:
@@ -73,11 +74,10 @@ func _on_state_check_transitions(_current_state_name:String, _current_state:Node
 			transition_to(get_state_name())
 
 func able_to_take_photo() -> bool:
-	return state == STATES.DEFAULT and Input.is_action_just_pressed("take_picture") and  player.carry_controller and not player.carry_controller.is_carrying()
+	return state == STATES.DEFAULT and Input.is_action_just_pressed("take_picture") and player and  player.carry_controller and not player.carry_controller.is_carrying()
 
 func on_state_exit() -> void:
-	if state == STATES.SKILL_CHECK or state == STATES.EXIT:
-		state = STATES.COLDOWN
-		transition_to("idle")
-		await get_tree().create_timer(0.2).timeout
-		state = STATES.DEFAULT
+	state = STATES.COLDOWN
+	transition_to("idle")
+	await get_tree().create_timer(0.2).timeout
+	state = STATES.DEFAULT

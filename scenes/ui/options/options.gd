@@ -4,8 +4,6 @@ extends Control
 @onready var option_button: OptionButton = $Layout/MarginContainer/Menu/Resolution/OptionButton
 
 
-
-
 func _ready() -> void:
 	option_button.select(GameManager.settings.get("resolution", 0))
 	music_slider.value = GameManager.settings.get("music", 1)
@@ -26,4 +24,4 @@ func _on_save_pressed() -> void:
 	GameManager.settings["music"] = music_slider.value
 	GameManager.settings["effect"] = effect_slider.value
 	GameManager.save_settings()
-	get_tree().change_scene_to_file("res://scenes/ui/main.tscn")
+	SceneGameManager.change_scene("res://levels/main.tscn")

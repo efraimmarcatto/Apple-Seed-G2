@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjloxy33la46n"]
+[gd_scene load_steps=30 format=3 uid="uid://bjloxy33la46n"]
 
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
 [ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
 [ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="2_2b3ut"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_qo215"]
 [ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="3_46k04"]
 [ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="3_o3vpy"]
 [ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="4_7hee8"]
@@ -633,6 +634,13 @@ script = ExtResource("1_7jhs5")
 target = NodePath(".")
 character_movement_controller = NodePath("CharacterMovementController")
 stop_on_collision_area = NodePath("DetectCollisionArea2D")
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite", "character_movement_controller", "state_machine", "eat_collectable_controller", "run_away_area_2d") instance=ExtResource("2_qo215")]
+sprite = NodePath("../Sprite2D")
+character_movement_controller = NodePath("../CharacterMovementController")
+state_machine = NodePath("../StateMachine")
+eat_collectable_controller = NodePath("../EatCollectableController")
+run_away_area_2d = NodePath("../RunAwayArea2D")
 
 [node name="CharacterMovementController" parent="." instance=ExtResource("1_7hee8")]
 speed = 30.0

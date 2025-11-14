@@ -1,8 +1,9 @@
-[gd_scene load_steps=86 format=3 uid="uid://ca2kh6hi1psb3"]
+[gd_scene load_steps=87 format=3 uid="uid://ca2kh6hi1psb3"]
 
 [ext_resource type="Texture2D" uid="uid://c2uybfw83lgu7" path="res://assets/characters/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bmxyog6s3yfjp" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="2_lvxji"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_yj68g"]
 [ext_resource type="Texture2D" uid="uid://d01qurqsy3qq6" path="res://assets/characters/player_carregando_item.png" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://dbwmheevfhbcc" path="res://scenes/player/carry_controller.gd" id="3_h17s1"]
 [ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="5_p47bc"]
@@ -1308,6 +1309,11 @@ collision_mask = 25
 script = ExtResource("1_dovo2")
 character_movement_controller = NodePath("CharacterMovementController")
 carry_controller = NodePath("CarryController")
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite", "character_movement_controller", "state_machine") instance=ExtResource("2_yj68g")]
+sprite = NodePath("../Sprite2D")
+character_movement_controller = NodePath("../CharacterMovementController")
+state_machine = NodePath("../StateMachine")
 
 [node name="CharacterMovementController" parent="." instance=ExtResource("2_lvxji")]
 speed = 70.0
