@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bxm75abyp111p"
-path="res://.godot/imported/SE_jogar_maca_pedra.wav-b696d71c17181c7026445e4a21a6ece2.sample"
+path="res://.godot/imported/SE_jogar_maca_pedra.wav-a01f7d7c4226efebbd12a53fd94b8f2a.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/SE_jogar_maca_pedra.wav"
-dest_files=["res://.godot/imported/SE_jogar_maca_pedra.wav-b696d71c17181c7026445e4a21a6ece2.sample"]
+source_file="res://assets/audio/sfx/SE_jogar_maca_pedra.wav"
+dest_files=["res://.godot/imported/SE_jogar_maca_pedra.wav-a01f7d7c4226efebbd12a53fd94b8f2a.sample"]
 
 [params]
 

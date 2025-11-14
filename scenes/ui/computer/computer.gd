@@ -9,19 +9,21 @@ extends Control
 @onready var mail_scroll_container: ScrollContainer = $MailApp/Window/Layout/MarginContainer2/MailScrollContainer
 @onready var photos: VBoxContainer = $PhotoApp/Window/Photos
 @onready var loading_files: PopupPanel = $PhotoApp/LoadingFiles
+var photo_frame_button = preload("res://scenes/ui/photo_delete_button/photo_delete_button.tscn")
+
 @onready var app_list: Dictionary= {
-	"photoapp":{"app":photo_app, "button":photo_button, "active_ui":null, "callback":"load_pictures", "close_callback":"clear_photos"}, 
+	"photoapp":{"app":photo_app, "button":photo_button, "active_ui":null, "callback":"load_photos", "close_callback":"clear_photos"}, 
 	"mailapp":{"app":mail_app, "button":mail_button, "active_ui":mail_scroll_container, "callback":"", "close_callback":""}
 	}
 var app_cmd:  Dictionary
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	setup_window(photo_app)
 	setup_window(mail_app)
 	photo_button.grab_focus()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
 	update_time()
 
@@ -96,52 +98,63 @@ func clear_photos():
 		for photo in photo_row.get_children():
 			photo.queue_free()
 
-func load_pictures():
-	var photo_rows = photos.get_children()
-	loading_files.popup()
-	var photo_paths: Array[String] = []
-	var photo_dir = "user://photos/"
-	
-	var dir = DirAccess.open(photo_dir)
+func delete_photo(slot: int):
+	var dir = DirAccess.open(GameManager.photos_dir)
+	var file_path = "%s.png" % [GameManager.photos[slot].get("filename")]
 	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".png"):
-				photo_paths.append(photo_dir.path_join(file_name))
-			file_name = dir.get_next()
-		dir.list_dir_end()
-	else:
-		print("Erro: Não foi possível abrir o diretório ", photo_dir)
-		return
+		if dir.file_exists(file_path):
+			dir.remove(file_path)
+	GameManager.photos.remove_at(slot)
+	clear_photos()
+	load_photos()
 
-	if photo_paths.is_empty():
-		print("Nenhuma foto encontrada.")
-		return
+func load_photos():
+	var photo_rows = photos.get_children()
+	var num_rows : int  = photo_rows.size()
+	
+	if not loading_files.is_visible():
+		loading_files.popup()
 
-	progress_bar.max_value = photo_paths.size()
 	progress_bar.value = 0
 	progress_bar.visible = true
 
-	for i in photo_paths.size():
-		var file_path = photo_paths[i]
+	var photos_to_load = GameManager.photos
 
-		var image = Image.load_from_file(file_path)
-		if image.is_empty():
-			continue
-		var texture = ImageTexture.create_from_image(image)
-
-		var photo_display = TextureRect.new()
-		photo_display.texture = texture
-		var texture_size = photo_display.texture.get_size()
-		photo_display.expand_mode = TextureRect.EXPAND_KEEP_SIZE
-		photo_display.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		if texture_size.y > texture_size.x:
-			photo_display.rotation_degrees = 90
+	if photos_to_load.is_empty() or num_rows == 0:
+		if num_rows == 0 and not photos_to_load.is_empty():
+			print("Erro: Fotos encontradas, mas 'photo_rows' está vazio.")
 		
-		photo_rows[i%photos.get_child_count()].add_child(photo_display)
-		progress_bar.value = i + 1
-		await get_tree().create_timer(0.1).timeout
+		progress_bar.max_value = 100
+		var tween = create_tween().set_trans(Tween.TRANS_SINE)
+		tween.tween_property(progress_bar, "value", 100, 1.0)
+		await tween.finished
+		
+	else:
+		progress_bar.max_value = photos_to_load.size()
+		@warning_ignore("integer_division")
+		var photos_per_row = GameManager.photos_limit / num_rows 
+		for i in photos_to_load.size():
+			var filename = photos_to_load[i].get("filename")
+			var file_path = "user://photos/%s.png" % (filename)
+
+			if not FileAccess.file_exists(file_path):
+				continue
+
+			var image = Image.load_from_file(file_path)
+			if image.is_empty():
+				continue
+			var texture = ImageTexture.create_from_image(image)
+			var photo_display = photo_frame_button.instantiate()
+			photo_display.texture = texture
+			var button = photo_display.get_child(0) as TextureButton
+			button.pressed.connect(delete_photo.bind(i))
+			@warning_ignore("integer_division")
+			var _index = i / photos_per_row
+			var target_row = photo_rows[_index]
+			target_row.add_child(photo_display)
+			
+			progress_bar.value = i + 1
+			await get_tree().create_timer(0.1).timeout
 
 	await get_tree().create_timer(0.5).timeout
 	loading_files.hide()

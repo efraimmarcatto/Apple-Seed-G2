@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://70qyaxn0dpsj"
-path="res://.godot/imported/SE_comendo_maca.mp3-d55158e79b69d8b7742d5e6bcefd7b11.mp3str"
+path="res://.godot/imported/SE_comendo_maca.mp3-66877cef95030e98e79d1b903ab1afec.mp3str"
 
 [deps]
 
-source_file="res://assets/audio/SFX/SE_comendo_maca.mp3"
-dest_files=["res://.godot/imported/SE_comendo_maca.mp3-d55158e79b69d8b7742d5e6bcefd7b11.mp3str"]
+source_file="res://assets/audio/sfx/SE_comendo_maca.mp3"
+dest_files=["res://.godot/imported/SE_comendo_maca.mp3-66877cef95030e98e79d1b903ab1afec.mp3str"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ct1owvfqgy82c"]
 
 [ext_resource type="Texture2D" uid="uid://bt1g84qm3dwqq" path="res://assets/FX/animal_escape_smokeSheet.png" id="1_unosc"]
-[ext_resource type="AudioStream" uid="uid://g7wvjg8t3xsi" path="res://assets/audio/SFX/SE_bicho_correndo.wav" id="2_brp3o"]
+[ext_resource type="AudioStream" uid="uid://g7wvjg8t3xsi" path="res://assets/audio/sfx/SE_bicho_correndo.wav" id="2_brp3o"]
 
 [sub_resource type="Animation" id="Animation_ar41g"]
 length = 0.001

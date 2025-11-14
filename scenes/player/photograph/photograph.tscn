@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bgwea6e3cf36c" path="res://scenes/ui/timing_bar/timing_bar.tscn" id="2_7x3kp"]
 [ext_resource type="Texture2D" uid="uid://jo4v26bpvjbv" path="res://assets/ui/spr_camera_frame.png" id="2_gc026"]
 [ext_resource type="Shader" uid="uid://dhdgvfhfhyen5" path="res://scenes/player/photograph/photograph.gdshader" id="4_70xaf"]
-[ext_resource type="AudioStream" uid="uid://b8qvpb4lhuyhd" path="res://assets/sfx/photo.ogg" id="5_gbtgy"]
+[ext_resource type="AudioStream" uid="uid://b8qvpb4lhuyhd" path="res://assets/audio/sfx/photo.ogg" id="5_gbtgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7x3kp"]
 size = Vector2(50, 30)

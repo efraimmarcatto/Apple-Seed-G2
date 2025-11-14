@@ -16,7 +16,7 @@ func _ready():
 		print("Sinal 'photo_count_updated' não encontrado no GameManager.")
 
 
-	_on_photo_count_updated(0)
+	_on_photo_count_updated(GameManager.photos.size())
 
 
 
@@ -25,10 +25,9 @@ func _on_photo_count_updated(new_count: int):
 	var atlas: AtlasTexture = texture
 	if not atlas:
 		return
-		
 
 	new_count = clamp(new_count, 0, GameManager.photos_limit)
-	
+
 	var current_region: Rect2 = atlas.region
 	if new_count > 0:
 		current_region.position.x = 160

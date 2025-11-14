@@ -18,10 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bv5k6hqoqv60a" path="res://assets/ui/spr_linha_jogar_maca.png" id="13_ugbui"]
 [ext_resource type="PackedScene" uid="uid://uspx1glff2k5" path="res://scenes/player/photograph/photograph.tscn" id="14_ugbui"]
 [ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="15_fcs02"]
-[ext_resource type="AudioStream" uid="uid://drjkffyhdm686" path="res://assets/audio/SFX/SE_confirmar.wav" id="18_uf5tr"]
-[ext_resource type="AudioStream" uid="uid://bxm75abyp111p" path="res://assets/audio/SFX/SE_jogar_maca_pedra.wav" id="19_lgqa7"]
-[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="20_8ydkj"]
-[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="21_3j4b4"]
+[ext_resource type="AudioStream" uid="uid://drjkffyhdm686" path="res://assets/audio/sfx/SE_confirmar.wav" id="18_uf5tr"]
+[ext_resource type="AudioStream" uid="uid://bxm75abyp111p" path="res://assets/audio/sfx/SE_jogar_maca_pedra.wav" id="19_lgqa7"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/sfx/SE_comendo_maca.mp3" id="20_8ydkj"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/sfx/SE_bicho_naogosta.wav" id="21_3j4b4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17s1"]
 size = Vector2(10, 4.5)
