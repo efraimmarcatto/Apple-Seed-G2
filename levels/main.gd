@@ -13,7 +13,7 @@ func _quit() -> void:
 
 
 func _start_game() -> void:
-	SceneGameManager.change_scene("res://levels/game.tscn")
+	SceneGameManager.change_scene("res://levels/cabam_level.tscn")
 
 
 func _on_options_button_pressed() -> void:

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cj4q38m366ttp"
-path="res://.godot/imported/SE_barulho_tucano.wav-98dd3cf9940927a8caf9a36c8224ef70.sample"
+path="res://.godot/imported/SE_barulho_tucano.wav-c2c699fd20cfb3f31ea869eaa2fd8c25.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_barulho_tucano.wav"
-dest_files=["res://.godot/imported/SE_barulho_tucano.wav-98dd3cf9940927a8caf9a36c8224ef70.sample"]
+source_file="res://assets/audio/SFX/SE_barulho_tucano.wav"
+dest_files=["res://.godot/imported/SE_barulho_tucano.wav-c2c699fd20cfb3f31ea869eaa2fd8c25.sample"]
 
 [params]
 

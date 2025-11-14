@@ -46,13 +46,35 @@ func run() -> void:
 	target.call_deferred("queue_free")
 
 func _on_body_entered(body: Node) -> void:
-	if enabled and (body.is_in_group("Stone") or body.is_in_group("Player")):
+	if enabled and (body.is_in_group("Stone") or body.is_in_group("Player") or (not eat_collectable_controller and body.is_in_group("Food"))):
+		
+		var from = target.global_position
+		var to = body.global_position
+		
+		var space_state := target.get_world_2d().direct_space_state
+		
+		# O ray usa exatamente o mesmo collision_mask do target
+		var params := PhysicsRayQueryParameters2D.new()
+		params.from = from
+		params.to = to
+		params.exclude = [target]               # ignora o player
+		params.collision_mask = target.collision_mask
+		
+		var result := space_state.intersect_ray(params)
+		
+		# Se bateu em algo e não é a própria comida → OBSTÁCULO, ignora
+		if result and result.collider != body:
+			# DEBUG opcional
+			#print("Obstáculo detectado entre player e comida:", result.collider)
+			return
+		
 		if body.is_in_group("Stone"):
 			var collectable:Collectable = ComponentHelper.get_first_of_type_by_classname(body, Collectable)
 			if not collectable or collectable.state != collectable.STATES.THROWN:
 				return
-				
 		if eat_collectable_controller and eat_collectable_controller.state == eat_collectable_controller.STATES.DEFAULT:
+			run()
+		elif not eat_collectable_controller:
 			run()
 
 func enable() -> void:

@@ -34,18 +34,14 @@ func _on_state_next_transitions() -> void:
 # Função chamada ao entrar neste estado
 func _on_state_enter(_last_state_name:String) -> void:
 	if character_movement_controller and animation_player:
-		if character_movement_controller.last_movement_direction.y > 0:
-			if animation_player.has_animation(animation_name_down):
-				animation_player.play(animation_name_down)
-		elif character_movement_controller.last_movement_direction.y < 0:
-			if animation_player.has_animation(animation_name_up):
-				animation_player.play(animation_name_up)
-		elif character_movement_controller.last_movement_direction.x < 0:
-			if animation_player.has_animation(animation_name_left):
-				animation_player.play(animation_name_left)
-		elif character_movement_controller.last_movement_direction.x > 0:
-			if animation_player.has_animation(animation_name_right):
-				animation_player.play(animation_name_right)
+		if character_movement_controller.last_movement_direction.y > 0 and animation_player and animation_player.has_animation(animation_name_down):
+			animation_player.play(animation_name_down)
+		elif character_movement_controller.last_movement_direction.y < 0 and animation_player and animation_player.has_animation(animation_name_up):
+			animation_player.play(animation_name_up)
+		elif character_movement_controller.last_movement_direction.x > 0 and animation_player and animation_player.has_animation(animation_name_right):
+			animation_player.play(animation_name_right)
+		elif character_movement_controller.last_movement_direction.x < 0 and animation_player and animation_player.has_animation(animation_name_left):
+			animation_player.play(animation_name_left)
 	
 # Função chamada ao sair deste estado
 func _on_state_exit() -> void:

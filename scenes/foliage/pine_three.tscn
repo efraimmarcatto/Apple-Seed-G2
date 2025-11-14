@@ -9,7 +9,7 @@ radius = 7.071068
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgelf"]
 radius = 13.038404
 
-[node name="PineThree" type="StaticBody2D"]
+[node name="PineThree" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dvokiryottgwp"
-path="res://.godot/imported/SE_ligando_computador.wav-0c025be0fe54d0c22596e21cdec3f32e.sample"
+path="res://.godot/imported/SE_ligando_computador.wav-69b487e927ffef4c290ff224068c37fd.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_ligando_computador.wav"
-dest_files=["res://.godot/imported/SE_ligando_computador.wav-0c025be0fe54d0c22596e21cdec3f32e.sample"]
+source_file="res://assets/audio/SFX/SE_ligando_computador.wav"
+dest_files=["res://.godot/imported/SE_ligando_computador.wav-69b487e927ffef4c290ff224068c37fd.sample"]
 
 [params]
 

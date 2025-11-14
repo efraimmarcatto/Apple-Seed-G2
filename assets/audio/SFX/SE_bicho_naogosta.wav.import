@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bh7ceqiqv23vl"
-path="res://.godot/imported/SE_bicho_naogosta.wav-4a0572124d12a95ae4c376eb061f3ece.sample"
+path="res://.godot/imported/SE_bicho_naogosta.wav-8108683d7d4e39208c42014b0f981b8e.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_bicho_naogosta.wav"
-dest_files=["res://.godot/imported/SE_bicho_naogosta.wav-4a0572124d12a95ae4c376eb061f3ece.sample"]
+source_file="res://assets/audio/SFX/SE_bicho_naogosta.wav"
+dest_files=["res://.godot/imported/SE_bicho_naogosta.wav-8108683d7d4e39208c42014b0f981b8e.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://igdfk6v2r1a7"
-path="res://.godot/imported/SE_deletando_foto.wav-875db0b2e8fd205fc3bc3ef27f6eaa9f.sample"
+path="res://.godot/imported/SE_deletando_foto.wav-56b8a218893c6957fc79c8e7add7a92a.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_deletando_foto.wav"
-dest_files=["res://.godot/imported/SE_deletando_foto.wav-875db0b2e8fd205fc3bc3ef27f6eaa9f.sample"]
+source_file="res://assets/audio/SFX/SE_deletando_foto.wav"
+dest_files=["res://.godot/imported/SE_deletando_foto.wav-56b8a218893c6957fc79c8e7add7a92a.sample"]
 
 [params]
 

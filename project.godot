@@ -43,6 +43,7 @@ Player=""
 Stone=""
 Water=""
 Main=""
+navigation_polygon_source_geometry_group=""
 
 [input]
 

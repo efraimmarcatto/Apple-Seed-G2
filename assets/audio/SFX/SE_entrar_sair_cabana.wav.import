@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://64ac37o0pxxy"
-path="res://.godot/imported/SE_entrar_sair_cabana.wav-3bd972b54dde527843aa02b9ac6a1824.sample"
+path="res://.godot/imported/SE_entrar_sair_cabana.wav-97460cd4473539d605a8fd077f234bbe.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_entrar_sair_cabana.wav"
-dest_files=["res://.godot/imported/SE_entrar_sair_cabana.wav-3bd972b54dde527843aa02b9ac6a1824.sample"]
+source_file="res://assets/audio/SFX/SE_entrar_sair_cabana.wav"
+dest_files=["res://.godot/imported/SE_entrar_sair_cabana.wav-97460cd4473539d605a8fd077f234bbe.sample"]
 
 [params]
 

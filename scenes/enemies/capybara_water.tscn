@@ -1,23 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjloxy33la46n"]
+[gd_scene load_steps=27 format=3 uid="uid://c58hjmhty0mig"]
 
-[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="1_7hee8"]
-[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_7jhs5"]
-[ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="2_2b3ut"]
-[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_qo215"]
-[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="3_46k04"]
-[ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="3_o3vpy"]
-[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="4_7hee8"]
-[ext_resource type="PackedScene" uid="uid://ct1owvfqgy82c" path="res://scenes/enemies/smoke.tscn" id="4_h5wks"]
-[ext_resource type="Texture2D" uid="uid://cflkeetwdqpgu" path="res://assets/characters/animals/spr_rabbit_spritesheet_completo.png" id="4_o3vpy"]
-[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="5_7jhs5"]
-[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="9_vt2xu"]
-[ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_46i66"]
-[ext_resource type="AudioStream" uid="uid://b575ooyxd5b8" path="res://assets/audio/SFX/SE_barulho_coelho.wav" id="12_ka7i1"]
-[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="12_ul5a4"]
-[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="12_xgq8v"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
-size = Vector2(54, 38.75)
+[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_5b8dg"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_i1eu7"]
+[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="3_e50gi"]
+[ext_resource type="Texture2D" uid="uid://c2qxtexm7c7u1" path="res://assets/characters/animals/spr_animal_capivara_agua_completo.png" id="4_5y8es"]
+[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="8_xinjs"]
+[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="9_omluv"]
+[ext_resource type="PackedScene" uid="uid://0up4xbx0n38s" path="res://scenes/collectables/water_wave_effect.tscn" id="10_5y8es"]
+[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="10_wff5e"]
+[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="11_oe7po"]
+[ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="12_nstsn"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="13_4mwig"]
+[ext_resource type="AudioStream" uid="uid://bnf4itg2lndxw" path="res://assets/audio/SFX/SE_barulho_capivara.wav" id="14_dewmb"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="15_ss31q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmsl5"]
 radius = 2.0
@@ -43,46 +38,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -17)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(0, -55)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -55)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -108,46 +91,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 17)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 55)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 55)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -185,34 +156,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-17, 0)]
+"values": [Vector2(-55, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-55, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -250,34 +209,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17, 0)]
+"values": [Vector2(55, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(55, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -290,58 +237,46 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -17)]
+"update": 1,
+"values": [8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, -55)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -55)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -368,46 +303,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 17)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 55)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 55)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -446,34 +369,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-17, 0)]
+"values": [Vector2(-55, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-55, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -500,46 +411,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(17, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(55, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(55, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -578,34 +477,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EatCollectableController/CollisionShape2D:position")
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -17)]
+"values": [Vector2(0, -55)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -55)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -626,43 +513,24 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2xu"]
-size = Vector2(5, 118.5)
+size = Vector2(6, 118.5)
 
-[node name="Rabbit" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
+[node name="CapybaraWater" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
 collision_layer = 8
-collision_mask = 33
-script = ExtResource("1_7jhs5")
+script = ExtResource("1_5b8dg")
 target = NodePath(".")
 character_movement_controller = NodePath("CharacterMovementController")
 stop_on_collision_area = NodePath("DetectCollisionArea2D")
 
-[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite", "character_movement_controller", "state_machine", "eat_collectable_controller", "run_away_area_2d") instance=ExtResource("2_qo215")]
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite", "character_movement_controller", "state_machine", "eat_collectable_controller", "run_away_area_2d") instance=ExtResource("2_i1eu7")]
 sprite = NodePath("../Sprite2D")
 character_movement_controller = NodePath("../CharacterMovementController")
 state_machine = NodePath("../StateMachine")
-eat_collectable_controller = NodePath("../EatCollectableController")
+eat_collectable_controller = NodePath("")
 run_away_area_2d = NodePath("../RunAwayArea2D")
 
-[node name="CharacterMovementController" parent="." instance=ExtResource("1_7hee8")]
+[node name="CharacterMovementController" parent="." instance=ExtResource("3_e50gi")]
 speed = 30.0
-
-[node name="EatCollectableController" type="Area2D" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "walk_behavior", "audio_see_food", "audio_eat_food", "apple_emoji", "navigation_agent")]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("3_o3vpy")
-target = NodePath("..")
-character_movement_controller = NodePath("../CharacterMovementController")
-walk_behavior = NodePath("..")
-smoke_effect = ExtResource("4_h5wks")
-audio_see_food = NodePath("../AudioSeeFood")
-audio_eat_food = NodePath("../AudioEatFood")
-apple_emoji = NodePath("../EmojiSprite")
-navigation_agent = NodePath("../NavigationAgent2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
-position = Vector2(0, -17)
-shape = SubResource("RectangleShape2D_o3vpy")
-debug_color = Color(0.9529412, 0, 0.5686275, 0.1882353)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 rotation = 1.5707964
@@ -678,20 +546,16 @@ shape = SubResource("RectangleShape2D_7jhs5")
 debug_color = Color(0.62527704, 0.5324054, 5.7756904e-07, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-texture = ExtResource("4_o3vpy")
+position = Vector2(0, -5)
+texture = ExtResource("4_5y8es")
 flip_h = true
 hframes = 4
 vframes = 3
 
-[node name="ShadowSprite2D" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("2_2b3ut")
-
 [node name="EmojiSprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(10, -22)
-texture = ExtResource("9_vt2xu")
+texture = ExtResource("8_xinjs")
 hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -700,30 +564,29 @@ libraries = {
 }
 autoplay = "idle_down"
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_46k04")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_omluv")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
-script = ExtResource("4_7hee8")
+script = ExtResource("10_wff5e")
 character = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
-script = ExtResource("5_7jhs5")
+script = ExtResource("11_oe7po")
 character = NodePath("../..")
 character_movement_controller = NodePath("../../CharacterMovementController")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "eat_collectable_controller", "apple_emoji", "audio_angry")]
+[node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "apple_emoji", "audio_angry")]
 collision_layer = 0
 collision_mask = 18
-script = ExtResource("10_46i66")
+script = ExtResource("12_nstsn")
 target = NodePath("..")
 walk_behavior = NodePath("..")
-eat_collectable_controller = NodePath("../EatCollectableController")
 apple_emoji = NodePath("../EmojiSprite")
-smoke_effect = ExtResource("4_h5wks")
+smoke_effect = ExtResource("10_5y8es")
 audio_angry = NodePath("../AudioAngry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayArea2D"]
@@ -732,16 +595,14 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_vt2xu")
 debug_color = Color(0.21953282, 0.6157668, 0.49241757, 0.41960785)
 
-[node name="AudioSeeFood" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_ka7i1")
+[node name="AudioEatFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_4mwig")
 bus = &"effect"
 
-[node name="AudioEatFood" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_ul5a4")
+[node name="AudioSeeFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_dewmb")
 bus = &"effect"
 
 [node name="AudioAngry" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_xgq8v")
+stream = ExtResource("15_ss31q")
 bus = &"effect"
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
