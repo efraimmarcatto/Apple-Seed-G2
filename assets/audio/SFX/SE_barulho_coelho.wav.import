@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b575ooyxd5b8"
-path="res://.godot/imported/SE_barulho_coelho.wav-e7067d4fb9b3d24ee98bb24d4e14c0d9.sample"
+path="res://.godot/imported/SE_barulho_coelho.wav-ae9e9a4f087ab74b30a97f7f7b668e19.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/SE_barulho_coelho.wav"
-dest_files=["res://.godot/imported/SE_barulho_coelho.wav-e7067d4fb9b3d24ee98bb24d4e14c0d9.sample"]
+source_file="res://assets/audio/sfx/SE_barulho_coelho.wav"
+dest_files=["res://.godot/imported/SE_barulho_coelho.wav-ae9e9a4f087ab74b30a97f7f7b668e19.sample"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0up4xbx0n38s"]
 
 [ext_resource type="Texture2D" uid="uid://vivw1421akyd" path="res://assets/FX/agua_splash_animacao.png" id="1_k30fl"]
-[ext_resource type="AudioStream" uid="uid://cmipstl4uc1np" path="res://assets/audio/SFX/SE_maca_pedra_caindonagua.wav" id="2_6eiww"]
+[ext_resource type="AudioStream" uid="uid://cmipstl4uc1np" path="res://assets/audio/sfx/SE_maca_pedra_caindonagua.wav" id="2_6eiww"]
 
 [sub_resource type="Animation" id="Animation_hg2wp"]
 length = 0.001

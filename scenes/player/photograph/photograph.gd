@@ -72,15 +72,13 @@ func take_picture():
 	skill_check = true
 	var items: Array = []
 	var total = 0
-	for item in area.get_overlapping_bodies():
-		var points = GameManager.animals.get(item.name.to_lower(), 0)
-		items.append({"item_name":item.name,"points":points})
-		total += points
-	
+	#PONTOS AQUI
 	result["total"] = total
 	result["items"] = items
 	result["time"] = GameManager.get_time()
-	screen_shot(slot)
+	var filename = await screen_shot()
+	result["filename"] = filename
+		
 	get_tree().paused = true
 
 
@@ -88,38 +86,41 @@ func save_photo(focus_accuracy: float):
 	timing_bar.hide()
 	if "total" in result:
 		result["total"] *=  focus_accuracy / 100
-	if len(GameManager.photos) < GameManager.photos_limit:
+	if GameManager.photos.size() <= GameManager.photos_limit:
 		GameManager.photos.append(result)
 		GameManager.photo_count_updated.emit(slot)
 		GameManager.photo_slot = wrapi(slot + 1, 1, GameManager.photos_limit + 1)
+		result = {}
 	hide()
 	photo_click.play()
 	camera_flash()
 	photo_finish.emit()
 	get_tree().paused = false
 	
-func screen_shot(index:int):
-	await get_tree().process_frame
+func screen_shot() -> String:
 	sprite.hide()
+	await get_tree().process_frame
+
 	var full_image: Image = get_viewport().get_texture().get_image()
 
 	if not full_image:
-		return
+		return ""
 
 	var cropped_image: Image = full_image.get_region(Rect2i(capture_rect))
 
 	if not cropped_image or cropped_image.is_empty():
-		return
-	var file_path = "user://photos/photo_%02d.png" % [index]
+		return ""
+	var filename = str(Time.get_unix_time_from_system()).replace(".","")
+	var file_path = GameManager.photos_dir + "/%s.png" % [filename]
 	if cropped_image.get_size().y > cropped_image.get_size().x:
 		cropped_image.rotate_90(CLOCKWISE)
 	var err = cropped_image.save_png(file_path)
 
 	if err != OK:
 		print("Erro ao salvar a foto PNG: ", err)
-	else:
-		print("Foto CORTADA (PNG) salva com sucesso em: ", file_path)
+
 	sprite.show()
+	return filename
 
 func cancel_photo():
 	move = false
@@ -129,7 +130,7 @@ func cancel_photo():
 	
 	timing_bar.cancel_check() 
 	skill_check = false
-	result = {} # Limpa os dados da foto
+	result = {}
 	photo_finish.emit()
 
 

@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 			parent.get_parent().add_child(instance_water_effect)
 		
 		destroy()
-		
+
 
 func is_carryble() -> bool:
 	return state == STATES.DEFAULT
@@ -51,7 +51,7 @@ func carry(new_parent:Node2D, new_position:Vector2) -> void:
 		collision_shape_2d.disabled = true
 	if parent:
 		set_carry_position(new_position)
-		parent.reparent(new_parent,true)
+		parent.reparent(new_parent, true)
 
 func set_carry_position(new_position:Vector2) -> void:
 	if parent:
@@ -62,7 +62,7 @@ func throw(direction: Vector2 = Vector2.RIGHT) -> void:
 	throw_direction = direction
 	if parent:
 		await get_tree().create_timer(0.05).timeout
-		parent.reparent(root_tree,true)
+		parent.reparent(root_tree, true)
 	if collision_shape_2d:
 		collision_shape_2d.disabled = false
 		

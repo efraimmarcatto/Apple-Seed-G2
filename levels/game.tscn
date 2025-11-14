@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dp1dukuogmd0g"]
+[gd_scene load_steps=31 format=4 uid="uid://dp1dukuogmd0g"]
 
 [ext_resource type="TileSet" uid="uid://dxgnul2aquoni" path="res://assets/tileset/tileset.tres" id="1_748nt"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="1_od3m6"]
@@ -21,8 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://dowttairyqx0d" path="res://scenes/enemies/capybara.tscn" id="17_ol2u7"]
 [ext_resource type="Texture2D" uid="uid://biyup0814c6sg" path="res://assets/tiles & props/spr_tile_agua_pequena.png" id="18_si8kf"]
 [ext_resource type="PackedScene" uid="uid://cngvswahsiho2" path="res://scenes/others/player_interact_area.tscn" id="19_fbo34"]
+[ext_resource type="PackedScene" uid="uid://djywjggcwg34l" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="20_mgpep"]
 [ext_resource type="PackedScene" uid="uid://cckvunw0qvsee" path="res://scenes/others/icon_exclamation.tscn" id="21_tkgql"]
-[ext_resource type="AudioStream" uid="uid://ygcq70cyn208" path="res://assets/audio/BGM/BGM_Titulo_mp3.mp3" id="22_si8kf"]
+[ext_resource type="AudioStream" uid="uid://ygcq70cyn208" path="res://assets/audio/bgm/BGM_Titulo_mp3.mp3" id="22_si8kf"]
 
 [sub_resource type="Resource" id="Resource_ol2u7"]
 script = ExtResource("15_ol2u7")
@@ -552,6 +553,9 @@ anchor_right = 1.0
 offset_left = -32.0
 offset_right = 0.0
 grow_horizontal = 0
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("20_mgpep")]
+visible = false
 
 [node name="Capybara" parent="." instance=ExtResource("17_ol2u7")]
 position = Vector2(48, 132)

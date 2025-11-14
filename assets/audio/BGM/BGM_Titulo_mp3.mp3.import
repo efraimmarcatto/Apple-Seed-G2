@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ygcq70cyn208"
-path="res://.godot/imported/BGM_Titulo_mp3.mp3-4ab6e9be8dda9061d289fa9a4cb65654.mp3str"
+path="res://.godot/imported/BGM_Titulo_mp3.mp3-ef4d914eec272ccc67f0634f0ecebdd7.mp3str"
 
 [deps]
 
-source_file="res://assets/audio/BGM/BGM_Titulo_mp3.mp3"
-dest_files=["res://.godot/imported/BGM_Titulo_mp3.mp3-4ab6e9be8dda9061d289fa9a4cb65654.mp3str"]
+source_file="res://assets/audio/bgm/BGM_Titulo_mp3.mp3"
+dest_files=["res://.godot/imported/BGM_Titulo_mp3.mp3-ef4d914eec272ccc67f0634f0ecebdd7.mp3str"]
 
 [params]
 

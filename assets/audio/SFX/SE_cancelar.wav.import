@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://y7talv0mupt6"
-path="res://.godot/imported/SE_cancelar.wav-6b7efe02e67337069616ef13659f5796.sample"
+path="res://.godot/imported/SE_cancelar.wav-b8cc7a1951b2b27430caf905c568e5ce.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/SE_cancelar.wav"
-dest_files=["res://.godot/imported/SE_cancelar.wav-6b7efe02e67337069616ef13659f5796.sample"]
+source_file="res://assets/audio/sfx/SE_cancelar.wav"
+dest_files=["res://.godot/imported/SE_cancelar.wav-b8cc7a1951b2b27430caf905c568e5ce.sample"]
 
 [params]
 
