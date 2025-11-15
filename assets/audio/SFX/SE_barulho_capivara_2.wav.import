@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dxalhjtk42wbt"
-path="res://.godot/imported/SE_barulho_capivara_2.wav-1613f4e1b972e1e9fbd843dfebcaf8c6.sample"
+path="res://.godot/imported/SE_barulho_capivara_2.wav-b811a1a276be541c80677629de47f1e1.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/SE_barulho_capivara_2.wav"
-dest_files=["res://.godot/imported/SE_barulho_capivara_2.wav-1613f4e1b972e1e9fbd843dfebcaf8c6.sample"]
+source_file="res://assets/audio/sfx/SE_barulho_capivara_2.wav"
+dest_files=["res://.godot/imported/SE_barulho_capivara_2.wav-b811a1a276be541c80677629de47f1e1.sample"]
 
 [params]
 

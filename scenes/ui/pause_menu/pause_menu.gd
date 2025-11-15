@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	GameManager.set_game_pause.connect(set_visibility)
+	hide()
 	if OS.get_name().to_lower() == "web":
 		quit_button.hide()
 

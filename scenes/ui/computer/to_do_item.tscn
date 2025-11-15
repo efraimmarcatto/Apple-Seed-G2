@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3mektrcdnph4"]
+
+[ext_resource type="Script" uid="uid://dev0vexgjjq63" path="res://scenes/ui/computer/to_do_item.gd" id="1_hvyek"]
+[ext_resource type="FontFile" uid="uid://b7fkt6ixsvbgw" path="res://assets/ui/fonts/04B_03__/04B_03__.TTF" id="2_hvyek"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xke7j"]
+load_path = "res://.godot/imported/spr_email_checkbox-Sheet.png-e4fa776a6166f923ba38ac3095d62080.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvyek"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_xke7j")
+region = Rect2(0, 0, 11, 15)
+
+[node name="ToDoItem" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_override_constants/separation = 3
+script = ExtResource("1_hvyek")
+
+[node name="Checkbox" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hvyek")
+
+[node name="Message" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_hvyek")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Capyba"
+vertical_alignment = 1

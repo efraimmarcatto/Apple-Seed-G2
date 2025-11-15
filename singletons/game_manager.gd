@@ -9,6 +9,66 @@ var photos_limit: int = 8
 var album: Dictionary = {}
 var photo_slot: int = 1
 var pause: bool = false
+var goals: Array[Dictionary] =[{
+		"msg": "A clear shot of a Capybara.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "We need a colorful Tucan.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "Find one of the local Rabbits.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "A Capybara during its meal.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "A Tucan while it's eating.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "Catch a Rabbit snacking.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "A grumpy local (an angry animal).",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "An animal eyeing some food.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "A shot of your base camp.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "The food source.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "Two animals in one frame.",
+		"done": false,
+		"secret": false
+	},
+	{
+		"msg": "Your workstation out in the wild.",
+		"done": false,
+		"secret": true
+	}]
 var animals: Dictionary = {"tucano":10, "capivara":20, "borboleta":30, "coelho":10}
 signal photo_count_updated(value)  # noqa: UNUSED_SIGNAL (ignorado de propósito)
 signal set_game_pause(value)
