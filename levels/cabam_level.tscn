@@ -94,3 +94,4 @@ position = Vector2(160, 348)
 stream = ExtResource("6_btywn")
 autoplay = true
 bus = &"music"
+parameters/looping = false

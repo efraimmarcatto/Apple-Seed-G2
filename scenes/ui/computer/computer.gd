@@ -91,7 +91,7 @@ func _on_close_app_pressed(app_key: String) -> void:
 
 
 func _on_power_button_pressed() -> void:
-	GameManager.change_scene("res://levels/game.tscn")
+	SceneGameManager.change_scene("res://levels/cabam_level.tscn")
 
 func clear_photos():
 	for photo_row in photos.get_children():

@@ -24,7 +24,6 @@ func _ready() -> void:
 	collision.disabled = true
 	hide()
 
-
 func _physics_process(_delta: float) -> void:
 	if !move:
 		linear_velocity = Vector2.ZERO 

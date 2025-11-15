@@ -15,6 +15,9 @@ signal set_game_pause(value)
 
 
 func load_settings():
+	if !DirAccess.dir_exists_absolute(photos_dir):
+		DirAccess.make_dir_recursive_absolute(photos_dir)
+		
 	if !FileAccess.file_exists(settings_file):
 		settings["resolution"] = 0
 		settings["music"] = 1
@@ -27,23 +30,18 @@ func load_settings():
 		var file = FileAccess.open(settings_file, FileAccess.READ)
 		settings = file.get_var()
 		file.close()
-	if !DirAccess.dir_exists_absolute(photos_dir):
-		DirAccess.make_dir_recursive_absolute(photos_dir)
+		
 func save_settings():
 	var file = FileAccess.open(settings_file, FileAccess.WRITE)
 	file.store_var(settings)
 	file.close()
 
-
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_settings()
 
-
 func get_time():
 	return Time.get_unix_time_from_system()
-
 
 func emit_photo_count_updated() -> void:
 	photo_count_updated.emit()

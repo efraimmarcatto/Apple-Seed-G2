@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Lost in Nature"
+config/name="AppleSnap"
 run/main_scene="uid://njvv5q3pfje0"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://drv3ejwdvxfey"
-config/icon="res://icon.svg"
+config/icon="uid://btfq6xyyx5l1k"
 
 [autoload]
 
