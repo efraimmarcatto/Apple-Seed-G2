@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2xxw67sodjgd"]
+[gd_scene load_steps=19 format=3 uid="uid://c2xxw67sodjgd"]
 
 [ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="1_0vh43"]
 [ext_resource type="Theme" uid="uid://dmvblj4biu2l0" path="res://scenes/ui/theme.tres" id="1_1k3wi"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://l8xaf0cnl5ny" path="res://assets/ui/radio_unchecked_icon.png" id="3_gmey6"]
 [ext_resource type="Texture2D" uid="uid://435p2elepe43" path="res://assets/ui/spr_title_background.png" id="4_dyaj2"]
 [ext_resource type="FontFile" uid="uid://c2oui1amqd6jm" path="res://assets/ui/fonts/ari_w9500/ari-w9500-bold.ttf" id="7_80uhc"]
+[ext_resource type="AudioStream" uid="uid://ygcq70cyn208" path="res://assets/audio/BGM/BGM_Titulo_mp3.mp3" id="11_dyaj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7kxxk"]
 shader = ExtResource("3_80uhc")
@@ -194,6 +195,12 @@ alignment = 1
 [node name="Save" type="Button" parent="Layout/Buttons"]
 layout_mode = 2
 text = " Save "
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_dyaj2")
+autoplay = true
+bus = &"music"
+parameters/looping = false
 
 [connection signal="value_changed" from="Layout/MarginContainer/Menu/MusicVolume/MusicSlider" to="." method="change_volume" binds= ["music"]]
 [connection signal="value_changed" from="Layout/MarginContainer/Menu/EffectVolume/EffectSlider" to="." method="change_volume" binds= ["effect"]]

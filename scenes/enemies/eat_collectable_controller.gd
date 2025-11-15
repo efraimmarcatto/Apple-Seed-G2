@@ -40,17 +40,19 @@ func _physics_process(_delta: float) -> void:
 	follow_food()
 
 func follow_food() -> void:
+	if state == STATES.EMOJI and not food:
+		run()
+		
 	if not target or not food or state != STATES.FOLLOW:
 		return
+	
 	if is_instance_valid(food):
 		
 		if state != STATES.FOLLOW_PLAYER and collectable and collectable.state == collectable.STATES.CARRIED:
 			state = STATES.FOLLOW_PLAYER
 			run()
 			# caso for querer que ele siga o player
-			
-			
-		
+				
 		if not navigation_agent:
 			return follow_food_simple()  # fallback
 		
@@ -73,11 +75,12 @@ func follow_food() -> void:
 		if character_movement_controller and character_movement_controller.has_method("set_movement_direction"):
 			character_movement_controller.set_movement_direction(direction)
 
-
 # Método antigo, caso não exista NavigationAgent
-func follow_food_simple() -> void:
+func follow_food_simple() -> void:		
 	if not target or not food:
 		return
+		
+		
 	var direction = (food.global_position - target.global_position)
 	var distance = direction.length()
 
@@ -97,7 +100,7 @@ func bite_food() -> void:
 		audio_eat_food.play()
 
 func run() -> void:
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5, false).timeout
 		
 	if smoke_effect and target:
 		var instance_smoke_effect = smoke_effect.instantiate()
@@ -116,7 +119,7 @@ func show_emoji() -> void:
 	if apple_emoji:
 		apple_emoji.frame = 0
 		apple_emoji.visible = true
-	await get_tree().create_timer(delay_emoji).timeout
+	await get_tree().create_timer(delay_emoji,false).timeout
 	state = STATES.FOLLOW
 	if apple_emoji:
 		apple_emoji.visible = false

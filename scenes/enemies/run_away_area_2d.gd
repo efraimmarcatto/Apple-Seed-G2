@@ -32,7 +32,7 @@ func run() -> void:
 	
 	state = STATES.EMOJI
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1, false).timeout
 	if apple_emoji:
 		apple_emoji.visible = false
 	
