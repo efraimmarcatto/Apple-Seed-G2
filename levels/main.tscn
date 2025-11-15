@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://435p2elepe43" path="res://assets/ui/spr_title_background.png" id="2_5k4jt"]
 [ext_resource type="Texture2D" uid="uid://bt757xos6ma3q" path="res://assets/ui/spr_game_logo.png" id="3_5k4jt"]
 [ext_resource type="Shader" uid="uid://bdwg0qiq74ywp" path="res://scenes/ui/move_down.gdshader" id="3_qy63d"]
-[ext_resource type="AudioStream" uid="uid://ygcq70cyn208" path="res://assets/audio/bgm/BGM_Titulo_mp3.mp3" id="6_5k4jt"]
+[ext_resource type="AudioStream" uid="uid://ygcq70cyn208" path="res://assets/audio/BGM/BGM_Titulo_mp3.mp3" id="6_5k4jt"]
 [ext_resource type="Texture2D" uid="uid://degmqhl6jwors" path="res://assets/ui/spr_title_gamejam_name.png" id="6_qy63d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6et1j"]
@@ -128,6 +128,7 @@ meta_underlined = false
 stream = ExtResource("6_5k4jt")
 autoplay = true
 bus = &"music"
+parameters/looping = false
 
 [connection signal="pressed" from="Container/Menu/StartButton" to="." method="_start_game"]
 [connection signal="pressed" from="Container/Menu/OptionsButton" to="." method="_on_options_button_pressed"]

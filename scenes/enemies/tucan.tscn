@@ -1,0 +1,317 @@
+[gd_scene load_steps=24 format=3 uid="uid://bru8orj4xq4t0"]
+
+[ext_resource type="Script" uid="uid://djw27n1pgsvto" path="res://addons/fast_prototype/components/movement/walk_behavior.gd" id="1_qdu22"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="2_ic8il"]
+[ext_resource type="PackedScene" uid="uid://psah3pltbft7" path="res://addons/fast_prototype/components/movement/character_movement_controller.tscn" id="3_21gt2"]
+[ext_resource type="Script" uid="uid://dxclb5v4pchrg" path="res://scenes/enemies/eat_collectable_controller.gd" id="4_qd6jo"]
+[ext_resource type="PackedScene" uid="uid://ct1owvfqgy82c" path="res://scenes/enemies/smoke.tscn" id="5_21lnx"]
+[ext_resource type="Texture2D" uid="uid://vniwliioake6" path="res://assets/characters/animals/spr_tucano_spritesheet.png" id="6_qdu22"]
+[ext_resource type="Texture2D" uid="uid://dnrvpkhdyqyer" path="res://assets/characters/animals/spr_rabbit_sombra.png" id="7_pl8um"]
+[ext_resource type="Texture2D" uid="uid://dyneg6a4rterh" path="res://assets/ui/spr_balao_humor.png" id="8_ud0ta"]
+[ext_resource type="PackedScene" uid="uid://dttd4r7nmj42p" path="res://addons/fast_prototype/components/state_machine/state_machine.tscn" id="9_x7j38"]
+[ext_resource type="Script" uid="uid://sltddg1x1y07" path="res://scenes/enemies/states/enemy_idle_state.gd" id="10_545bg"]
+[ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="11_ia57c"]
+[ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="12_eh8ex"]
+[ext_resource type="AudioStream" uid="uid://cj4q38m366ttp" path="res://assets/audio/SFX/SE_barulho_tucano.wav" id="13_qdu22"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="14_5nbry"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="15_cqtb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
+size = Vector2(59, 51.375)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmsl5"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jhs5"]
+size = Vector2(6, 7)
+
+[sub_resource type="Animation" id="Animation_7hee8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -55)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_ul5a4"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_o3vpy"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RunAwayArea2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RunAwayArea2D/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt2xu"]
+_data = {
+&"RESET": SubResource("Animation_7hee8"),
+&"walk_left": SubResource("Animation_ul5a4"),
+&"walk_right": SubResource("Animation_o3vpy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2xu"]
+size = Vector2(5, 48)
+
+[node name="Tucan" type="CharacterBody2D" node_paths=PackedStringArray("target", "character_movement_controller", "stop_on_collision_area")]
+collision_layer = 8
+collision_mask = 33
+script = ExtResource("1_qdu22")
+target = NodePath(".")
+character_movement_controller = NodePath("CharacterMovementController")
+stop_on_collision_area = NodePath("DetectCollisionArea2D")
+
+[node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite", "character_movement_controller", "state_machine", "eat_collectable_controller", "run_away_area_2d") instance=ExtResource("2_ic8il")]
+sprite = NodePath("../Sprite2D")
+character_movement_controller = NodePath("../CharacterMovementController")
+state_machine = NodePath("../StateMachine")
+eat_collectable_controller = NodePath("../EatCollectableController")
+run_away_area_2d = NodePath("../RunAwayArea2D")
+
+[node name="CharacterMovementController" parent="." instance=ExtResource("3_21gt2")]
+speed = 20.0
+
+[node name="EatCollectableController" type="Area2D" parent="." node_paths=PackedStringArray("target", "character_movement_controller", "walk_behavior", "audio_see_food", "audio_eat_food", "apple_emoji", "navigation_agent")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_qd6jo")
+target = NodePath("..")
+character_movement_controller = NodePath("../CharacterMovementController")
+walk_behavior = NodePath("..")
+smoke_effect = ExtResource("5_21lnx")
+audio_see_food = NodePath("../AudioSeeFood")
+audio_eat_food = NodePath("../AudioEatFood")
+apple_emoji = NodePath("../EmojiSprite")
+navigation_agent = NodePath("../NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
+shape = SubResource("RectangleShape2D_o3vpy")
+debug_color = Color(0.9529412, 0, 0.5686275, 0.1882353)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cmsl5")
+
+[node name="DetectCollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectCollisionArea2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7jhs5")
+debug_color = Color(0.62527704, 0.5324054, 5.7756904e-07, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("6_qdu22")
+flip_h = true
+hframes = 3
+vframes = 3
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 5)
+texture = ExtResource("7_pl8um")
+
+[node name="EmojiSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, -22)
+texture = ExtResource("8_ud0ta")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vt2xu")
+}
+autoplay = "walk_right"
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_x7j38")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
+script = ExtResource("10_545bg")
+character = NodePath("../..")
+character_movement_controller = NodePath("../../CharacterMovementController")
+animation_player = NodePath("../../AnimationPlayer")
+animation_name_left = "walk_left"
+animation_name_right = "walk__right"
+
+[node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("character", "character_movement_controller", "animation_player")]
+script = ExtResource("11_ia57c")
+character = NodePath("../..")
+character_movement_controller = NodePath("../../CharacterMovementController")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="RunAwayArea2D" type="Area2D" parent="." node_paths=PackedStringArray("target", "walk_behavior", "eat_collectable_controller", "apple_emoji", "audio_angry")]
+collision_layer = 0
+collision_mask = 18
+script = ExtResource("12_eh8ex")
+target = NodePath("..")
+walk_behavior = NodePath("..")
+eat_collectable_controller = NodePath("../EatCollectableController")
+apple_emoji = NodePath("../EmojiSprite")
+smoke_effect = ExtResource("5_21lnx")
+audio_angry = NodePath("../AudioAngry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayArea2D"]
+position = Vector2(0, -55)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_vt2xu")
+debug_color = Color(0.21953282, 0.6157668, 0.49241757, 0.41960785)
+
+[node name="AudioSeeFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qdu22")
+bus = &"effect"
+
+[node name="AudioEatFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_5nbry")
+bus = &"effect"
+
+[node name="AudioAngry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_cqtb1")
+bus = &"effect"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

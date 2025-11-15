@@ -10,7 +10,7 @@ radius = 7.071068
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgelf"]
 radius = 13.038404
 
-[node name="AppleTree" type="StaticBody2D"]
+[node name="AppleTree" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 
 [node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_qj8d5")]
 sprite = NodePath("../Sprite2D")

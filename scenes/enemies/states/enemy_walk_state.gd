@@ -44,16 +44,12 @@ func _on_state_exit() -> void:
 
 func animation() -> void:
 	if character_movement_controller:
-		if character_movement_controller.movement_direction.y > 0:
-			if animation_player and animation_player.has_animation(animation_name_down):
+		if character_movement_controller.movement_direction.y > 0 and animation_player and animation_player.has_animation(animation_name_down):
 				animation_player.play(animation_name_down)
-		elif character_movement_controller.movement_direction.y < 0:
-			if animation_player and animation_player.has_animation(animation_name_up):
+		elif character_movement_controller.movement_direction.y < 0 and animation_player and animation_player.has_animation(animation_name_up):
 				animation_player.play(animation_name_up)
-		elif character_movement_controller.movement_direction.x < 0.2:
-			if animation_player.has_animation(animation_name_left):
-				animation_player.play(animation_name_left)
-		elif character_movement_controller.movement_direction.x > 0:
-			if animation_player.has_animation(animation_name_right):
+		elif character_movement_controller.movement_direction.x > 0 and animation_player and animation_player.has_animation(animation_name_right):
 				animation_player.play(animation_name_right)
+		elif character_movement_controller.movement_direction.x < 0 and animation_player and animation_player.has_animation(animation_name_left):
+				animation_player.play(animation_name_left)
 	

@@ -10,7 +10,7 @@ height = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgelf"]
 radius = 7.0
 
-[node name="StoneBig" type="StaticBody2D"]
+[node name="StoneBig" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vjmwm")

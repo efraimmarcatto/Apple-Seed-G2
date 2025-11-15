@@ -24,7 +24,6 @@ func _ready() -> void:
 	collision.disabled = true
 	hide()
 
-
 func _physics_process(_delta: float) -> void:
 	if !move:
 		linear_velocity = Vector2.ZERO 
@@ -72,10 +71,19 @@ func take_picture():
 	skill_check = true
 	var items: Array = []
 	var total = 0
-	#PONTOS AQUI
-	result["total"] = total
-	result["items"] = items
-	result["time"] = GameManager.get_time()
+	for body in area.get_overlapping_bodies():
+
+		var status = ComponentHelper.get_first_of_type_by_classname(body, PhotoStatus)
+		if status:
+			items.append({
+			"name":status.state_name,
+			"is_emoji_apple":status.is_emoji_apple,
+			"is_eating":status.is_eating,
+			"is_emoji_angry":status.is_emoji_angry,
+			"is_runing":status.is_runing,
+			"is_facing_down":status.is_facing_down,
+			})
+	result["items"]= items if items else []
 	var filename = await screen_shot()
 	result["filename"] = filename
 		

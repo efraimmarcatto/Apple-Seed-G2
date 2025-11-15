@@ -54,7 +54,7 @@ func _on_state_enter(_last_state_name:String) -> void:
 		animation_tree["parameters/playback"].travel("idle")
 	
 	if photograph and len(GameManager.photos) < GameManager.photos_limit:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.1).timeout
 		photograph.start_framing(character_movement_controller.last_movement_direction, global_position)
 		state = STATES.PHOTO
 	else:

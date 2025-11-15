@@ -10,7 +10,7 @@ size = Vector2(53, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8hih"]
 size = Vector2(53, 24)
 
-[node name="Caban" type="StaticBody2D"]
+[node name="Caban" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 
 [node name="PhotoStatus" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_b8hih")]
 sprite = NodePath("../Sprite2D")

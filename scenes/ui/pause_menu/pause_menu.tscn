@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djywjggcwg34l"]
+[gd_scene load_steps=3 format=3 uid="uid://djywjggcwg34l"]
 
 [ext_resource type="Script" uid="uid://b0hurgiswx0e" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_kgchh"]
+[ext_resource type="Theme" uid="uid://dmvblj4biu2l0" path="res://scenes/ui/theme.tres" id="4_xtvdp"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -37,14 +38,17 @@ grow_vertical = 2
 
 [node name="ContinueButton" type="Button" parent="Buttons"]
 layout_mode = 2
+theme = ExtResource("4_xtvdp")
 text = "Continue"
 
 [node name="MainMenuButton" type="Button" parent="Buttons"]
 layout_mode = 2
+theme = ExtResource("4_xtvdp")
 text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
+theme = ExtResource("4_xtvdp")
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]

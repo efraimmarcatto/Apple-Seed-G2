@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://crndtl71qh5nv"]
+[gd_scene load_steps=14 format=3 uid="uid://crndtl71qh5nv"]
 
 [ext_resource type="Texture2D" uid="uid://b3enkxvkhu70i" path="res://assets/tiles & props/barraca_interior.png" id="1_3mdij"]
 [ext_resource type="PackedScene" uid="uid://ca2kh6hi1psb3" path="res://scenes/player/player.tscn" id="2_fdkkg"]
 [ext_resource type="PackedScene" uid="uid://1g5gau1tc54c" path="res://addons/fast_prototype/components/camera/base_camera_2d.tscn" id="2_fvhpl"]
 [ext_resource type="PackedScene" uid="uid://cngvswahsiho2" path="res://scenes/others/player_interact_area.tscn" id="4_10m8o"]
 [ext_resource type="AudioStream" uid="uid://dd1pnqexv8yny" path="res://assets/audio/bgm/BGM_Computador.mp3" id="6_btywn"]
+[ext_resource type="PackedScene" uid="uid://bc0ivb0efhxnd" path="res://scenes/others/photo_status.tscn" id="7_10m8o"]
 [ext_resource type="PackedScene" uid="uid://cckvunw0qvsee" path="res://scenes/others/icon_exclamation.tscn" id="7_15rut"]
+[ext_resource type="PackedScene" uid="uid://bf36maca21r3t" path="res://scenes/ui/photo_icon/photo_icon.tscn" id="8_rq8xx"]
+[ext_resource type="PackedScene" uid="uid://djywjggcwg34l" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="9_15rut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvhpl"]
 size = Vector2(21, 94)
@@ -53,16 +56,12 @@ shape = SubResource("CircleShape2D_3mdij")
 position = Vector2(136, 68)
 shape = SubResource("CircleShape2D_3mdij")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Floor"]
-position = Vector2(160, 68)
-shape = SubResource("CircleShape2D_3mdij")
-
 [node name="Camera" parent="." instance=ExtResource("2_fvhpl")]
 position = Vector2(160, 90)
 is_current_camera = true
 
 [node name="Player" parent="." instance=ExtResource("2_fdkkg")]
-position = Vector2(161, 137)
+position = Vector2(161, 111)
 
 [node name="PlayerInteractArea" parent="." node_paths=PackedStringArray("show_on_player_enter") instance=ExtResource("4_10m8o")]
 position = Vector2(0, -218)
@@ -77,20 +76,42 @@ debug_color = Color(0.7525624, 0.4576646, 0.048764244, 0.41960785)
 [node name="IconExclamation" parent="PlayerInteractArea" instance=ExtResource("7_15rut")]
 position = Vector2(161, 347)
 
-[node name="PlayerInteractArea2" parent="." node_paths=PackedStringArray("show_on_player_enter") instance=ExtResource("4_10m8o")]
-position = Vector2(0, -306)
-show_on_player_enter = NodePath("IconExclamation")
-change_to_level = "res://scenes/ui/computer/computer.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractArea2"]
-position = Vector2(160, 376)
-shape = SubResource("RectangleShape2D_010rt")
-debug_color = Color(0.7525624, 0.4576646, 0.048764244, 0.41960785)
-
-[node name="IconExclamation" parent="PlayerInteractArea2" instance=ExtResource("7_15rut")]
-position = Vector2(160, 348)
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_btywn")
 autoplay = true
 bus = &"music"
+parameters/looping = false
+
+[node name="Computer" type="StaticBody2D" parent="."]
+
+[node name="PhotoStatus" parent="Computer" instance=ExtResource("7_10m8o")]
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Computer"]
+position = Vector2(160, 62)
+shape = SubResource("CircleShape2D_3mdij")
+
+[node name="PlayerInteractArea2" parent="Computer" node_paths=PackedStringArray("show_on_player_enter") instance=ExtResource("4_10m8o")]
+position = Vector2(0, -306)
+show_on_player_enter = NodePath("IconExclamation")
+change_to_level = "res://scenes/ui/computer/computer.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/PlayerInteractArea2"]
+position = Vector2(160, 376)
+shape = SubResource("RectangleShape2D_010rt")
+debug_color = Color(0.7525624, 0.4576646, 0.048764244, 0.41960785)
+
+[node name="IconExclamation" parent="Computer/PlayerInteractArea2" instance=ExtResource("7_15rut")]
+position = Vector2(160, 348)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PhotoIcon" parent="HUD" instance=ExtResource("8_rq8xx")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("9_15rut")]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=36 format=4 uid="uid://dyjf0jbmvbovf"]
+[gd_scene load_steps=42 format=4 uid="uid://dyjf0jbmvbovf"]
 
 [ext_resource type="Script" uid="uid://ks3odfhwc3i2" path="res://scenes/ui/computer/computer.gd" id="1_bnux2"]
-[ext_resource type="Texture2D" uid="uid://cxbvk360kt82c" path="res://assets/ui/background.png" id="2_3m5nm"]
+[ext_resource type="Texture2D" uid="uid://bpgeuj2ofo4c" path="res://assets/ui/wallpaper2.png" id="2_uu1qv"]
 [ext_resource type="FontFile" uid="uid://c2oui1amqd6jm" path="res://assets/ui/fonts/ari_w9500/ari-w9500-bold.ttf" id="3_uu1qv"]
 [ext_resource type="Texture2D" uid="uid://c7roga4wpasvk" path="res://assets/ui/app_photo_icon_normal.png" id="4_nbd0i"]
 [ext_resource type="Texture2D" uid="uid://bbsywq0qeskth" path="res://assets/ui/app_photo_icon_focused.png" id="5_nbd0i"]
@@ -15,10 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://dj8cpug2e40qi" path="res://assets/ui/mail_header.png" id="11_p1ecj"]
 [ext_resource type="Texture2D" uid="uid://b2xu6j6lbwc2e" path="res://assets/ui/mail_frame_background.png" id="12_bjh3n"]
 [ext_resource type="FontFile" uid="uid://b7fkt6ixsvbgw" path="res://assets/ui/fonts/04B_03__/04B_03__.TTF" id="12_uu1qv"]
-[ext_resource type="Texture2D" uid="uid://duvuan060ncw0" path="res://assets/ui/uncheked_to_do.png" id="13_mg23o"]
+[ext_resource type="PackedScene" uid="uid://d3mektrcdnph4" path="res://scenes/ui/computer/to_do_item.tscn" id="14_bjh3n"]
 [ext_resource type="Texture2D" uid="uid://b5ttcow7hlkq1" path="res://assets/ui/mail_close_button.png" id="14_uu1qv"]
 [ext_resource type="Texture2D" uid="uid://bfan68t18dxmh" path="res://assets/ui/photo_app_screen.png" id="16_mg23o"]
 [ext_resource type="Texture2D" uid="uid://ohs0rco6damu" path="res://assets/ui/close_button_foco.png" id="17_mg23o"]
+[ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="19_mg23o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cj8t4"]
 font = ExtResource("3_uu1qv")
@@ -35,17 +36,70 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xy15"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.4627451, 0.8039216, 0.7490196)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je1ax"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.4627451, 0.8039216, 0.7490196)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52s0g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.4627451, 0.8039216, 0.7490196)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi8wa"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.8570403, 0.84560215, 0.8341457, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_gi8wa"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_1xy15")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_je1ax")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_52s0g")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_gi8wa")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1ecj"]
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.76862746, 0.16862746, 0.10980392, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_bjh3n"]
-font = ExtResource("12_uu1qv")
-font_size = 8
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg23o"]
 bg_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
@@ -425,6 +479,11 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 anti_aliasing = false
 
+[sub_resource type="LabelSettings" id="LabelSettings_bjh3n"]
+font = ExtResource("19_mg23o")
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.80784315)
+
 [node name="Computer" type="Control" groups=["Main"]]
 layout_mode = 3
 anchors_preset = 15
@@ -438,7 +497,7 @@ script = ExtResource("1_bnux2")
 layout_mode = 1
 offset_right = 320.0
 offset_bottom = 218.0
-texture = ExtResource("2_3m5nm")
+texture = ExtResource("2_uu1qv")
 
 [node name="Desktop" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -448,12 +507,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = -4
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 3
 
 [node name="Layout" type="VBoxContainer" parent="Desktop"]
 layout_mode = 2
+theme_override_constants/separation = 49
 
 [node name="Time" type="Label" parent="Desktop/Layout"]
 layout_mode = 2
@@ -522,7 +582,6 @@ texture_hover = ExtResource("9_on1nr")
 texture_focused = ExtResource("9_on1nr")
 
 [node name="MailApp" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -589,6 +648,7 @@ size_flags_horizontal = 3
 focus_next = NodePath("../../../../TopBar/CloseButton")
 focus_previous = NodePath("../../../../TopBar/CloseButton")
 focus_mode = 2
+theme = SubResource("Theme_gi8wa")
 theme_override_styles/focus = SubResource("StyleBoxFlat_p1ecj")
 
 [node name="MailContent" type="VBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer"]
@@ -603,162 +663,46 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 
-[node name="ToDoList" type="VBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent"]
+[node name="ToDoList" type="VBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="ToDoItem" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
 
-[node name="ToDo01" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
+[node name="ToDoItem2" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-theme_override_constants/separation = 3
 
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo01"]
+[node name="ToDoItem3" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
 
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo01"]
+[node name="ToDoItem4" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-text = "Capyba"
-label_settings = SubResource("LabelSettings_bjh3n")
 
-[node name="ToDo02" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
+[node name="ToDoItem5" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-theme_override_constants/separation = 3
 
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo02"]
+[node name="ToDoItem6" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
 
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo02"]
+[node name="ToDoItem7" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-text = "Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
 
-[node name="ToDo03" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
+[node name="ToDoItem8" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-theme_override_constants/separation = 3
 
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo03"]
+[node name="ToDoItem9" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
 
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo03"]
+[node name="ToDoItem10" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
 
-[node name="ToDo04" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
+[node name="ToDoItem11" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-theme_override_constants/separation = 3
 
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo04"]
+[node name="ToDoItem12" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo04"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo05" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo05"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo05"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo06" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo06"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo06"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo07" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo07"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo07"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo08" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo08"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo08"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo09" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo09"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo09"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo10" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo10"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo10"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
-
-[node name="ToDo11" type="HBoxContainer" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="CheckBoxIcon" type="TextureRect" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo11"]
-layout_mode = 2
-texture = ExtResource("13_mg23o")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/ToDoList/ToDo11"]
-layout_mode = 2
-text = "Apple and Tucano"
-label_settings = SubResource("LabelSettings_bjh3n")
 
 [node name="TopBar" type="MarginContainer" parent="MailApp"]
 layout_mode = 1
@@ -908,6 +852,25 @@ theme_override_fonts/font = ExtResource("12_uu1qv")
 theme_override_styles/background = SubResource("StyleBoxFlat_3bfi0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ak1m6")
 value = 30.0
+
+[node name="NoPhoto" type="Label" parent="PhotoApp"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -7.5
+offset_right = 40.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "No photos"
+label_settings = SubResource("LabelSettings_bjh3n")
+horizontal_alignment = 1
 
 [node name="AppClick" type="AudioStreamPlayer" parent="."]
 

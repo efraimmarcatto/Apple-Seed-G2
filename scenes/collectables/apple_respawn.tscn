@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsrd4yqschurb"]
+
+[ext_resource type="Script" uid="uid://cl7syv65pdhud" path="res://scenes/collectables/apple_respawn.gd" id="1_b1j4e"]
+[ext_resource type="PackedScene" uid="uid://w4a0p4t0v6b5" path="res://scenes/collectables/apple.tscn" id="2_vfwo0"]
+
+[node name="AppleRespawn" type="VisibleOnScreenNotifier2D"]
+script = ExtResource("1_b1j4e")
+apple = ExtResource("2_vfwo0")
+
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

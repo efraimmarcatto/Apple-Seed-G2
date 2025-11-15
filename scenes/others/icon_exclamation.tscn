@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cckvunw0qvsee"]
+[gd_scene load_steps=10 format=3 uid="uid://cckvunw0qvsee"]
 
 [ext_resource type="Texture2D" uid="uid://be3gr8nvvo0gk" path="res://assets/ui/spr_exclamacao.png" id="1_h05e5"]
+[ext_resource type="Theme" uid="uid://dmvblj4biu2l0" path="res://scenes/ui/theme.tres" id="2_f8j07"]
+[ext_resource type="FontFile" uid="uid://b7fkt6ixsvbgw" path="res://assets/ui/fonts/04B_03__/04B_03__.TTF" id="3_mu2p7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8j07"]
 atlas = ExtResource("1_h05e5")
@@ -51,4 +53,17 @@ z_index = 10
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cerxt")
 autoplay = "default"
-frame_progress = 0.7151094
+frame_progress = 0.37955993
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = 7.0
+theme = ExtResource("2_f8j07")
+theme_override_fonts/normal_font = ExtResource("3_mu2p7")
+theme_override_font_sizes/normal_font_size = 8
+text = "Press Space"
+autowrap_mode = 2
+shortcut_keys_enabled = false
+horizontal_alignment = 1
