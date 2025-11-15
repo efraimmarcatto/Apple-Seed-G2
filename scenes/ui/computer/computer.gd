@@ -27,6 +27,7 @@ var app_cmd:  Dictionary
 func _ready() -> void:
 	setup_window(photo_app)
 	setup_window(mail_app)
+	GameManager.check_all_goals()
 	load_todo_list()
 	load_photo_data_silently()
 	photo_button.grab_focus()
@@ -129,6 +130,7 @@ func delete_photo(slot: int):
 	clear_photos()
 	load_photo_data_silently()
 	display_photos_with_animation()
+	GameManager.check_all_goals(true)
 	
 
 func load_photos():

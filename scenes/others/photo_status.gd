@@ -18,7 +18,7 @@ var is_runing: bool
 var is_facing_down: bool
 
 func _ready() -> void:
-	if not name:
+	if not target_name:
 		target_name = get_parent().name
 
 func _process(_delta: float) -> void:

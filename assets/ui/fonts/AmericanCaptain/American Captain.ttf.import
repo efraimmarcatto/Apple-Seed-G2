@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dvklvhja7p45v"
+path="res://.godot/imported/American Captain.ttf-5dc766ca8103db22b9a09f43b8e59849.fontdata"
+
+[deps]
+
+source_file="res://assets/ui/fonts/AmericanCaptain/American Captain.ttf"
+dest_files=["res://.godot/imported/American Captain.ttf-5dc766ca8103db22b9a09f43b8e59849.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=0
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

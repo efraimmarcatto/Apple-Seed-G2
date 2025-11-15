@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://cm1rxe5kh8oo1" path="res://scenes/enemies/states/enemy_walk_state.gd" id="9_26eby"]
 [ext_resource type="Script" uid="uid://8kffado5yd1c" path="res://scenes/enemies/run_away_area_2d.gd" id="10_v2cso"]
 [ext_resource type="PackedScene" uid="uid://ct1owvfqgy82c" path="res://scenes/enemies/smoke.tscn" id="11_be0a7"]
-[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/SFX/SE_comendo_maca.mp3" id="12_20pfd"]
-[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="12_cjjvj"]
-[ext_resource type="AudioStream" uid="uid://dxalhjtk42wbt" path="res://assets/audio/SFX/SE_barulho_capivara_2.wav" id="14_jh5m8"]
+[ext_resource type="AudioStream" uid="uid://70qyaxn0dpsj" path="res://assets/audio/sfx/SE_comendo_maca.mp3" id="12_20pfd"]
+[ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/sfx/SE_bicho_naogosta.wav" id="12_cjjvj"]
+[ext_resource type="AudioStream" uid="uid://dxalhjtk42wbt" path="res://assets/audio/sfx/SE_barulho_capivara_2.wav" id="14_jh5m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
 size = Vector2(52, 40.75)

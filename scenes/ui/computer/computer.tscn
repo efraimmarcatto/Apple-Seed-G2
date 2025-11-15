@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=4 uid="uid://dyjf0jbmvbovf"]
+[gd_scene load_steps=48 format=4 uid="uid://dyjf0jbmvbovf"]
 
 [ext_resource type="Script" uid="uid://ks3odfhwc3i2" path="res://scenes/ui/computer/computer.gd" id="1_bnux2"]
-[ext_resource type="Texture2D" uid="uid://bpgeuj2ofo4c" path="res://assets/ui/wallpaper2.png" id="2_uu1qv"]
-[ext_resource type="FontFile" uid="uid://c2oui1amqd6jm" path="res://assets/ui/fonts/ari_w9500/ari-w9500-bold.ttf" id="3_uu1qv"]
+[ext_resource type="Texture2D" uid="uid://csg068qvbvu6d" path="res://assets/ui/spr_computer_scene_01.png" id="2_bjh3n"]
+[ext_resource type="FontFile" uid="uid://cccxv7svf5qc7" path="res://assets/ui/fonts/ari_w9500/ari-w9500-condensed-display.ttf" id="3_bjh3n"]
 [ext_resource type="Texture2D" uid="uid://c7roga4wpasvk" path="res://assets/ui/app_photo_icon_normal.png" id="4_nbd0i"]
 [ext_resource type="Texture2D" uid="uid://bbsywq0qeskth" path="res://assets/ui/app_photo_icon_focused.png" id="5_nbd0i"]
 [ext_resource type="Texture2D" uid="uid://dkstde4n1ko5g" path="res://assets/ui/smail_app_screen.png" id="6_1fdas"]
@@ -18,16 +18,15 @@
 [ext_resource type="PackedScene" uid="uid://d3mektrcdnph4" path="res://scenes/ui/computer/to_do_item.tscn" id="14_bjh3n"]
 [ext_resource type="Texture2D" uid="uid://b5ttcow7hlkq1" path="res://assets/ui/mail_close_button.png" id="14_uu1qv"]
 [ext_resource type="Texture2D" uid="uid://bfan68t18dxmh" path="res://assets/ui/photo_app_screen.png" id="16_mg23o"]
+[ext_resource type="Texture2D" uid="uid://vpe8ltoy1pyh" path="res://assets/ui/send_email_button.png" id="17_1xy15"]
 [ext_resource type="Texture2D" uid="uid://ohs0rco6damu" path="res://assets/ui/close_button_foco.png" id="17_mg23o"]
-[ext_resource type="FontFile" uid="uid://b75ogjglew3fx" path="res://assets/ui/fonts/ThaleahFat/ThaleahFat.ttf" id="19_mg23o"]
+[ext_resource type="FontFile" uid="uid://bhjmo88r2mqqj" path="res://assets/ui/fonts/ari_w9500/ari-w9500-display.ttf" id="21_1xy15"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_cj8t4"]
-font = ExtResource("3_uu1qv")
+[sub_resource type="LabelSettings" id="LabelSettings_1xy15"]
+font = ExtResource("3_bjh3n")
 font_size = 33
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 13
-shadow_color = Color(1, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn7wy"]
 bg_color = Color(1, 1, 1, 0.4)
@@ -100,6 +99,24 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.76862746, 0.16862746, 0.10980392, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je1ax"]
+atlas = ExtResource("17_1xy15")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_52s0g"]
+load_path = "res://.godot/imported/send_email_button.png-607880a577900fa8d51fed5982663f05.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi8wa"]
+atlas = SubResource("CompressedTexture2D_52s0g")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xwyvd"]
+load_path = "res://.godot/imported/send_email_button.png-607880a577900fa8d51fed5982663f05.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skqcg"]
+atlas = SubResource("CompressedTexture2D_xwyvd")
+region = Rect2(48, 0, 48, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg23o"]
 bg_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
@@ -480,7 +497,8 @@ corner_radius_bottom_left = 8
 anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_bjh3n"]
-font = ExtResource("19_mg23o")
+font = ExtResource("21_1xy15")
+font_size = 11
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.80784315)
 
@@ -496,8 +514,8 @@ script = ExtResource("1_bnux2")
 [node name="Wallpaper" type="TextureRect" parent="."]
 layout_mode = 1
 offset_right = 320.0
-offset_bottom = 218.0
-texture = ExtResource("2_uu1qv")
+offset_bottom = 180.0
+texture = ExtResource("2_bjh3n")
 
 [node name="Desktop" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -520,7 +538,7 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/outline_size = 10
 text = "10:00"
-label_settings = SubResource("LabelSettings_cj8t4")
+label_settings = SubResource("LabelSettings_1xy15")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -530,17 +548,22 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 40
 
 [node name="Menu" type="Panel" parent="Desktop/Layout/MarginContainer"]
-custom_minimum_size = Vector2(88, 26)
+custom_minimum_size = Vector2(88, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_nn7wy")
 
 [node name="Bar" type="HBoxContainer" parent="Desktop/Layout/MarginContainer/Menu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 2.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -671,39 +694,6 @@ theme_override_constants/separation = -4
 [node name="ToDoItem" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
 layout_mode = 2
 
-[node name="ToDoItem2" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem3" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem4" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem5" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem6" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem7" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem8" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem9" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem10" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem11" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
-[node name="ToDoItem12" parent="MailApp/Window/Layout/MarginContainer2/MailScrollContainer/MailContent/Margin/ToDoList" instance=ExtResource("14_bjh3n")]
-layout_mode = 2
-
 [node name="TopBar" type="MarginContainer" parent="MailApp"]
 layout_mode = 1
 anchors_preset = -1
@@ -726,6 +716,20 @@ texture_normal = ExtResource("14_uu1qv")
 texture_pressed = ExtResource("17_mg23o")
 texture_hover = ExtResource("17_mg23o")
 texture_focused = ExtResource("17_mg23o")
+
+[node name="SendMailButton" type="TextureButton" parent="MailApp"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 23.0
+offset_right = -16.0
+offset_bottom = 39.0
+grow_horizontal = 0
+texture_normal = SubResource("AtlasTexture_je1ax")
+texture_pressed = SubResource("AtlasTexture_gi8wa")
+texture_hover = SubResource("AtlasTexture_skqcg")
 
 [node name="PhotoApp" type="Panel" parent="."]
 visible = false
@@ -868,7 +872,7 @@ offset_right = 40.5
 offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "No photos"
+text = "NO PHOTOS"
 label_settings = SubResource("LabelSettings_bjh3n")
 horizontal_alignment = 1
 

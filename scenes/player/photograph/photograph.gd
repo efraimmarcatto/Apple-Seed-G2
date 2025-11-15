@@ -11,6 +11,7 @@ class_name Photograph
 @onready var photo_click: AudioStreamPlayer2D = $PhotoClick
 @onready var flash: ColorRect = $MaskLayer/Flash
 
+var remove_digits_regex = RegEx.new()
 var capture_rect: Rect2 
 var result: Dictionary = {}
 var direction: Vector2 = Vector2.RIGHT
@@ -21,9 +22,12 @@ var slot: int
 signal photo_finish
 
 func _ready() -> void:
+	remove_digits_regex.compile("\\d")
 	collision.disabled = true
 	hide()
 
+func get_clean_name(node_name: String) -> String:
+	return remove_digits_regex.sub(node_name, "", true)
 func _physics_process(_delta: float) -> void:
 	if !move:
 		linear_velocity = Vector2.ZERO 
@@ -70,20 +74,21 @@ func take_picture():
 	timing_bar.start_skill_check()
 	skill_check = true
 	var items: Array = []
-	var total = 0
+
 	for body in area.get_overlapping_bodies():
 
 		var status = ComponentHelper.get_first_of_type_by_classname(body, PhotoStatus)
 		if status:
 			items.append({
-			"name":status.state_name,
-			"is_emoji_apple":status.is_emoji_apple,
-			"is_eating":status.is_eating,
-			"is_emoji_angry":status.is_emoji_angry,
-			"is_runing":status.is_runing,
-			"is_facing_down":status.is_facing_down,
+			"is_emoji_apple":status.get("is_emoji_apple"),
+			"is_eating":status.get("is_eating"),
+			"is_emoji_angry":status.get("is_emoji_angry"),
+			"is_runing":status.get("is_runing"),
+			"is_facing_down":status.get("is_facing_down"),
+			"state_name":status.get("state_name"),
+			"target_name":get_clean_name(status.get("target_name").to_lower())
 			})
-	result["items"]= items if items else []
+	result["subjects"]= items if items else []
 	var filename = await screen_shot()
 	result["filename"] = filename
 		
