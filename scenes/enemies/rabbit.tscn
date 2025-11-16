@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="12_xgq8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
-size = Vector2(54, 38.75)
+size = Vector2(74, 64.59375)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmsl5"]
 radius = 2.0

@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bh7ceqiqv23vl" path="res://assets/audio/SFX/SE_bicho_naogosta.wav" id="15_cqtb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3vpy"]
-size = Vector2(59, 51.375)
+size = Vector2(73.5, 64.6875)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cmsl5"]
 radius = 2.0
@@ -227,6 +227,7 @@ apple_emoji = NodePath("../EmojiSprite")
 navigation_agent = NodePath("../NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatCollectableController"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_o3vpy")
 debug_color = Color(0.9529412, 0, 0.5686275, 0.1882353)
 
