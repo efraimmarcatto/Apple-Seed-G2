@@ -97,8 +97,7 @@ func take_picture():
 
 func save_photo(focus_accuracy: float):
 	timing_bar.hide()
-	if "total" in result:
-		result["total"] *=  focus_accuracy / 100
+	result["focus_accuracy"] = focus_accuracy
 	if GameManager.photos.size() <= GameManager.photos_limit:
 		GameManager.photos.append(result)
 		GameManager.photo_count_updated.emit(slot)

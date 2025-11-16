@@ -76,8 +76,6 @@ func stop_skill_check():
 	
 	var accuracy_percent = accuracy_ratio * 100.0
 	
-	print("Jogador parou em: %.1f" % final_value)
-	print("Qualidade da Foto: %.1f%%" % accuracy_percent)
 	hide()
 	skill_check_completed.emit(accuracy_percent)
 

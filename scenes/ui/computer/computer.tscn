@@ -605,6 +605,7 @@ texture_hover = ExtResource("9_on1nr")
 texture_focused = ExtResource("9_on1nr")
 
 [node name="MailApp" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -727,6 +728,7 @@ offset_top = 23.0
 offset_right = -16.0
 offset_bottom = 39.0
 grow_horizontal = 0
+disabled = true
 texture_normal = SubResource("AtlasTexture_je1ax")
 texture_pressed = SubResource("AtlasTexture_gi8wa")
 texture_hover = SubResource("AtlasTexture_skqcg")
@@ -882,4 +884,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="Desktop/Layout/MarginContainer/Menu/Bar/MailButton" to="." method="_on_app_icon_pressed" binds= ["mailapp"]]
 [connection signal="pressed" from="Desktop/Layout/MarginContainer/Menu/Bar/PowerButton" to="." method="_on_power_button_pressed"]
 [connection signal="pressed" from="MailApp/TopBar/CloseButton" to="." method="_on_close_app_pressed" binds= ["mailapp"]]
+[connection signal="pressed" from="MailApp/SendMailButton" to="." method="_on_send_mail_button_pressed"]
 [connection signal="pressed" from="PhotoApp/TopBar/CloseButton" to="." method="_on_close_app_pressed" binds= ["photoapp"]]

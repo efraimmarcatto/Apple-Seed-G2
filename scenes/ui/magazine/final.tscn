@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://diembngsclbwe"]
+
+[ext_resource type="Texture2D" uid="uid://cqkkymn4epsko" path="res://assets/ui/thanks_for_playing.png" id="1_37re7"]
+[ext_resource type="Script" uid="uid://dgx4jlgs4tpgq" path="res://scenes/ui/magazine/final.gd" id="1_cgvs8"]
+[ext_resource type="Theme" uid="uid://dmvblj4biu2l0" path="res://scenes/ui/theme.tres" id="2_ffmbk"]
+[ext_resource type="Texture2D" uid="uid://bh3mj75x1atwe" path="res://assets/ui/next_page_button.png" id="4_0dkd7"]
+[ext_resource type="Texture2D" uid="uid://d0pdrlvxdgkmf" path="res://assets/ui/next_page_hover_button.png" id="5_xp151"]
+
+[node name="Final" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cgvs8")
+
+[node name="Thannks" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_37re7")
+
+[node name="Credits" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_ffmbk")
+
+[node name="EfraimMarcatto" type="RichTextLabel" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 7
+theme_override_colors/default_color = Color(0.47843137, 0.13333334, 0.12941177, 1)
+bbcode_enabled = true
+text = "[url=\"https://efraimmarcatto.itch.io\"]EfraimMarcatto[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+meta_underlined = false
+
+[node name="WeltonBeck" type="RichTextLabel" parent="Credits"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.47843137, 0.13333334, 0.12941177, 1)
+bbcode_enabled = true
+text = "[url=\"https://weltonbeck.itch.io\"]WeltonBeck[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+meta_underlined = false
+
+[node name="WulfStudio" type="RichTextLabel" parent="Credits"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.47843137, 0.13333334, 0.12941177, 1)
+bbcode_enabled = true
+text = "[url=\"https://beowulf.itch.io\"]Beowulf[/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+meta_underlined = false
+
+[node name="ClosePage" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_0dkd7")
+texture_hover = ExtResource("5_xp151")
+
+[connection signal="pressed" from="ClosePage" to="." method="_on_close_page_pressed"]

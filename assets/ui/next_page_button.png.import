@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da1wxncp7y7x3"
-path="res://.godot/imported/spr_teladofim_01.png-d2c7b1ea9ad00ebaf3145b1ef4e3fc4f.ctex"
+uid="uid://bh3mj75x1atwe"
+path="res://.godot/imported/next_page_button.png-4959bec360a2869f04fdcbda7ba9efd2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/spr_teladofim_01.png"
-dest_files=["res://.godot/imported/spr_teladofim_01.png-d2c7b1ea9ad00ebaf3145b1ef4e3fc4f.ctex"]
+source_file="res://assets/ui/next_page_button.png"
+dest_files=["res://.godot/imported/next_page_button.png-4959bec360a2869f04fdcbda7ba9efd2.ctex"]
 
 [params]
 

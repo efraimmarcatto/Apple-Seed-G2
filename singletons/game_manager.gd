@@ -15,7 +15,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-			{ "key": "target_name", "value": "Capybara" }
+			{ "key": "target_name", "value": "capybara" }
 		]
 	},
 	{
@@ -23,7 +23,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-			{ "key": "target_name", "value": "Tucan" }
+			{ "key": "target_name", "value": "tucan" }
 		]
 	},
 	{
@@ -31,7 +31,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-			{ "key": "target_name", "value": "Rabbit" }
+			{ "key": "target_name", "value": "rabbit" }
 		]
 	},
 	{
@@ -39,7 +39,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-			{ "key": "target_name", "value": "Capybara" },
+			{ "key": "target_name", "value": "capybara" },
 			{ "key": "is_eating", "value": true }
 		]
 	},
@@ -47,7 +47,7 @@ var goals: Array[Dictionary] =[{
 		"msg": "A Tucan while it's eating.",
 		"done": false,
 		"secret": false,"conditions": [
-			{ "key": "target_name", "value": "Capybara" },
+			{ "key": "target_name", "value": "tucan" },
 			{ "key": "is_eating", "value": true }
 		]
 	},
@@ -56,7 +56,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-			{ "key": "target_name", "value": "Capybara" },
+			{ "key": "target_name", "value": "rabbit" },
 			{ "key": "is_eating", "value": true }
 		]
 	},
@@ -81,7 +81,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-		{ "key": "target_name", "value": "Caban" }
+		{ "key": "target_name", "value": "caban" }
 		]
 	},
 	{
@@ -89,7 +89,7 @@ var goals: Array[Dictionary] =[{
 		"done": false,
 		"secret": false,
 		"conditions": [
-		{ "key": "target_name", "value": "AppleTree" }
+		{ "key": "target_name", "value": "appletree" }
 		]
 	},
 	{
@@ -172,6 +172,7 @@ func check_all_goals(update=false):
 
 			if check_photo_against_goal(photo_subjects, goal.conditions):
 				goal.done = true
+
 				break
 
 
@@ -201,3 +202,31 @@ func check_photo_against_goal(subjects: Array, conditions: Array) -> bool:
 		if all_conditions_met:
 			return true
 	return false
+
+func clear_photos():
+	photos = []
+	var dir = DirAccess.open(photos_dir)
+	if dir:
+		# Inicia a varredura
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		
+		
+		while file_name != "":
+			if not dir.current_is_dir():
+				if file_name.ends_with(".png"):
+					var full_path = photos_dir.path_join(file_name)
+					
+					# 5. Deleta o arquivo
+					var err = DirAccess.remove_absolute(full_path)
+					
+					if err == OK:
+						pass
+					else:
+						print_debug("Erro: Falha ao deletar o arquivo: ", full_path)
+			
+			# Pega o próximo arquivo na lista
+			file_name = dir.get_next()
+
+	else:
+		print_debug("Erro: Não foi possível abrir o diretório: ", photos_dir)

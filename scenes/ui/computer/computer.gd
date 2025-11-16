@@ -1,5 +1,6 @@
 extends Control
 
+@onready var send_mail_button: TextureButton = $MailApp/SendMailButton
 @onready var time: Label = $Desktop/Layout/Time
 @onready var photo_app: Panel = $PhotoApp
 @onready var mail_app: Panel = $MailApp
@@ -38,11 +39,14 @@ func clear_todo_list():
 
 func load_todo_list():
 	clear_todo_list()
+	send_mail_button.disabled = true
 	for goal in GameManager.goals:
 		var todo = to_do_item.instantiate()
 		todo._message = goal.msg
 		todo.is_secret = goal.secret
 		todo.is_checked = goal.done
+		if goal.done and send_mail_button.disabled:
+			send_mail_button.disabled = false
 		to_do_list.add_child(todo)
 
 func _process(_delta: float) -> void:
@@ -131,59 +135,7 @@ func delete_photo(slot: int):
 	load_photo_data_silently()
 	display_photos_with_animation()
 	GameManager.check_all_goals(true)
-	
 
-func load_photos():
-	var photo_rows = photos.get_children()
-	var num_rows : int  = photo_rows.size()
-	
-	if not loading_files.is_visible():
-		loading_files.popup()
-
-	progress_bar.value = 0
-	progress_bar.visible = true
-
-	var photos_to_load = GameManager.photos
-
-	if photos_to_load.is_empty() or num_rows == 0:
-		if num_rows == 0 and not photos_to_load.is_empty():
-			print("Erro: Fotos encontradas, mas 'photo_rows' está vazio.")
-		
-		progress_bar.max_value = 100
-		var tween = create_tween().set_trans(Tween.TRANS_SINE)
-		tween.tween_property(progress_bar, "value", 100, 1.0)
-		await tween.finished
-		
-	else:
-		progress_bar.max_value = photos_to_load.size()
-		@warning_ignore("integer_division")
-		var photos_per_row = GameManager.photos_limit / num_rows 
-		for i in photos_to_load.size():
-			var filename = photos_to_load[i].get("filename")
-			var file_path = "user://photos/%s.png" % (filename)
-
-			if not FileAccess.file_exists(file_path):
-				continue
-
-			var image = Image.load_from_file(file_path)
-			if image.is_empty():
-				continue
-			var texture = ImageTexture.create_from_image(image)
-			var photo_display = photo_frame_button.instantiate()
-			photo_display.texture = texture
-			var button = photo_display.get_child(0) as TextureButton
-			button.pressed.connect(delete_photo.bind(i))
-			@warning_ignore("integer_division")
-			var _index = i / photos_per_row
-			var target_row = photo_rows[_index]
-			target_row.add_child(photo_display)
-			
-			progress_bar.value = i + 1
-			await get_tree().create_timer(0.1).timeout
-
-	await get_tree().create_timer(0.5).timeout
-	loading_files.hide()
-	progress_bar.visible = false
 
 func load_photo_data_silently():
 	preloaded_photo_data.clear()
@@ -260,3 +212,7 @@ func display_photos_with_animation():
 	await get_tree().create_timer(0.5).timeout
 	loading_files.hide()
 	progress_bar.visible = false
+
+
+func _on_send_mail_button_pressed() -> void:
+	SceneGameManager.change_scene("res://scenes/ui/magazine/magazine.tscn")

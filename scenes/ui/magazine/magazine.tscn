@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmno4i3n74bm4"]
+
+[ext_resource type="Script" uid="uid://bdpl3n5s10dk4" path="res://scenes/ui/magazine/magazine.gd" id="1_jycwb"]
+[ext_resource type="Texture2D" uid="uid://da1wxncp7y7x3" path="res://assets/ui/magazine_page.png" id="1_r41tg"]
+[ext_resource type="Texture2D" uid="uid://d0pdrlvxdgkmf" path="res://assets/ui/next_page_hover_button.png" id="4_jvi2p"]
+[ext_resource type="Texture2D" uid="uid://bh3mj75x1atwe" path="res://assets/ui/next_page_button.png" id="4_xjoib"]
+
+[node name="Magazine" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jycwb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_r41tg")
+patch_margin_top = 65
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 22
+
+[node name="ContainerList" type="VBoxContainer" parent="ScrollContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ClosePage" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_xjoib")
+texture_hover = ExtResource("4_jvi2p")
+
+[connection signal="pressed" from="ClosePage" to="." method="_on_close_page_pressed"]

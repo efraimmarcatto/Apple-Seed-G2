@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://djywjggcwg34l"]
+[gd_scene load_steps=4 format=3 uid="uid://djywjggcwg34l"]
 
 [ext_resource type="Script" uid="uid://b0hurgiswx0e" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_kgchh"]
+[ext_resource type="Texture2D" uid="uid://dnh57gcvkna31" path="res://assets/ui/to_do_page.png" id="3_xgg5q"]
 [ext_resource type="Theme" uid="uid://dmvblj4biu2l0" path="res://scenes/ui/theme.tres" id="4_xtvdp"]
 
 [node name="PauseMenu" type="Control"]
@@ -24,16 +25,13 @@ color = Color(0, 0, 0, 0.7647059)
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
+offset_left = 24.0
+offset_top = -29.5
+offset_right = 95.0
+offset_bottom = 29.5
 grow_vertical = 2
 
 [node name="ContinueButton" type="Button" parent="Buttons"]
@@ -50,6 +48,48 @@ text = "Main Menu"
 layout_mode = 2
 theme = ExtResource("4_xtvdp")
 text = "Quit"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GoalsBackground" type="NinePatchRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+texture = ExtResource("3_xgg5q")
+region_rect = Rect2(0, 0, 190, 88)
+patch_margin_left = 12
+patch_margin_top = 10
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="GoalsList" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -4
+alignment = 1
 
 [connection signal="pressed" from="Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Buttons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

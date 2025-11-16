@@ -7,12 +7,15 @@ func _ready() -> void:
 	var current_resolution = GameManager.resolutions[GameManager.settings.get("resolution", 0)]
 	DisplayServer.window_set_size(current_resolution)
 	get_tree().root.content_scale_size = current_resolution
+	
 
 func _quit() -> void:
 	get_tree().quit()
 
 
 func _start_game() -> void:
+	GameManager.clear_photos()
+	GameManager.photo_slot = 1
 	SceneGameManager.change_scene("res://levels/intro.tscn")
 
 

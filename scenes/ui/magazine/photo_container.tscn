@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://vcqooneyhweq"]
+
+[ext_resource type="Script" uid="uid://b86ttwbsmwjcb" path="res://scenes/ui/magazine/photo_container.gd" id="1_dekh3"]
+
+[node name="PhotoContainer" type="HBoxContainer"]
+visible = false
+script = ExtResource("1_dekh3")
+
+[node name="Photo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(108, 68)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.84313726, 0.14117648, 0.015686275, 1)
+horizontal_alignment = 1
