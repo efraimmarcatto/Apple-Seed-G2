@@ -1,5 +1,6 @@
 extends Control
 @onready var quit_button: Button = $Container/Menu/QuitButton
+@onready var start_button: Button = $Container/Menu/StartButton
 
 func _ready() -> void:
 	if OS.get_name().to_lower() == "web":
@@ -7,6 +8,7 @@ func _ready() -> void:
 	var current_resolution = GameManager.resolutions[GameManager.settings.get("resolution", 0)]
 	DisplayServer.window_set_size(current_resolution)
 	get_tree().root.content_scale_size = current_resolution
+	start_button.grab_focus()
 	
 
 func _quit() -> void:

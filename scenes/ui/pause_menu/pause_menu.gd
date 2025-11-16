@@ -2,6 +2,7 @@ extends Control
 var to_do_item = preload("res://scenes/ui/computer/to_do_item.tscn")
 @onready var quit_button: Button = $Buttons/QuitButton
 @onready var goals_list: VBoxContainer = %GoalsList
+@onready var continue_button: Button = $Buttons/ContinueButton
 
 
 
@@ -10,6 +11,8 @@ func _ready() -> void:
 	hide()
 	if OS.get_name().to_lower() == "web":
 		quit_button.hide()
+	
+
 
 func set_visibility(value: bool):
 	for node in goals_list.get_children():
@@ -22,6 +25,7 @@ func set_visibility(value: bool):
 			todo.is_secret = goal.secret
 			todo.is_checked = goal.done
 			goals_list.add_child(todo)
+		continue_button.grab_focus()
 		show()
 	else:
 		hide()

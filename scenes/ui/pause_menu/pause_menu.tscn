@@ -36,16 +36,28 @@ grow_vertical = 2
 
 [node name="ContinueButton" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+focus_previous = NodePath("../QuitButton")
 theme = ExtResource("4_xtvdp")
 text = "Continue"
 
 [node name="MainMenuButton" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../ContinueButton")
 theme = ExtResource("4_xtvdp")
 text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+focus_next = NodePath("../ContinueButton")
+focus_previous = NodePath("../MainMenuButton")
 theme = ExtResource("4_xtvdp")
 text = "Quit"
 
