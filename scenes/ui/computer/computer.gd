@@ -1,5 +1,9 @@
 extends Control
 
+@onready var app_click_sfx: AudioStreamPlayer = $AppClickSFX
+@onready var start_computer_sfx: AudioStreamPlayer = $StartComputerSFX
+@onready var delete_photo_sfx: AudioStreamPlayer = $DeletePhotoSFX
+@onready var send_photos_sfx: AudioStreamPlayer = $SendPhotosSFX
 @onready var send_mail_button: TextureButton = $MailApp/SendMailButton
 @onready var time: Label = $Desktop/Layout/Time
 @onready var photo_app: Panel = $PhotoApp
@@ -32,6 +36,7 @@ func _ready() -> void:
 	load_todo_list()
 	load_photo_data_silently()
 	photo_button.grab_focus()
+	start_computer_sfx.play()
 
 func clear_todo_list():
 	for todo in to_do_list.get_children():
@@ -77,6 +82,7 @@ func show_window_animated(window: Control):
 	tween.tween_property(window, "scale", Vector2.ONE, 0.3)\
 	.set_trans(Tween.TRANS_BACK)\
 	.set_ease(Tween.EASE_OUT) 
+	app_click_sfx.play()
 	await tween.finished
 	tween.kill()
 
@@ -124,6 +130,7 @@ func clear_photos():
 			photo.queue_free()
 
 func delete_photo(slot: int):
+	delete_photo_sfx.play()
 	var dir = DirAccess.open(GameManager.photos_dir)
 	var file_path = "%s.png" % [GameManager.photos[slot].get("filename")]
 	if dir:
@@ -215,4 +222,6 @@ func display_photos_with_animation():
 
 
 func _on_send_mail_button_pressed() -> void:
+	send_photos_sfx.play()
+	await send_photos_sfx.finished
 	SceneGameManager.change_scene("res://scenes/ui/magazine/magazine.tscn")

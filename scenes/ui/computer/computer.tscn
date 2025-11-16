@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dyjf0jbmvbovf"]
+[gd_scene load_steps=52 format=4 uid="uid://dyjf0jbmvbovf"]
 
 [ext_resource type="Script" uid="uid://ks3odfhwc3i2" path="res://scenes/ui/computer/computer.gd" id="1_bnux2"]
 [ext_resource type="Texture2D" uid="uid://csg068qvbvu6d" path="res://assets/ui/spr_computer_scene_01.png" id="2_bjh3n"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://vpe8ltoy1pyh" path="res://assets/ui/send_email_button.png" id="17_1xy15"]
 [ext_resource type="Texture2D" uid="uid://ohs0rco6damu" path="res://assets/ui/close_button_foco.png" id="17_mg23o"]
 [ext_resource type="FontFile" uid="uid://bhjmo88r2mqqj" path="res://assets/ui/fonts/ari_w9500/ari-w9500-display.ttf" id="21_1xy15"]
+[ext_resource type="AudioStream" uid="uid://cr7ougm868p5d" path="res://assets/audio/sfx/pop.ogg" id="22_52s0g"]
+[ext_resource type="AudioStream" uid="uid://dhbd23xifgym8" path="res://assets/audio/sfx/complete.ogg" id="22_je1ax"]
+[ext_resource type="AudioStream" uid="uid://igdfk6v2r1a7" path="res://assets/audio/sfx/SE_deletando_foto.wav" id="24_gi8wa"]
+[ext_resource type="AudioStream" uid="uid://bwgkutbawg0kh" path="res://assets/audio/sfx/SE_fotos_enviadas.wav" id="25_xwyvd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xy15"]
 font = ExtResource("3_bjh3n")
@@ -835,9 +839,6 @@ theme_override_constants/margin_bottom = 10
 
 [node name="CloseButton" type="TextureButton" parent="PhotoApp/LoadingFiles/MarginContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../SendButton")
-focus_next = NodePath("../SendButton")
-focus_previous = NodePath("../SendButton")
 texture_normal = ExtResource("7_cj8t4")
 
 [node name="Title" type="Label" parent="PhotoApp/LoadingFiles/MarginContainer"]
@@ -886,7 +887,25 @@ text = "NO PHOTOS"
 label_settings = SubResource("LabelSettings_bjh3n")
 horizontal_alignment = 1
 
-[node name="AppClick" type="AudioStreamPlayer" parent="."]
+[node name="AppClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_52s0g")
+bus = &"effect"
+
+[node name="StartComputerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_je1ax")
+bus = &"effect"
+
+[node name="ShutdownComputerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_je1ax")
+bus = &"effect"
+
+[node name="DeletePhotoSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_gi8wa")
+bus = &"effect"
+
+[node name="SendPhotosSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_xwyvd")
+bus = &"effect"
 
 [connection signal="pressed" from="Desktop/Layout/MarginContainer/Menu/Bar/PhotoButton" to="." method="_on_app_icon_pressed" binds= ["photoapp"]]
 [connection signal="pressed" from="Desktop/Layout/MarginContainer/Menu/Bar/MailButton" to="." method="_on_app_icon_pressed" binds= ["mailapp"]]
