@@ -511,11 +511,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bnux2")
 
-[node name="Wallpaper" type="TextureRect" parent="."]
+[node name="Wallpaper" type="NinePatchRect" parent="."]
 layout_mode = 1
-offset_right = 320.0
-offset_bottom = 180.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_bjh3n")
+patch_margin_bottom = 107
 
 [node name="Desktop" type="MarginContainer" parent="."]
 layout_mode = 1
