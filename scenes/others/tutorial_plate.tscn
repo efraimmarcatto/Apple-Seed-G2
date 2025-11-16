@@ -1,0 +1,212 @@
+[gd_scene load_steps=14 format=3 uid="uid://p7k6v76ghgd6"]
+
+[ext_resource type="Script" uid="uid://ewa1eqpw3dej" path="res://scenes/others/tutorial_plate.gd" id="1_24thw"]
+[ext_resource type="Texture2D" uid="uid://birf2n3xmi1j4" path="res://assets/tiles & props/spr_tuto_placa_sombra.png" id="1_wuhx8"]
+[ext_resource type="Texture2D" uid="uid://ck2aq551mkghw" path="res://assets/tiles & props/spr_tuto_placa.png" id="2_24thw"]
+[ext_resource type="PackedScene" uid="uid://cckvunw0qvsee" path="res://scenes/others/icon_exclamation.tscn" id="4_22k4b"]
+[ext_resource type="AudioStream" uid="uid://drjkffyhdm686" path="res://assets/audio/SFX/SE_confirmar.wav" id="5_kj8qu"]
+[ext_resource type="Texture2D" uid="uid://gu0cue2tl41e" path="res://assets/tiles & props/spr_tutorial_board.png" id="6_lfxjg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wuhx8"]
+radius = 5.0
+height = 32.555733
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuhx8"]
+size = Vector2(32, 23)
+
+[sub_resource type="Animation" id="Animation_6bsis"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-140, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oq2c3"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-140, -100.00006), Vector2(-140, 182)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w5dqy"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-140, 182)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lfxjg"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-140, 182), Vector2(-140, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upjb1"]
+_data = {
+&"RESET": SubResource("Animation_6bsis"),
+&"close": SubResource("Animation_oq2c3"),
+&"default": SubResource("Animation_w5dqy"),
+&"open": SubResource("Animation_lfxjg")
+}
+
+[node name="TutorialPlate" type="StaticBody2D" node_paths=PackedStringArray("area_2d", "show_on_player_enter", "audio", "animation_player")]
+script = ExtResource("1_24thw")
+area_2d = NodePath("Area2D")
+show_on_player_enter = NodePath("IconExclamation")
+audio = NodePath("AudioStreamPlayer")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Shadown" type="Sprite2D" parent="."]
+z_index = -2
+z_as_relative = false
+position = Vector2(11, -16)
+texture = ExtResource("1_wuhx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, -16)
+texture = ExtResource("2_24thw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+rotation = -1.3746223
+shape = SubResource("CapsuleShape2D_wuhx8")
+
+[node name="IconExclamation" parent="." instance=ExtResource("4_22k4b")]
+position = Vector2(1, -38)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_wuhx8")
+debug_color = Color(0.697481, 0.49371314, 0.036077656, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kj8qu")
+bus = &"effect"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer/Control/TextureRect")
+libraries = {
+&"": SubResource("AnimationLibrary_upjb1")
+}
+autoplay = "default"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = 120.00003
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_lfxjg")

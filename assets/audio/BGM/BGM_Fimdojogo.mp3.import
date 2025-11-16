@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bkvs6ha5mn27f"
-path="res://.godot/imported/BGM_Fimdojogo.mp3-9b6903871ee831dcd2e8c132a94e79db.mp3str"
+path="res://.godot/imported/BGM_Fimdojogo.mp3-8fb308fcef21d604facee84fc0684d8b.mp3str"
 
 [deps]
 
-source_file="res://assets/audio/bgm/BGM_Fimdojogo.mp3"
-dest_files=["res://.godot/imported/BGM_Fimdojogo.mp3-9b6903871ee831dcd2e8c132a94e79db.mp3str"]
+source_file="res://assets/audio/BGM/BGM_Fimdojogo.mp3"
+dest_files=["res://.godot/imported/BGM_Fimdojogo.mp3-8fb308fcef21d604facee84fc0684d8b.mp3str"]
 
 [params]
 

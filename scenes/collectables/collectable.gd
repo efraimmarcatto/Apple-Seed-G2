@@ -33,8 +33,8 @@ func _physics_process(_delta: float) -> void:
 	elif is_on_water and state == STATES.DEFAULT:
 		if water_effect and parent:
 			var instance_water_effect = water_effect.instantiate()
-			instance_water_effect.global_position = parent.global_position
 			parent.get_parent().add_child(instance_water_effect)
+			instance_water_effect.global_position = parent.global_position
 		
 		destroy()
 

@@ -38,8 +38,8 @@ func run() -> void:
 	
 	if smoke_effect and target:
 		var instance_smoke_effect = smoke_effect.instantiate()
-		instance_smoke_effect.global_position = target.global_position
 		target.get_parent().add_child(instance_smoke_effect)
+		instance_smoke_effect.global_position = target.global_position
 	
 	state = STATES.RUN
 	

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://g7wvjg8t3xsi"
-path="res://.godot/imported/SE_bicho_correndo.wav-600d39a85a8d02d26e231b3befd9d292.sample"
+path="res://.godot/imported/SE_bicho_correndo.wav-9c0143352abe5866f8b01faab0474f56.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_bicho_correndo.wav"
-dest_files=["res://.godot/imported/SE_bicho_correndo.wav-600d39a85a8d02d26e231b3befd9d292.sample"]
+source_file="res://assets/audio/SFX/SE_bicho_correndo.wav"
+dest_files=["res://.godot/imported/SE_bicho_correndo.wav-9c0143352abe5866f8b01faab0474f56.sample"]
 
 [params]
 

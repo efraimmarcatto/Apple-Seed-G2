@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cmipstl4uc1np"
-path="res://.godot/imported/SE_maca_pedra_caindonagua.wav-7528eab72b8f1062a1350e33a8cff910.sample"
+path="res://.godot/imported/SE_maca_pedra_caindonagua.wav-77d6c97e84d47e481fc86e7654c7e909.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/SE_maca_pedra_caindonagua.wav"
-dest_files=["res://.godot/imported/SE_maca_pedra_caindonagua.wav-7528eab72b8f1062a1350e33a8cff910.sample"]
+source_file="res://assets/audio/SFX/SE_maca_pedra_caindonagua.wav"
+dest_files=["res://.godot/imported/SE_maca_pedra_caindonagua.wav-77d6c97e84d47e481fc86e7654c7e909.sample"]
 
 [params]
 

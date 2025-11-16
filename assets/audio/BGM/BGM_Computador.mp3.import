@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dd1pnqexv8yny"
-path="res://.godot/imported/BGM_Computador.mp3-95e110f36770afa264ca9c73a5698c3b.mp3str"
+path="res://.godot/imported/BGM_Computador.mp3-7eb35c2c16962599d51a36aef125203e.mp3str"
 
 [deps]
 
-source_file="res://assets/audio/bgm/BGM_Computador.mp3"
-dest_files=["res://.godot/imported/BGM_Computador.mp3-95e110f36770afa264ca9c73a5698c3b.mp3str"]
+source_file="res://assets/audio/BGM/BGM_Computador.mp3"
+dest_files=["res://.godot/imported/BGM_Computador.mp3-7eb35c2c16962599d51a36aef125203e.mp3str"]
 
 [params]
 

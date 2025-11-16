@@ -1,38 +1,41 @@
-extends Area2D
+extends StaticBody2D
 
-@export var enabled: bool = true
+@export var area_2d: Area2D
+
 @export var show_on_player_enter:Node2D ## mostra quando o plauyer entrar
 
 @export var button_action_name: String = "key_action"
 @export var audio: AudioStreamPlayer
 
-@export_category("change Scenne")
-@export var change_to_level: String
-
-signal player_entered
-signal player_exited
-
-signal button_just_pressed
+@export var animation_player: AnimationPlayer
 
 var player_inside: bool = false
+var open = false
 
 func _ready() -> void:
 	# Conecta o sinal de colisão (se existir no target)
-	body_entered.connect(_on_player_entered)
-	body_exited.connect(_on_player_exited)
-	
+	if area_2d:
+		area_2d.body_entered.connect(_on_player_entered)
+		area_2d.body_exited.connect(_on_player_exited)
+		
 	if show_on_player_enter:
 		show_on_player_enter.visible = false
-
+	
 func _process(_delta: float) -> void:
 	if player_inside and button_action_name and Input.is_action_just_pressed(button_action_name):
-		button_just_pressed.emit()
-		if change_to_level:
-			SceneGameManager.change_scene(change_to_level)
+		open = !open
+		if open:
+			animation_player.play("open")
+		else:
+			animation_player.play("close")
+	elif not player_inside and open:
+		if animation_player.is_playing():
+			await animation_player.animation_finished
+		open = false
+		animation_player.play("close")
 		
 func _on_player_entered(body: Node) -> void:
-	if enabled and body.is_in_group("Player"):
-		player_entered.emit()
+	if body.is_in_group("Player"):
 		if show_on_player_enter:
 			if audio:
 				audio.play()
@@ -40,14 +43,7 @@ func _on_player_entered(body: Node) -> void:
 			show_on_player_enter.visible = true
 		
 func _on_player_exited(body: Node) -> void:
-	if enabled and body.is_in_group("Player"):
+	if body.is_in_group("Player"):
 		player_inside = false
-		player_exited.emit()
 		if show_on_player_enter:
 			show_on_player_enter.visible = false
-
-func enable() -> void:
-	enabled = true
-
-func disable() -> void:
-	enabled = false
